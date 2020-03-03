@@ -28,9 +28,7 @@ public class control_usuario implements ActionListener {
 	public usuarios clase;
 	public consultas_usuario consulta;
 	public registro_usuarios ventana;
-	public static DefaultComboBoxModel modelo;
-	public static String id_rol;
-	public static String identidadRepetida;
+	public static String nombreRol;
 
 	public control_usuario(usuarios clase, consultas_usuario consulta, registro_usuarios ventana) {
 		this.clase = clase;
@@ -48,24 +46,50 @@ public class control_usuario implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == ventana.btnGuardar) {
-
+			ventana.validarUsuarioPorIdentidad();
 			if (ventana.txtIdentidad.getText().isEmpty() || ventana.txtContraseña.getText().isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Porfavor llene los campos para guardar el usuario!");
 
 			} else {
-
-				clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
-				clase.setPassword(ventana.txtContraseña.getText().toString());
-				clase.setId_Rol(ventana.cbxRol.getSelectedItem().toString());
-
-				if (consulta.insertar(clase)) {
-					JOptionPane.showMessageDialog(null, "Usuario Registrado!");
-					limpiar();
-					construirTabla();
-					obtenerUltimoId();
+				if (ventana.txtIdentidad.getText().toString().equals(ventana.identidadRepetida)) {
+					JOptionPane.showMessageDialog(null,
+							"Se encontrado un registro con esta identidad : " + ventana.identidadRepetida,
+							"Alerta!\n" + " Nota: Solo debe de haber 1 usuario por identidad",
+							JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "Error! Usuario no registrado");
-					limpiar();
+					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
+					clase.setPassword(ventana.txtContraseña.getText().toString());
+
+					if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
+						clase.setId_Rol("1");
+					} else {
+						if (ventana.cbxRol.getSelectedItem().toString().equals("Docente")) {
+							clase.setId_Rol("2");
+						} else {
+							if (ventana.cbxRol.getSelectedItem().toString().equals("Alumno")) {
+								clase.setId_Rol("3");
+							} else {
+								if (ventana.cbxRol.getSelectedItem().toString().equals("Secretaria")) {
+									clase.setId_Rol("4");
+								} else {
+
+								}
+
+							}
+
+						}
+
+					}
+
+					if (consulta.insertar(clase)) {
+						JOptionPane.showMessageDialog(null, "Usuario Registrado!");
+						limpiar();
+						ventana.construirTabla();
+						ventana.obtenerUltimoId();
+					} else {
+						JOptionPane.showMessageDialog(null, "Error! Usuario no registrado");
+						limpiar();
+					}
 				}
 			}
 		}
@@ -85,7 +109,21 @@ public class control_usuario implements ActionListener {
 					ventana.lblID.setText(codigo);
 					ventana.txtIdentidad.setText(identidad);
 					ventana.txtContraseña.setText(contraseña);
-					ventana.cbxRol.setSelectedItem(rol);
+
+					conexion conex = new conexion();
+					try {
+
+						Statement estatuto = conex.getConexion().createStatement();
+						ResultSet rs = estatuto.executeQuery("Select Nombre_Rol from Roles where Id_Rol='" + rol + "'");
+						while (rs.next()) {
+							nombreRol = rs.getString("Nombre_Rol");
+						}
+					} catch (SQLException ex) {
+						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+						JOptionPane.showMessageDialog(null, ex);
+					}
+
+					ventana.cbxRol.setSelectedItem(nombreRol);
 
 					ventana.lblID.setForeground(Color.BLACK);
 					ventana.txtIdentidad.setForeground(Color.BLACK);
@@ -125,7 +163,20 @@ public class control_usuario implements ActionListener {
 					ventana.lblID.setText(codigo);
 					ventana.txtIdentidad.setText(identidad);
 					ventana.txtContraseña.setText(contraseña);
-					ventana.cbxRol.setSelectedItem(rol);
+					conexion conex = new conexion();
+					try {
+
+						Statement estatuto = conex.getConexion().createStatement();
+						ResultSet rs = estatuto.executeQuery("Select Nombre_Rol from Roles where Id_Rol='" + rol + "'");
+						while (rs.next()) {
+							nombreRol = rs.getString("Nombre_Rol");
+						}
+					} catch (SQLException ex) {
+						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+						JOptionPane.showMessageDialog(null, ex);
+					}
+
+					ventana.cbxRol.setSelectedItem(nombreRol);
 
 					ventana.lblID.setForeground(Color.BLACK);
 					ventana.txtIdentidad.setForeground(Color.BLACK);
@@ -159,14 +210,33 @@ public class control_usuario implements ActionListener {
 
 				clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 				clase.setPassword(ventana.txtContraseña.getText().toString());
-				clase.setId_Rol(ventana.cbxRol.getSelectedItem().toString());
+				if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
+					clase.setId_Rol("1");
+				} else {
+					if (ventana.cbxRol.getSelectedItem().toString().equals("Docente")) {
+						clase.setId_Rol("2");
+					} else {
+						if (ventana.cbxRol.getSelectedItem().toString().equals("Alumno")) {
+							clase.setId_Rol("3");
+						} else {
+							if (ventana.cbxRol.getSelectedItem().toString().equals("Secretaria")) {
+								clase.setId_Rol("4");
+							} else {
+
+							}
+
+						}
+
+					}
+
+				}
 				clase.setId(Integer.parseInt(ventana.lblID.getText().toString()));
 
-				if (consulta.insertar(clase)) {
+				if (consulta.actualizar(clase)) {
 					JOptionPane.showMessageDialog(null, "Usuario Actualizado!");
 					limpiar();
-					construirTabla();
-					obtenerUltimoId();
+					ventana.construirTabla();
+					ventana.obtenerUltimoId();
 				} else {
 					JOptionPane.showMessageDialog(null, "Error! Usuario no actualizado");
 					limpiar();
@@ -192,8 +262,8 @@ public class control_usuario implements ActionListener {
 					ps.execute();
 					JOptionPane.showMessageDialog(null, "Usuario Eliminado");
 					limpiar();
-					construirTabla();
-					
+					ventana.construirTabla();
+
 					ventana.txtIdentidad.setEditable(false);
 					ventana.txtContraseña.setEditable(false);
 					ventana.btnActualizar_Usuario.setVisible(false);
@@ -205,10 +275,9 @@ public class control_usuario implements ActionListener {
 			}
 		}
 
-
 		if (e.getSource() == ventana.btnAceptar) {
 			limpiar();
-			obtenerUltimoId();
+			ventana.obtenerUltimoId();
 			ventana.btnBorrar.setVisible(false);
 			ventana.btnGuardar.setVisible(true);
 			ventana.btnActualizar.setVisible(true);
@@ -217,7 +286,7 @@ public class control_usuario implements ActionListener {
 			ventana.btnActualizar_Usuario.setVisible(false);
 			ventana.btnVer.setVisible(true);
 			ventana.btnAceptar.setVisible(false);
-			construirTabla();
+			ventana.construirTabla();
 		}
 
 	}
@@ -227,142 +296,6 @@ public class control_usuario implements ActionListener {
 		ventana.lblID.setText(null);
 		ventana.txtIdentidad.setText(null);
 		ventana.txtContraseña.setText(null);
-	}
-
-	public void validarUsuarioPorIdentidad() {
-		conexion conex = new conexion();
-		try {
-			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery("SELECT RNE_Empleado FROM dbo.users where RNE_Empleado = '"
-					+ ventana.txtIdentidad.getText().toString() + "'");
-
-			if (rs.next()) {
-				identidadRepetida = (rs.getString("RNE_Empleado"));
-			}
-
-			rs.close();
-			estatuto.close();
-			conex.desconectar();
-
-		} catch (SQLException exx) {
-			System.out.println(exx.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al consultar", "Error", JOptionPane.ERROR_MESSAGE);
-
-		}
-
-	}
-
-	@SuppressWarnings("unchecked")
-	public static void llena_combobox_con_roles() {
-		conexion conex = new conexion();
-		try {
-			modelo.removeAllElements();
-			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery("Select * from Roles");
-
-			while (rs.next()) {
-				modelo.addElement(rs.getString("Nombre_Rol"));
-			}
-			registro_usuarios.cbxRol.setModel(modelo);
-		} catch (SQLException ex) {
-			Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
-			JOptionPane.showMessageDialog(null, ex);
-		}
-	}
-
-	public void cargarIdRol() {
-		conexion conex = new conexion();
-		try {
-
-			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery(
-					"Select id_Rol from Roles where Nombre_Rol='" + ventana.cbxRol.getSelectedItem().toString() + "'");
-			while (rs.next()) {
-				id_rol = rs.getString("Id_Rol");
-			}
-		} catch (SQLException ex) {
-			Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
-			JOptionPane.showMessageDialog(null, ex);
-		}
-	}
-
-	public void obtenerUltimoId() {
-		String ultimoValor = null;
-		int valor;
-		String id = null;
-		conexion objCon = new conexion();
-		Connection conn = objCon.getConexion();
-		try {
-			PreparedStatement stmtr = conn.prepareStatement("SELECT * FROM dbo.users ORDER BY id DESC");
-			ResultSet rsr = stmtr.executeQuery();
-			if (rsr.next()) {
-				ultimoValor = rsr.getString("id");
-				valor = Integer.parseInt(ultimoValor);
-				valor = valor + 1;
-				id = String.valueOf(valor);
-			}
-			ventana.lblID.setText(id);
-			;
-			stmtr.close();
-			rsr.close();
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void construirTabla() {
-		String titulos[] = { "N°", "Usuario", "Contraseña", "Rol" };
-		String informacion[][] = obtenerMatriz();
-		ventana.tabla = new JTable(informacion, titulos);
-		ventana.barra.setViewportView(ventana.tabla);
-		for (int c = 0; c < ventana.tabla.getColumnCount(); c++) {
-			Class<?> col_class = ventana.tabla.getColumnClass(c);
-			ventana.tabla.setDefaultEditor(col_class, null);
-			ventana.tabla.getTableHeader().setReorderingAllowed(false);
-
-		}
-	}
-
-	public static ArrayList<usuarios> buscarUsuariosConMatriz() {
-		conexion conex = new conexion();
-		ArrayList<usuarios> miLista = new ArrayList<usuarios>();
-		usuarios usuarios;
-		try {
-			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery("SELECT * FROM users ");
-
-			while (rs.next()) {
-				usuarios = new usuarios();
-				usuarios.setId(Integer.parseInt(rs.getString("id")));
-				usuarios.setRNE_Empleado(rs.getString("RNE_Empleado"));
-				usuarios.setPassword(rs.getString("password"));
-				usuarios.setId_Rol(rs.getString("Id_Rol"));
-				miLista.add(usuarios);
-			}
-			rs.close();
-			estatuto.close();
-			conex.desconectar();
-
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al consultar", "Error", JOptionPane.ERROR_MESSAGE);
-
-		}
-		return miLista;
-	}
-
-	public static String[][] obtenerMatriz() {
-		ArrayList<usuarios> miLista = buscarUsuariosConMatriz();
-		String matrizInfo[][] = new String[miLista.size()][4];
-		for (int i = 0; i < miLista.size(); i++) {
-			matrizInfo[i][0] = miLista.get(i).getId() + "";
-			matrizInfo[i][1] = miLista.get(i).getRNE_Empleado() + "";
-			matrizInfo[i][2] = miLista.get(i).getPassword() + "";
-			matrizInfo[i][3] = miLista.get(i).getId_Rol() + "";
-		}
-
-		return matrizInfo;
 	}
 
 }
