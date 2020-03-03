@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.Key;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,19 +12,14 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 
-import org.apache.commons.codec.binary.Base64;
-
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import clases.usuarios;
 import conexion.conexion;
 import consultas.consultas_usuario;
 import ventanas.registro_usuarios;
 
-public class control_usuario extends java.lang.Object implements ActionListener {
+public class control_usuario implements ActionListener {
 
 	public usuarios clase;
 	public consultas_usuario consulta;
@@ -62,7 +56,6 @@ public class control_usuario extends java.lang.Object implements ActionListener 
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
-					contraseña = BCrypt.hashpw(plain_password, BCrypt.gensalt());
 
 					clase.setPassword(contraseña);
 
