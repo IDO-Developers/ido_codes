@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import clases.usuarios;
 import conexion.conexion;
 import consultas.consultas_usuario;
@@ -25,6 +28,8 @@ public class control_usuario implements ActionListener {
 	public static String nombreRol;
 	public static String contraseña;
 	public static String contraseñaEncripdata;
+
+	public static int workload = 12;
 
 	public control_usuario(usuarios clase, consultas_usuario consulta, registro_usuarios ventana) {
 		this.clase = clase;
@@ -55,8 +60,6 @@ public class control_usuario implements ActionListener {
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
-
-					
 
 					clase.setPassword(contraseña);
 
@@ -297,6 +300,5 @@ public class control_usuario implements ActionListener {
 		ventana.txtIdentidad.setText(null);
 		ventana.txtContraseña.setText(null);
 	}
-
 
 }
