@@ -13,11 +13,17 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+
+import clases.usuarios;
+import consultas.consultas_usuario;
+import controles.control_usuario;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import java.awt.Font;
+import java.awt.Window.Type;
 
 public class registro_usuarios extends JFrame {
 
@@ -43,8 +49,22 @@ public class registro_usuarios extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					registro_usuarios frame = new registro_usuarios();
-					frame.setVisible(true);
+					usuarios clase = new usuarios();
+					consultas_usuario consulta = new consultas_usuario();
+					registro_usuarios formulario = new registro_usuarios();
+					control_usuario control = new control_usuario(clase, consulta, formulario);
+					formulario.setVisible(true);
+					formulario.setLocationRelativeTo(null);
+					formulario.txtIdentidad.requestFocusInWindow();
+					control.construirTabla();
+					control.obtenerUltimoId();
+					formulario.btnBorrar.setVisible(false);
+					formulario.btnGuardar.setVisible(true);
+					formulario.btnActualizar.setVisible(true);
+					formulario.btnActualizar_Usuario.setVisible(false);
+					formulario.btnVer.setVisible(true);
+					formulario.btnAceptar.setVisible(false);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,6 +76,7 @@ public class registro_usuarios extends JFrame {
 	 * Create the frame.
 	 */
 	public registro_usuarios() {
+		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
@@ -99,14 +120,17 @@ public class registro_usuarios extends JFrame {
 		panel.add(cbxRol);
 
 		btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setBounds(78, 243, 89, 23);
+		btnGuardar.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnGuardar.setBounds(135, 305, 107, 23);
 		panel.add(btnGuardar);
 
 		btnActualizar_Usuario = new JButton("ACTUALIZAR");
-		btnActualizar_Usuario.setBounds(69, 268, 107, 23);
+		btnActualizar_Usuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnActualizar_Usuario.setBounds(10, 305, 107, 23);
 		panel.add(btnActualizar_Usuario);
 
 		JLabel USUARIOS = new JLabel(" REGISTRO DE USUARIOS");
+		USUARIOS.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		USUARIOS.setHorizontalAlignment(SwingConstants.CENTER);
 		USUARIOS.setBounds(28, 26, 192, 31);
 		panel.add(USUARIOS);
@@ -119,11 +143,12 @@ public class registro_usuarios extends JFrame {
 		lblID = new JLabel("");
 		lblID.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblID.setHorizontalAlignment(SwingConstants.CENTER);
-		lblID.setBounds(98, 68, 46, 23);
+		lblID.setBounds(69, 68, 107, 23);
 		panel.add(lblID);
 
 		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.setBounds(78, 294, 89, 23);
+		btnAceptar.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnAceptar.setBounds(69, 243, 107, 23);
 		panel.add(btnAceptar);
 
 		JPanel panel_1 = new JPanel();
@@ -134,35 +159,39 @@ public class registro_usuarios extends JFrame {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(10, 45, 282, 256);
+		panel_2.setBounds(10, 38, 282, 256);
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
 
 		txtBuscar = new JTextField();
-		txtBuscar.setBounds(66, 14, 226, 20);
+		txtBuscar.setBounds(68, 14, 224, 20);
 		panel_1.add(txtBuscar);
 		txtBuscar.setColumns(10);
 
 		JLabel lblBuscar = new JLabel("BUSCAR");
-		lblBuscar.setBounds(10, 17, 46, 14);
+		lblBuscar.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		lblBuscar.setBounds(10, 14, 102, 20);
 		panel_1.add(lblBuscar);
 
 		btnActualizar = new JButton("ACTUALIZAR");
-		btnActualizar.setBounds(197, 305, 95, 23);
+		btnActualizar.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnActualizar.setBounds(176, 305, 116, 23);
 		panel_1.add(btnActualizar);
 
 		btnBorrar = new JButton("BORRAR");
-		btnBorrar.setBounds(10, 305, 89, 23);
+		btnBorrar.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnBorrar.setBounds(10, 305, 91, 23);
 		panel_1.add(btnBorrar);
 
 		btnVer = new JButton("VER");
-		btnVer.setBounds(104, 305, 89, 23);
+		btnVer.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnVer.setBounds(111, 305, 59, 23);
 		panel_1.add(btnVer);
 		
 		barra = new JScrollPane(tabla, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		panel_2.add(barra);
-		barra.setBounds(10, 44, 282, 257);
+		barra.setBounds(0, 0, 282, 257);
 
 		tabla = new JTable();
 		barra.setViewportView(tabla);

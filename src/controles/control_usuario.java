@@ -41,12 +41,12 @@ public class control_usuario implements ActionListener {
 		this.ventana.btnGuardar.addActionListener(this);
 		this.ventana.btnVer.addActionListener(this);
 		this.ventana.btnBorrar.addActionListener(this);
+		this.ventana.btnAceptar.addActionListener(this);
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/* Insertar */
 		if (e.getSource() == ventana.btnGuardar) {
 
 			if (ventana.txtIdentidad.getText().isEmpty() || ventana.txtContraseña.getText().isEmpty()) {
@@ -150,7 +150,6 @@ public class control_usuario implements ActionListener {
 			}
 		}
 
-		/* Actualizar */
 		if (e.getSource() == ventana.btnActualizar_Usuario) {
 
 			if (ventana.txtIdentidad.getText().isEmpty() || ventana.txtContraseña.getText().isEmpty()) {
@@ -176,7 +175,6 @@ public class control_usuario implements ActionListener {
 			}
 		}
 
-		/* Borrar */
 		if (e.getSource() == ventana.btnBorrar) {
 			PreparedStatement ps = null;
 			int filaseleccionada;
@@ -208,7 +206,6 @@ public class control_usuario implements ActionListener {
 		}
 
 
-		/* Aceptar */
 		if (e.getSource() == ventana.btnAceptar) {
 			limpiar();
 			obtenerUltimoId();
