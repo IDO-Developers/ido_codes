@@ -2,9 +2,18 @@ package clases;
 
 public class usuarios {
 
+	int id;
 	String RNE_Empleado;
 	String password;
 	String Id_Rol;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getRNE_Empleado() {
 		return RNE_Empleado;
