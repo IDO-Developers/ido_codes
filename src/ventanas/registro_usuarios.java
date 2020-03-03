@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
@@ -37,6 +38,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
@@ -121,6 +123,8 @@ public class registro_usuarios extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
+		final ImageIcon ver = new ImageIcon(getClass().getResource("/recursos/ver.png"));
+		final ImageIcon ocultar = new ImageIcon(getClass().getResource("/recursos/ocultar.png"));
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -129,7 +133,7 @@ public class registro_usuarios extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblUsuario = new JLabel("Identidad:");
-		lblUsuario.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		lblUsuario.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setBounds(78, 102, 86, 20);
 		panel.add(lblUsuario);
@@ -148,7 +152,7 @@ public class registro_usuarios extends JFrame {
 		txtIdentidad.setColumns(10);
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		lblContrasea.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContrasea.setBounds(78, 147, 86, 20);
 		panel.add(lblContrasea);
@@ -157,7 +161,7 @@ public class registro_usuarios extends JFrame {
 		txtContraseña.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		txtContraseña.setColumns(10);
-		txtContraseña.setBounds(28, 167, 192, 20);
+		txtContraseña.setBounds(28, 167, 170, 20);
 		panel.add(txtContraseña);
 		InputMap map1 = txtContraseña.getInputMap(JComponent.WHEN_FOCUSED);
 		map1.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
@@ -184,13 +188,13 @@ public class registro_usuarios extends JFrame {
 		});
 
 		JLabel lblRol = new JLabel("Rol:");
-		lblRol.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		lblRol.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblRol.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRol.setBounds(78, 209, 86, 20);
+		lblRol.setBounds(78, 191, 86, 20);
 		panel.add(lblRol);
 
 		cbxRol = new JComboBox();
-		cbxRol.setBounds(28, 229, 192, 20);
+		cbxRol.setBounds(28, 211, 192, 20);
 		panel.add(cbxRol);
 		cbxRol.addActionListener(new ActionListener() {
 			@Override
@@ -216,7 +220,7 @@ public class registro_usuarios extends JFrame {
 		panel.add(USUARIOS);
 
 		JLabel lblId = new JLabel("ID:");
-		lblId.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		lblId.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		lblId.setBounds(78, 51, 86, 20);
 		panel.add(lblId);
@@ -232,21 +236,31 @@ public class registro_usuarios extends JFrame {
 		btnAceptar.setBounds(69, 271, 107, 23);
 		panel.add(btnAceptar);
 		
-		btnMostrar_Ocultar_Pass = new JToggleButton("Mostrar");
+		btnMostrar_Ocultar_Pass = new JToggleButton("");
+		btnMostrar_Ocultar_Pass.setForeground(Color.BLACK);
 		btnMostrar_Ocultar_Pass.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (btnMostrar_Ocultar_Pass.isSelected()) {
 					btnMostrar_Ocultar_Pass.setText("Ocultar");
 					txtContraseña.setEchoChar((char) 0);
+					final ImageIcon iconover = new ImageIcon(ver.getImage().getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(),
+							btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
+					btnMostrar_Ocultar_Pass.setIcon(iconover);
 				}else {
 					btnMostrar_Ocultar_Pass.setText("Mostrar");
 					txtContraseña.setEchoChar('*');
+					final ImageIcon iconoocultar = new ImageIcon(ocultar.getImage()
+							.getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(), btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
+					btnMostrar_Ocultar_Pass.setIcon(iconoocultar);
 				}
 			}
 		});
 		btnMostrar_Ocultar_Pass.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnMostrar_Ocultar_Pass.setBounds(78, 189, 86, 20);
+		btnMostrar_Ocultar_Pass.setBounds(197, 167, 23, 20);
 		panel.add(btnMostrar_Ocultar_Pass);
+		final ImageIcon iconover = new ImageIcon(ver.getImage().getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(),
+				btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
+		btnMostrar_Ocultar_Pass.setIcon(iconover);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);

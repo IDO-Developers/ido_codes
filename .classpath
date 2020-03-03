@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="C:/Users/Developer Desk/Documents/GitHub/ido_codes/librerias/JTattoo-1.6.13.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Developer Desk/Documents/GitHub/ido_codes/librerias/liquidlnf.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Developer Desk/Documents/GitHub/ido_codes/librerias/sqljdbc42.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Developer Desk/Documents/GitHub/ido_codes/librerias/commons-codec-1.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

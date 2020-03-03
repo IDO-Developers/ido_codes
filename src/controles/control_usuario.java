@@ -4,19 +4,33 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.Key;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
+
+import java.security.MessageDigest;
+import java.util.Arrays;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import org.apache.commons.codec.binary.Base64;
 
 import clases.usuarios;
 import conexion.conexion;
@@ -29,6 +43,7 @@ public class control_usuario implements ActionListener {
 	public consultas_usuario consulta;
 	public registro_usuarios ventana;
 	public static String nombreRol;
+	public static String contraseña;
 
 	public control_usuario(usuarios clase, consultas_usuario consulta, registro_usuarios ventana) {
 		this.clase = clase;
@@ -58,6 +73,7 @@ public class control_usuario implements ActionListener {
 							JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
+
 					clase.setPassword(ventana.txtContraseña.getText().toString());
 
 					if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
@@ -296,6 +312,30 @@ public class control_usuario implements ActionListener {
 		ventana.lblID.setText(null);
 		ventana.txtIdentidad.setText(null);
 		ventana.txtContraseña.setText(null);
+	}
+
+	public static String Encriptar(String texto) {
+
+		String base64EncryptedString = "";
+
+		try {
+
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] digestOfPassword = md.digest(contraseña.getBytes("utf-8"));
+			byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
+
+			SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+			Cipher cipher = Cipher.getInstance("DESede");
+			cipher.init(Cipher.ENCRYPT_MODE, key);
+
+			byte[] plainTextBytes = texto.getBytes("utf-8");
+			byte[] buf = cipher.doFinal(plainTextBytes);
+			byte[] base64Bytes = Base64.encodeBase64(buf);
+			base64EncryptedString = new String(base64Bytes);
+
+		} catch (Exception ex) {
+		}
+		return base64EncryptedString;
 	}
 
 }
