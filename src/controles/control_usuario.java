@@ -11,9 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.swing.JOptionPane;
-
 import clases.usuarios;
 import conexion.conexion;
 import consultas.consultas_usuario;
@@ -26,6 +24,7 @@ public class control_usuario implements ActionListener {
 	public registro_usuarios ventana;
 	public static String nombreRol;
 	public static String contraseña;
+	public static String contraseñaEncripdata;
 
 	public control_usuario(usuarios clase, consultas_usuario consulta, registro_usuarios ventana) {
 		this.clase = clase;
@@ -56,6 +55,8 @@ public class control_usuario implements ActionListener {
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
+
+					
 
 					clase.setPassword(contraseña);
 
@@ -296,5 +297,6 @@ public class control_usuario implements ActionListener {
 		ventana.txtIdentidad.setText(null);
 		ventana.txtContraseña.setText(null);
 	}
+
 
 }
