@@ -62,13 +62,9 @@ public class control_usuario implements ActionListener {
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
-					int i = 0;
-					while (i < 10) {
-						BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-						contraseñaEncriptada = passwordEncoder.encode(contraseña);
 
-						System.out.println(contraseñaEncriptada);
-						i++;
+					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+					contraseñaEncriptada = passwordEncoder.encode(contraseña);
 
 					clase.setPassword(contraseñaEncriptada);
 
@@ -171,6 +167,12 @@ public class control_usuario implements ActionListener {
 					String identidad = ventana.tabla.getValueAt(filaseleccionada, 1).toString();
 					String contraseña = ventana.tabla.getValueAt(filaseleccionada, 2).toString();
 					String rol = ventana.tabla.getValueAt(filaseleccionada, 3).toString();
+					
+					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+					contraseñaEncriptada = passwordEncoder.encode(contraseña).toString();
+
+					clase.setPassword(contraseñaEncriptada);
+
 
 					ventana.lblID.setText(codigo);
 					ventana.txtIdentidad.setText(identidad);
@@ -221,7 +223,13 @@ public class control_usuario implements ActionListener {
 			} else {
 
 				clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
-				clase.setPassword(ventana.txtContraseña.getText().toString());
+				contraseña = ventana.txtContraseña.getText().toString();
+
+				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				contraseñaEncriptada = passwordEncoder.encode(contraseña);
+
+				clase.setPassword(contraseñaEncriptada);
+
 				if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
 					clase.setId_Rol("1");
 				} else {
