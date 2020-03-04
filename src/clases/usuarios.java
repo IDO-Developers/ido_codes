@@ -6,6 +6,7 @@ public class usuarios {
 	String RNE_Empleado;
 	String password;
 	String Id_Rol;
+	String name;
 
 	public int getId() {
 		return id;
@@ -37,6 +38,14 @@ public class usuarios {
 
 	public void setId_Rol(String id_Rol) {
 		Id_Rol = id_Rol;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

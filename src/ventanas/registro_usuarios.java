@@ -61,6 +61,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JToggleButton;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 
 public class registro_usuarios extends JFrame {
 
@@ -84,6 +85,7 @@ public class registro_usuarios extends JFrame {
 	public static String id_rol;
 	public static String identidadRepetida;
 	public JToggleButton btnMostrar_Ocultar_Pass;
+	public JTextField txtNombre;
 
 
 	/**
@@ -142,7 +144,7 @@ public class registro_usuarios extends JFrame {
 		JLabel lblUsuario = new JLabel("Identidad:");
 		lblUsuario.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario.setBounds(78, 102, 86, 20);
+		lblUsuario.setBounds(79, 130, 86, 20);
 		panel.add(lblUsuario);
 
 		MaskFormatter identidad = null;
@@ -154,21 +156,21 @@ public class registro_usuarios extends JFrame {
 		txtIdentidad = new JFormattedTextField(identidad);
 		txtIdentidad.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
-		txtIdentidad.setBounds(28, 122, 192, 20);
+		txtIdentidad.setBounds(29, 150, 192, 20);
 		panel.add(txtIdentidad);
 		txtIdentidad.setColumns(10);
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContrasea.setBounds(78, 147, 86, 20);
+		lblContrasea.setBounds(79, 175, 86, 20);
 		panel.add(lblContrasea);
 
 		txtContraseña = new JPasswordField();
 		txtContraseña.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		txtContraseña.setColumns(10);
-		txtContraseña.setBounds(28, 167, 170, 20);
+		txtContraseña.setBounds(29, 195, 170, 20);
 		panel.add(txtContraseña);
 		InputMap map1 = txtContraseña.getInputMap(JComponent.WHEN_FOCUSED);
 		map1.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
@@ -197,11 +199,11 @@ public class registro_usuarios extends JFrame {
 		JLabel lblRol = new JLabel("Rol:");
 		lblRol.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblRol.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRol.setBounds(78, 191, 86, 20);
+		lblRol.setBounds(79, 219, 86, 20);
 		panel.add(lblRol);
 
 		cbxRol = new JComboBox();
-		cbxRol.setBounds(28, 211, 192, 20);
+		cbxRol.setBounds(29, 239, 192, 20);
 		panel.add(cbxRol);
 		cbxRol.addActionListener(new ActionListener() {
 			@Override
@@ -223,19 +225,19 @@ public class registro_usuarios extends JFrame {
 		JLabel USUARIOS = new JLabel(" REGISTRO DE USUARIOS");
 		USUARIOS.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		USUARIOS.setHorizontalAlignment(SwingConstants.CENTER);
-		USUARIOS.setBounds(28, 26, 192, 31);
+		USUARIOS.setBounds(29, 22, 192, 33);
 		panel.add(USUARIOS);
 
 		JLabel lblId = new JLabel("ID:");
 		lblId.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblId.setHorizontalAlignment(SwingConstants.CENTER);
-		lblId.setBounds(78, 51, 86, 20);
+		lblId.setBounds(55, 50, 52, 23);
 		panel.add(lblId);
 
 		lblID = new JLabel("");
-		lblID.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblID.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblID.setHorizontalAlignment(SwingConstants.CENTER);
-		lblID.setBounds(69, 68, 107, 23);
+		lblID.setBounds(100, 50, 78, 23);
 		panel.add(lblID);
 
 		btnAceptar = new JButton("ACEPTAR");
@@ -263,11 +265,24 @@ public class registro_usuarios extends JFrame {
 			}
 		});
 		btnMostrar_Ocultar_Pass.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnMostrar_Ocultar_Pass.setBounds(197, 167, 23, 20);
+		btnMostrar_Ocultar_Pass.setBounds(198, 195, 23, 20);
 		panel.add(btnMostrar_Ocultar_Pass);
 		final ImageIcon iconover = new ImageIcon(ver.getImage().getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(),
 				btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
 		btnMostrar_Ocultar_Pass.setIcon(iconover);
+		
+		JLabel lblNombreCompleto = new JLabel("Nombre Completo:");
+		lblNombreCompleto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNombreCompleto.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
+		lblNombreCompleto.setBounds(29, 78, 192, 20);
+		panel.add(lblNombreCompleto);
+		
+		txtNombre = new JTextField();
+		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtNombre.setColumns(10);
+		txtNombre.setBounds(29, 98, 192, 20);
+		panel.add(txtNombre);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -486,5 +501,4 @@ public class registro_usuarios extends JFrame {
 
 		return matrizInfo;
 	}
-
 }
