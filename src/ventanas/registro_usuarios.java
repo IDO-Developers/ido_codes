@@ -17,6 +17,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
@@ -25,6 +28,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.text.MaskFormatter;
+
+import org.apache.commons.codec.binary.Base64;
 
 import clases.usuarios;
 import conexion.conexion;
@@ -45,6 +50,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,6 +84,7 @@ public class registro_usuarios extends JFrame {
 	public static String id_rol;
 	public static String identidadRepetida;
 	public JToggleButton btnMostrar_Ocultar_Pass;
+
 
 	/**
 	 * Launch the application.
@@ -479,4 +486,5 @@ public class registro_usuarios extends JFrame {
 
 		return matrizInfo;
 	}
+
 }

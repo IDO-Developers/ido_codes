@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.SecureRandom;
+import java.security.KeyStore.PasswordProtection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +14,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import at.favre.lib.crypto.bcrypt.BCrypt.HashData;
 import clases.usuarios;
 import conexion.conexion;
 import consultas.consultas_usuario;
@@ -27,9 +31,7 @@ public class control_usuario implements ActionListener {
 	public registro_usuarios ventana;
 	public static String nombreRol;
 	public static String contraseña;
-	public static String contraseñaEncripdata;
-
-	public static int workload = 12;
+	public static String contraseñaEncriptada;
 
 	public control_usuario(usuarios clase, consultas_usuario consulta, registro_usuarios ventana) {
 		this.clase = clase;
@@ -60,8 +62,15 @@ public class control_usuario implements ActionListener {
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
+					int i = 0;
+					while (i < 10) {
+						BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+						contraseñaEncriptada = passwordEncoder.encode(contraseña);
 
-					clase.setPassword(contraseña);
+						System.out.println(contraseñaEncriptada);
+						i++;
+
+					clase.setPassword(contraseñaEncriptada);
 
 					if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
 						clase.setId_Rol("1");
