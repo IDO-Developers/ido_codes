@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -226,10 +229,7 @@ public class control_usuario implements ActionListener {
 
 					ventana.lblID.setText(codigo);
 					ventana.txtIdentidad.setText(identidad);
-					
-					contraseñaDesencriptada = BCrypt.checkpw(contraseña);
-					
-					ventana.txtContraseña.setText(contraseñaDesencriptada);
+					ventana.txtContraseña.setText(contraseña);
 					ventana.txtNombre.setText(nombre);
 					
 					conexion conex = new conexion();
