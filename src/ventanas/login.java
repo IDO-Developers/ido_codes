@@ -14,6 +14,7 @@ import clases.usuarios;
 import conexion.conexion;
 import consultas.consultas_usuario;
 import controles.control_usuario;
+import recursos.BCrypt;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -113,9 +114,9 @@ public class login extends JFrame {
 							buscarUsuario();
 							if (txtUsuario.getText().toString().equals(identidad)) {
 
-								BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+								
 
-								if (user.equals(identidad) && encoder.matches(pass, contraseña)) {
+								if (user.equals(identidad) &&  BCrypt.checkpw(pass, contraseña)) {
 									usuarios clase = new usuarios();
 									consultas_usuario consulta = new consultas_usuario();
 									registro_usuarios formulario = new registro_usuarios();

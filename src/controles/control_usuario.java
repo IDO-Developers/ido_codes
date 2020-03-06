@@ -66,8 +66,9 @@ public class control_usuario implements ActionListener {
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
-					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-					contraseñaEncriptada = passwordEncoder.encode(contraseña);
+					
+					contraseñaEncriptada = recursos.BCrypt.hashpw(contraseña, recursos.BCrypt.gensalt());
+					
 					clase.setPassword(contraseñaEncriptada);
 					clase.setName(ventana.txtNombre.getText().toString());
 
@@ -115,8 +116,7 @@ public class control_usuario implements ActionListener {
 				clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 				contraseña = ventana.txtContraseña.getText().toString();
 
-				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-				contraseñaEncriptada = passwordEncoder.encode(contraseña);
+				contraseñaEncriptada = recursos.BCrypt.hashpw(contraseña, recursos.BCrypt.gensalt());
 				clase.setPassword(contraseñaEncriptada);
 
 				clase.setName(ventana.txtNombre.getText().toString());
