@@ -32,6 +32,7 @@ public class control_usuario implements ActionListener {
 	public static String nombreRol;
 	public static String contraseña;
 	public static String contraseñaEncriptada;
+	public static String contraseñaDesencriptada;
 
 	public control_usuario(usuarios clase, consultas_usuario consulta, registro_usuarios ventana) {
 		this.clase = clase;
@@ -113,7 +114,6 @@ public class control_usuario implements ActionListener {
 
 				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 				contraseñaEncriptada = passwordEncoder.encode(contraseña);
-
 				clase.setPassword(contraseñaEncriptada);
 
 				clase.setName(ventana.txtNombre.getText().toString());
@@ -226,7 +226,10 @@ public class control_usuario implements ActionListener {
 
 					ventana.lblID.setText(codigo);
 					ventana.txtIdentidad.setText(identidad);
-					ventana.txtContraseña.setText(contraseña);
+					
+					contraseñaDesencriptada = BCrypt.checkpw(contraseña);
+					
+					ventana.txtContraseña.setText(contraseñaDesencriptada);
 					ventana.txtNombre.setText(nombre);
 					
 					conexion conex = new conexion();
@@ -323,5 +326,6 @@ public class control_usuario implements ActionListener {
 		ventana.txtContraseña.setText(null);
 		ventana.txtNombre.setText(null);
 	}
+	
 
 }

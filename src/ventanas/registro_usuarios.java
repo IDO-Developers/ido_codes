@@ -125,7 +125,7 @@ public class registro_usuarios extends JFrame {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 700, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -288,17 +288,17 @@ public class registro_usuarios extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(272, 11, 302, 339);
+		panel_1.setBounds(272, 11, 410, 339);
 		contentPane.add(panel_1);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(10, 38, 282, 256);
+		panel_2.setBounds(10, 38, 388, 262);
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
 
 		txtBuscar = new JTextField();
-		txtBuscar.setBounds(68, 14, 224, 20);
+		txtBuscar.setBounds(68, 14, 330, 20);
 		panel_1.add(txtBuscar);
 		txtBuscar.setColumns(10);
 		InputMap map = txtBuscar.getInputMap(JComponent.WHEN_FOCUSED);
@@ -339,7 +339,7 @@ public class registro_usuarios extends JFrame {
 
 		btnActualizar = new JButton("ACTUALIZAR");
 		btnActualizar.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnActualizar.setBounds(176, 305, 116, 23);
+		btnActualizar.setBounds(282, 306, 116, 23);
 		panel_1.add(btnActualizar);
 
 		btnBorrar = new JButton("BORRAR");
@@ -349,13 +349,13 @@ public class registro_usuarios extends JFrame {
 
 		btnVer = new JButton("VER");
 		btnVer.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnVer.setBounds(111, 305, 59, 23);
+		btnVer.setBounds(211, 306, 59, 23);
 		panel_1.add(btnVer);
 
 		barra = new JScrollPane(tabla, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		panel_2.add(barra);
-		barra.setBounds(0, 0, 282, 257);
+		barra.setBounds(0, 0, 388, 262);
 
 		tabla = new JTable();
 		barra.setViewportView(tabla);
