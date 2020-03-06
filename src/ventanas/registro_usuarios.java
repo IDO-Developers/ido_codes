@@ -87,7 +87,6 @@ public class registro_usuarios extends JFrame {
 	public JToggleButton btnMostrar_Ocultar_Pass;
 	public JTextField txtNombre;
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -101,7 +100,7 @@ public class registro_usuarios extends JFrame {
 					control_usuario control = new control_usuario(clase, consulta, formulario);
 					formulario.setVisible(true);
 					formulario.setLocationRelativeTo(null);
-					formulario.txtIdentidad.requestFocusInWindow();
+					formulario.txtNombre.requestFocusInWindow();
 					formulario.construirTabla();
 					formulario.obtenerUltimoId();
 					formulario.llena_combobox_con_roles();
@@ -219,7 +218,7 @@ public class registro_usuarios extends JFrame {
 
 		btnActualizar_Usuario = new JButton("ACTUALIZAR");
 		btnActualizar_Usuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnActualizar_Usuario.setBounds(10, 305, 107, 23);
+		btnActualizar_Usuario.setBounds(135, 305, 107, 23);
 		panel.add(btnActualizar_Usuario);
 
 		JLabel USUARIOS = new JLabel(" REGISTRO DE USUARIOS");
@@ -242,9 +241,9 @@ public class registro_usuarios extends JFrame {
 
 		btnAceptar = new JButton("ACEPTAR");
 		btnAceptar.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnAceptar.setBounds(69, 271, 107, 23);
+		btnAceptar.setBounds(12, 305, 107, 23);
 		panel.add(btnAceptar);
-		
+
 		btnMostrar_Ocultar_Pass = new JToggleButton("");
 		btnMostrar_Ocultar_Pass.setForeground(Color.BLACK);
 		btnMostrar_Ocultar_Pass.addActionListener(new ActionListener() {
@@ -252,14 +251,16 @@ public class registro_usuarios extends JFrame {
 				if (btnMostrar_Ocultar_Pass.isSelected()) {
 					btnMostrar_Ocultar_Pass.setText("Ocultar");
 					txtContraseña.setEchoChar((char) 0);
-					final ImageIcon iconover = new ImageIcon(ver.getImage().getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(),
-							btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
+					final ImageIcon iconover = new ImageIcon(
+							ver.getImage().getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(),
+									btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
 					btnMostrar_Ocultar_Pass.setIcon(iconover);
-				}else {
+				} else {
 					btnMostrar_Ocultar_Pass.setText("Mostrar");
 					txtContraseña.setEchoChar('*');
-					final ImageIcon iconoocultar = new ImageIcon(ocultar.getImage()
-							.getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(), btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
+					final ImageIcon iconoocultar = new ImageIcon(
+							ocultar.getImage().getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(),
+									btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
 					btnMostrar_Ocultar_Pass.setIcon(iconoocultar);
 				}
 			}
@@ -270,13 +271,13 @@ public class registro_usuarios extends JFrame {
 		final ImageIcon iconover = new ImageIcon(ver.getImage().getScaledInstance(btnMostrar_Ocultar_Pass.getWidth(),
 				btnMostrar_Ocultar_Pass.getHeight(), Image.SCALE_DEFAULT));
 		btnMostrar_Ocultar_Pass.setIcon(iconover);
-		
+
 		JLabel lblNombreCompleto = new JLabel("Nombre Completo:");
 		lblNombreCompleto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreCompleto.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
 		lblNombreCompleto.setBounds(29, 78, 192, 20);
 		panel.add(lblNombreCompleto);
-		
+
 		txtNombre = new JTextField();
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -449,7 +450,7 @@ public class registro_usuarios extends JFrame {
 	}
 
 	public void construirTabla() {
-		String titulos[] = { "N°", "Usuario", "Contraseña", "Rol" };
+		String titulos[] = { "N°", "Usuario", "Identidad", "Contraseña", "Rol" };
 		String informacion[][] = obtenerMatriz();
 		tabla = new JTable(informacion, titulos);
 		barra.setViewportView(tabla);
@@ -472,9 +473,11 @@ public class registro_usuarios extends JFrame {
 			while (rs.next()) {
 				usuarios = new usuarios();
 				usuarios.setId(Integer.parseInt(rs.getString("id")));
+				usuarios.setName(rs.getString("name"));
 				usuarios.setRNE_Empleado(rs.getString("RNE_Empleado"));
 				usuarios.setPassword(rs.getString("password"));
 				usuarios.setId_Rol(rs.getString("Id_Rol"));
+				
 				miLista.add(usuarios);
 			}
 			rs.close();
@@ -491,12 +494,14 @@ public class registro_usuarios extends JFrame {
 
 	public static String[][] obtenerMatriz() {
 		ArrayList<usuarios> miLista = buscarUsuariosConMatriz();
-		String matrizInfo[][] = new String[miLista.size()][4];
+		String matrizInfo[][] = new String[miLista.size()][5];
 		for (int i = 0; i < miLista.size(); i++) {
 			matrizInfo[i][0] = miLista.get(i).getId() + "";
-			matrizInfo[i][1] = miLista.get(i).getRNE_Empleado() + "";
-			matrizInfo[i][2] = miLista.get(i).getPassword() + "";
-			matrizInfo[i][3] = miLista.get(i).getId_Rol() + "";
+			matrizInfo[i][1] = miLista.get(i).getName() + "";
+			matrizInfo[i][2] = miLista.get(i).getRNE_Empleado() + "";
+			matrizInfo[i][3] = miLista.get(i).getPassword() + "";
+			matrizInfo[i][4] = miLista.get(i).getId_Rol() + "";
+		
 		}
 
 		return matrizInfo;

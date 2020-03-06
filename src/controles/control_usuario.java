@@ -62,11 +62,10 @@ public class control_usuario implements ActionListener {
 				} else {
 					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
-
 					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 					contraseñaEncriptada = passwordEncoder.encode(contraseña);
-
 					clase.setPassword(contraseñaEncriptada);
+					clase.setName(ventana.txtNombre.getText().toString());
 
 					if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
 						clase.setId_Rol("1");
@@ -101,120 +100,7 @@ public class control_usuario implements ActionListener {
 				}
 			}
 		}
-
-		if (e.getSource() == ventana.btnActualizar) {
-			int filaseleccionada;
-			try {
-				filaseleccionada = ventana.tabla.getSelectedRow();
-				if (filaseleccionada == -1) {
-					JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
-				} else {
-					String codigo = ventana.tabla.getValueAt(filaseleccionada, 0).toString();
-					String identidad = ventana.tabla.getValueAt(filaseleccionada, 1).toString();
-					String contraseña = ventana.tabla.getValueAt(filaseleccionada, 2).toString();
-					String rol = ventana.tabla.getValueAt(filaseleccionada, 3).toString();
-
-					ventana.lblID.setText(codigo);
-					ventana.txtIdentidad.setText(identidad);
-					ventana.txtContraseña.setText(contraseña);
-
-					conexion conex = new conexion();
-					try {
-
-						Statement estatuto = conex.getConexion().createStatement();
-						ResultSet rs = estatuto.executeQuery("Select Nombre_Rol from Roles where Id_Rol='" + rol + "'");
-						while (rs.next()) {
-							nombreRol = rs.getString("Nombre_Rol");
-						}
-					} catch (SQLException ex) {
-						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
-						JOptionPane.showMessageDialog(null, ex);
-					}
-
-					ventana.cbxRol.setSelectedItem(nombreRol);
-
-					ventana.lblID.setForeground(Color.BLACK);
-					ventana.txtIdentidad.setForeground(Color.BLACK);
-					ventana.txtContraseña.setForeground(Color.BLACK);
-					ventana.cbxRol.setForeground(Color.BLACK);
-
-					ventana.btnBorrar.setVisible(true);
-					ventana.btnGuardar.setVisible(false);
-					ventana.btnActualizar.setVisible(true);
-					ventana.btnActualizar_Usuario.setVisible(true);
-					ventana.btnVer.setVisible(false);
-					ventana.btnAceptar.setText("Cancelar");
-					ventana.btnAceptar.setVisible(true);
-
-					ventana.txtIdentidad.requestFocusInWindow();
-
-				}
-
-			} catch (HeadlessException ex) {
-				JOptionPane.showMessageDialog(null, "Error: " + ex + "\nInténtelo nuevamente",
-						" .::Error En la Operacion::.", JOptionPane.ERROR_MESSAGE);
-			}
-		}
-
-		if (e.getSource() == ventana.btnVer) {
-			int filaseleccionada;
-			try {
-				filaseleccionada = ventana.tabla.getSelectedRow();
-				if (filaseleccionada == -1) {
-					JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
-				} else {
-					String codigo = ventana.tabla.getValueAt(filaseleccionada, 0).toString();
-					String identidad = ventana.tabla.getValueAt(filaseleccionada, 1).toString();
-					String contraseña = ventana.tabla.getValueAt(filaseleccionada, 2).toString();
-					String rol = ventana.tabla.getValueAt(filaseleccionada, 3).toString();
-					
-					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-					contraseñaEncriptada = passwordEncoder.encode(contraseña).toString();
-
-					clase.setPassword(contraseñaEncriptada);
-
-
-					ventana.lblID.setText(codigo);
-					ventana.txtIdentidad.setText(identidad);
-					ventana.txtContraseña.setText(contraseña);
-					conexion conex = new conexion();
-					try {
-
-						Statement estatuto = conex.getConexion().createStatement();
-						ResultSet rs = estatuto.executeQuery("Select Nombre_Rol from Roles where Id_Rol='" + rol + "'");
-						while (rs.next()) {
-							nombreRol = rs.getString("Nombre_Rol");
-						}
-					} catch (SQLException ex) {
-						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
-						JOptionPane.showMessageDialog(null, ex);
-					}
-
-					ventana.cbxRol.setSelectedItem(nombreRol);
-
-					ventana.lblID.setForeground(Color.BLACK);
-					ventana.txtIdentidad.setForeground(Color.BLACK);
-					ventana.txtContraseña.setForeground(Color.BLACK);
-					ventana.cbxRol.setForeground(Color.BLACK);
-
-					ventana.btnBorrar.setVisible(false);
-					ventana.btnGuardar.setVisible(false);
-					ventana.btnActualizar.setVisible(false);
-					ventana.btnActualizar_Usuario.setVisible(false);
-					ventana.btnAceptar.setText("Aceptar");
-					ventana.btnAceptar.setVisible(true);
-					ventana.txtIdentidad.setEditable(false);
-					ventana.txtContraseña.setEditable(false);
-					ventana.btnActualizar_Usuario.setVisible(false);
-
-				}
-
-			} catch (HeadlessException ex) {
-				JOptionPane.showMessageDialog(null, "Error: " + ex + "\nInténtelo nuevamente",
-						" .::Error En la Operacion::.", JOptionPane.ERROR_MESSAGE);
-			}
-		}
-
+		
 		if (e.getSource() == ventana.btnActualizar_Usuario) {
 
 			if (ventana.txtIdentidad.getText().isEmpty() || ventana.txtContraseña.getText().isEmpty()) {
@@ -229,6 +115,8 @@ public class control_usuario implements ActionListener {
 				contraseñaEncriptada = passwordEncoder.encode(contraseña);
 
 				clase.setPassword(contraseñaEncriptada);
+
+				clase.setName(ventana.txtNombre.getText().toString());
 
 				if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
 					clase.setId_Rol("1");
@@ -264,6 +152,123 @@ public class control_usuario implements ActionListener {
 
 			}
 		}
+
+		if (e.getSource() == ventana.btnActualizar) {
+			int filaseleccionada;
+			try {
+				filaseleccionada = ventana.tabla.getSelectedRow();
+				if (filaseleccionada == -1) {
+					JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				} else {
+					String codigo = ventana.tabla.getValueAt(filaseleccionada, 0).toString();
+					String nombre = ventana.tabla.getValueAt(filaseleccionada, 1).toString();
+					String identidad = ventana.tabla.getValueAt(filaseleccionada, 2).toString();
+					String contraseña = ventana.tabla.getValueAt(filaseleccionada, 3).toString();
+					String rol = ventana.tabla.getValueAt(filaseleccionada, 4).toString();
+					
+
+					ventana.lblID.setText(codigo);
+					ventana.txtIdentidad.setText(identidad);
+					ventana.txtContraseña.setText(contraseña);
+					ventana.txtNombre.setText(nombre);
+
+					conexion conex = new conexion();
+					try {
+
+						Statement estatuto = conex.getConexion().createStatement();
+						ResultSet rs = estatuto.executeQuery("Select Nombre_Rol from Roles where Id_Rol='" + rol + "'");
+						while (rs.next()) {
+							nombreRol = rs.getString("Nombre_Rol");
+						}
+					} catch (SQLException ex) {
+						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+						JOptionPane.showMessageDialog(null, ex);
+					}
+
+					ventana.cbxRol.setSelectedItem(nombreRol);
+
+					ventana.lblID.setForeground(Color.BLACK);
+					ventana.txtIdentidad.setForeground(Color.BLACK);
+					ventana.txtContraseña.setForeground(Color.BLACK);
+					ventana.txtNombre.setForeground(Color.BLACK);
+					ventana.cbxRol.setForeground(Color.BLACK);
+
+					ventana.btnBorrar.setVisible(true);
+					ventana.btnGuardar.setVisible(false);
+					ventana.btnActualizar.setVisible(true);
+					ventana.btnActualizar_Usuario.setVisible(true);
+					ventana.btnVer.setVisible(false);
+					ventana.btnAceptar.setText("Cancelar");
+					ventana.btnAceptar.setVisible(true);
+
+					ventana.txtNombre.requestFocusInWindow();
+
+				}
+
+			} catch (HeadlessException ex) {
+				JOptionPane.showMessageDialog(null, "Error: " + ex + "\nInténtelo nuevamente",
+						" .::Error En la Operacion::.", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+
+		if (e.getSource() == ventana.btnVer) {
+			int filaseleccionada;
+			try {
+				filaseleccionada = ventana.tabla.getSelectedRow();
+				if (filaseleccionada == -1) {
+					JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				} else {
+					String codigo = ventana.tabla.getValueAt(filaseleccionada, 0).toString();
+					String nombre = ventana.tabla.getValueAt(filaseleccionada, 1).toString();
+					String identidad = ventana.tabla.getValueAt(filaseleccionada, 2).toString();
+					String contraseña = ventana.tabla.getValueAt(filaseleccionada, 3).toString();
+					String rol = ventana.tabla.getValueAt(filaseleccionada, 4).toString();
+
+					ventana.lblID.setText(codigo);
+					ventana.txtIdentidad.setText(identidad);
+					ventana.txtContraseña.setText(contraseña);
+					ventana.txtNombre.setText(nombre);
+					
+					conexion conex = new conexion();
+					try {
+
+						Statement estatuto = conex.getConexion().createStatement();
+						ResultSet rs = estatuto.executeQuery("Select Nombre_Rol from Roles where Id_Rol='" + rol + "'");
+						while (rs.next()) {
+							nombreRol = rs.getString("Nombre_Rol");
+						}
+					} catch (SQLException ex) {
+						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+						JOptionPane.showMessageDialog(null, ex);
+					}
+
+					ventana.cbxRol.setSelectedItem(nombreRol);
+
+					ventana.lblID.setForeground(Color.BLACK);
+					ventana.txtIdentidad.setForeground(Color.BLACK);
+					ventana.txtContraseña.setForeground(Color.BLACK);
+					ventana.cbxRol.setForeground(Color.BLACK);
+					ventana.txtNombre.setForeground(Color.BLACK);
+
+					ventana.btnBorrar.setVisible(false);
+					ventana.btnGuardar.setVisible(false);
+					ventana.btnActualizar.setVisible(false);
+					ventana.btnActualizar_Usuario.setVisible(false);
+					ventana.btnAceptar.setText("Aceptar");
+					ventana.btnAceptar.setVisible(true);
+					ventana.txtIdentidad.setEditable(false);
+					ventana.txtContraseña.setEditable(false);
+					ventana.btnActualizar_Usuario.setVisible(false);
+
+				}
+
+			} catch (HeadlessException ex) {
+				JOptionPane.showMessageDialog(null, "Error: " + ex + "\nInténtelo nuevamente",
+						" .::Error En la Operacion::.", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+
+		
 
 		if (e.getSource() == ventana.btnBorrar) {
 			PreparedStatement ps = null;
@@ -316,6 +321,7 @@ public class control_usuario implements ActionListener {
 		ventana.lblID.setText(null);
 		ventana.txtIdentidad.setText(null);
 		ventana.txtContraseña.setText(null);
+		ventana.txtNombre.setText(null);
 	}
 
 }
