@@ -31,7 +31,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class login extends JFrame {
+public class ventana_login extends JFrame {
 
 	private JPanel contentPane;
 	public JTextField txtUsuario;
@@ -51,7 +51,7 @@ public class login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					login frame = new login();
+					ventana_login frame = new ventana_login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,7 +63,7 @@ public class login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public login() {
+	public ventana_login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -119,7 +119,7 @@ public class login extends JFrame {
 								if (user.equals(identidad) &&  BCrypt.checkpw(pass, contraseña)) {
 									usuarios clase = new usuarios();
 									consultas_usuario consulta = new consultas_usuario();
-									registro_usuarios formulario = new registro_usuarios();
+									ventana_usuarios formulario = new ventana_usuarios();
 									control_usuario control = new control_usuario(clase, consulta, formulario);
 									formulario.setVisible(true);
 									formulario.setLocationRelativeTo(null);
@@ -177,7 +177,7 @@ public class login extends JFrame {
 				contraseña = rs.getString("password");
 			}
 		} catch (SQLException ex) {
-			Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(usuarios.class.getName()).log(Level.SEVERE, null, ex);
 			JOptionPane.showMessageDialog(null, ex);
 		}
 	}

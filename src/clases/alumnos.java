@@ -2,9 +2,20 @@ package clases;
 
 public class alumnos {
 
+	int id;
 	String RNE_Alumno;
 	String password;
 	String Id_Grupo;
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getRNE_Alumno() {
 		return RNE_Alumno;

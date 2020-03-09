@@ -25,19 +25,19 @@ import at.favre.lib.crypto.bcrypt.BCrypt.HashData;
 import clases.usuarios;
 import conexion.conexion;
 import consultas.consultas_usuario;
-import ventanas.registro_usuarios;
+import ventanas.ventana_usuarios;
 
 public class control_usuario implements ActionListener {
 
 	public usuarios clase;
 	public consultas_usuario consulta;
-	public registro_usuarios ventana;
+	public ventana_usuarios ventana;
 	public static String nombreRol;
 	public static String contraseña;
 	public static String contraseñaEncriptada;
 	public static String contraseñaDesencriptada;
 
-	public control_usuario(usuarios clase, consultas_usuario consulta, registro_usuarios ventana) {
+	public control_usuario(usuarios clase, consultas_usuario consulta, ventana_usuarios ventana) {
 		this.clase = clase;
 		this.consulta = consulta;
 		this.ventana = ventana;
@@ -184,7 +184,7 @@ public class control_usuario implements ActionListener {
 							nombreRol = rs.getString("Nombre_Rol");
 						}
 					} catch (SQLException ex) {
-						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+						Logger.getLogger(usuarios.class.getName()).log(Level.SEVERE, null, ex);
 						JOptionPane.showMessageDialog(null, ex);
 					}
 
@@ -241,7 +241,7 @@ public class control_usuario implements ActionListener {
 							nombreRol = rs.getString("Nombre_Rol");
 						}
 					} catch (SQLException ex) {
-						Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+						Logger.getLogger(usuarios.class.getName()).log(Level.SEVERE, null, ex);
 						JOptionPane.showMessageDialog(null, ex);
 					}
 

@@ -63,7 +63,7 @@ import java.util.logging.Logger;
 import javax.swing.JToggleButton;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 
-public class registro_usuarios extends JFrame {
+public class ventana_usuarios extends JFrame {
 
 	private JPanel contentPane;
 	public JFormattedTextField txtIdentidad;
@@ -96,7 +96,7 @@ public class registro_usuarios extends JFrame {
 				try {
 					usuarios clase = new usuarios();
 					consultas_usuario consulta = new consultas_usuario();
-					registro_usuarios formulario = new registro_usuarios();
+					ventana_usuarios formulario = new ventana_usuarios();
 					control_usuario control = new control_usuario(clase, consulta, formulario);
 					formulario.setVisible(true);
 					formulario.setLocationRelativeTo(null);
@@ -121,7 +121,7 @@ public class registro_usuarios extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public registro_usuarios() {
+	public ventana_usuarios() {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -401,9 +401,9 @@ public class registro_usuarios extends JFrame {
 			while (rs.next()) {
 				modelo.addElement(rs.getString("Nombre_Rol"));
 			}
-			registro_usuarios.cbxRol.setModel(modelo);
+			ventana_usuarios.cbxRol.setModel(modelo);
 		} catch (SQLException ex) {
-			Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ventana_usuarios.class.getName()).log(Level.SEVERE, null, ex);
 			JOptionPane.showMessageDialog(null, ex);
 		}
 	}
@@ -419,7 +419,7 @@ public class registro_usuarios extends JFrame {
 				id_rol = rs.getString("Id_Rol");
 			}
 		} catch (SQLException ex) {
-			Logger.getLogger(registro_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ventana_usuarios.class.getName()).log(Level.SEVERE, null, ex);
 			JOptionPane.showMessageDialog(null, ex);
 		}
 	}

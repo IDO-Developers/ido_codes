@@ -23,7 +23,7 @@ import java.security.SecureRandom;
 import clases.usuarios;
 import consultas.consultas_usuario;
 import controles.control_usuario;
-import ventanas.registro_usuarios;
+import ventanas.ventana_usuarios;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using the scheme

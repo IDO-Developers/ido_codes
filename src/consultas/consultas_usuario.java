@@ -10,8 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import clases.usuarios;
 import conexion.conexion;
-import ventanas.login;
-import ventanas.registro_usuarios;
+import ventanas.ventana_login;
+import ventanas.ventana_usuarios;
 
 public class consultas_usuario extends conexion {
 	public static String rol = null;
