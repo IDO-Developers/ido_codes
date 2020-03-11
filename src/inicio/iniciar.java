@@ -8,8 +8,8 @@ public class iniciar {
 
 	public static void main(String[] args) {
 		try{
-			javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
-            //javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
+			//javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+            javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
             LiquidLookAndFeel.setLiquidDecorations(true, "mac");
             
             ventana_login principal = new ventana_login();

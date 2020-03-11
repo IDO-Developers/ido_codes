@@ -65,6 +65,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JToggleButton;
 import javax.swing.JFormattedTextField.AbstractFormatter;
+import java.awt.Component;
 
 public class ventana_alumnos extends JFrame {
 
@@ -80,13 +81,20 @@ public class ventana_alumnos extends JFrame {
 	public static JFormattedTextField txtIdentidad;
 	public JComboBox cbxGrado;
 	public static String cadena = null;
+	public static String contraseñaEncriptada = null;
 	public JButton btnMenu;
+
+	public JScrollPane barra;
+	public JTable tabla;
 
 	public static String user;
 	public static String pass;
 
-	public static String USUARIO;
+	public static String USUARIO_id;
+	public static String USUARIO_users;
+	public static String USUARIO_Prematriculas;
 	public static String ROL;
+	public JTextField txtBuscar;
 
 	/**
 	 * Launch the application.
@@ -102,6 +110,7 @@ public class ventana_alumnos extends JFrame {
 					formulario.setLocationRelativeTo(null);
 					formulario.txtIdentidad.requestFocusInWindow();
 					formulario.btnImprimir.setVisible(false);
+					formulario.construirTabla();
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -117,7 +126,7 @@ public class ventana_alumnos extends JFrame {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 284, 427);
+		setBounds(100, 100, 730, 427);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -197,129 +206,29 @@ public class ventana_alumnos extends JFrame {
 		JButton btnCredenciales = new JButton("GENERAR CREDENCIALES");
 		btnCredenciales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtIdentidad.getText().equals("")) {
+				if (txtIdentidad.getText().toString().equals("")) {
 					JOptionPane.showMessageDialog(null, "Por favor escriba la identidad del alumno");
 				} else {
-					txtUsuario.setText(txtIdentidad.getText().toString());
-					generarCodigo();
-					txtContraseña.setText(cadena);
-
-					if (cbxGrado.getSelectedItem().toString().equals("Septimo")) {
-						preguntarPorCredenciales();
-
-						if (USUARIO == null) {
-							// Datos para registrar usuario, contraseña, RNE, y
-							// grupo.
-							alumnos clase = new alumnos();
-							consultas_alumnos consulta = new consultas_alumnos();
-
-							clase.setRNE_Alumno(txtIdentidad.getText().toString());
-							clase.setPassword(cadena);
-							clase.setId_Grupo("101");
-							preguntarPorRol();
-							clase.setId_Rol(ROL);
-
-							if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
-								JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
-
-							} else {
-								JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
-								txtIdentidad.setText("");
-								txtUsuario.setText("");
-								txtContraseña.setText("");
-								cbxGrado.setSelectedIndex(0);
-							}
-
+					preguntarPorCredenciales();
+					preguntarPorGrupo();
+					preguntarPorRol();
+					if (USUARIO_users == null && USUARIO_Prematriculas == null) {
+						if (cbxGrado.getSelectedItem().equals("Séptimo")) {
+							Registrar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO();
 						} else {
-							if (JOptionPane.showConfirmDialog(rootPane, "Ya existen credencialeas para este alumno ¿Desea actualizarlas?",
-									"Actualizar Credenciales", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-								// Datos para actualizar usuario, contraseña,
-								// RNE, y
-								// grupo.
-								alumnos clase2 = new alumnos();
-								consultas_alumnos consulta2 = new consultas_alumnos();
-
-								clase2.setRNE_Alumno(txtIdentidad.getText().toString());
-								clase2.setPassword(cadena);
-								clase2.setId_Grupo("101");
-								preguntarPorRol();
-								clase2.setId_Rol(ROL);
-
-								if (consulta2.actualizarUserYpass(clase2) && consulta2.actualizarRNEyGrupo(clase2)) {
-									JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
-
-								} else {
-									JOptionPane.showMessageDialog(null,
-											"Error! Credenciales del alumno NO actualizadas!");
-									txtIdentidad.setText("");
-									txtUsuario.setText("");
-									txtContraseña.setText("");
-									cbxGrado.setSelectedIndex(0);
-								}
-
-							}
+							Registrar_Usuario_Contraseña_Identidad_Grupo_DECIMO();
 						}
-
 					} else {
-						preguntarPorCredenciales();
-						if (USUARIO == null) {
-							// Datos para registrar usuario, contraseña, RNE, y
-							// grupo.
-							alumnos clase = new alumnos();
-							consultas_alumnos consulta = new consultas_alumnos();
-
-							clase.setRNE_Alumno(txtIdentidad.getText().toString());
-							clase.setPassword(cadena);
-							clase.setId_Grupo("104");
-							preguntarPorRol();
-							clase.setId_Rol(ROL);
-
-							if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
-								JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
-
-							} else {
-								JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
-								txtIdentidad.setText("");
-								txtUsuario.setText("");
-								txtContraseña.setText("");
-								cbxGrado.setSelectedIndex(0);
-							}
+						if (cbxGrado.getSelectedItem().equals("Séptimo")) {
+							Actualizar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO();
 						} else {
-							if (JOptionPane.showConfirmDialog(rootPane, "Ya existen credencialeas para este alumno ¿Desea actualizarlas?",
-									"Actualizar Credenciales", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
-								// Datos para actualizar usuario, contraseña,
-								// RNE, y
-								// grupo.
-								alumnos clase2 = new alumnos();
-								consultas_alumnos consulta2 = new consultas_alumnos();
-
-								clase2.setRNE_Alumno(txtIdentidad.getText().toString());
-								clase2.setPassword(cadena);
-								clase2.setId_Grupo("104");
-								preguntarPorRol();
-								clase2.setId_Rol(ROL);
-
-								if (consulta2.actualizarUserYpass(clase2) && consulta2.actualizarRNEyGrupo(clase2)) {
-									JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
-
-								} else {
-									JOptionPane.showMessageDialog(null,
-											"Error! Credenciales del alumno NO actualizadas!");
-									txtIdentidad.setText("");
-									txtUsuario.setText("");
-									txtContraseña.setText("");
-									cbxGrado.setSelectedIndex(0);
-								}
-							}
-
+							Actualizar_Usuario_Contraseña_Identidad_Grupo_DECIMO();
 						}
 
 					}
 
-					btnImprimir.setVisible(true);
-
 				}
+				btnImprimir.setVisible(true);
 			}
 
 		});
@@ -358,13 +267,14 @@ public class ventana_alumnos extends JFrame {
 
 		cbxGrado = new JComboBox();
 		cbxGrado.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		cbxGrado.setModel(new DefaultComboBoxModel(new String[] { "Septimo", "Decimo" }));
+		cbxGrado.setModel(new DefaultComboBoxModel(new String[] { "Séptimo", "Decimo" }));
 		cbxGrado.setBounds(91, 196, 93, 20);
 		panel.add(cbxGrado);
 
 		btnMenu = new JButton();
 		btnMenu.setBackground(new Color(0, 128, 128));
 		btnMenu.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent arg0) {
 				usuarios clase = new usuarios();
 				consultas_usuario consulta = new consultas_usuario();
@@ -392,6 +302,67 @@ public class ventana_alumnos extends JFrame {
 		final ImageIcon iconom = new ImageIcon(
 				logom.getImage().getScaledInstance(btnMenu.getWidth(), btnMenu.getHeight(), Image.SCALE_DEFAULT));
 		btnMenu.setIcon(iconom);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setLayout(null);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBounds(279, 0, 445, 398);
+		contentPane.add(panel_1);
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_2.setBounds(10, 38, 425, 349);
+		panel_1.add(panel_2);
+
+		barra = new JScrollPane(tabla, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		panel_2.add(barra);
+		barra.setBounds(0, 0, 425, 349);
+
+		tabla = new JTable();
+		barra.setViewportView(tabla);
+
+		txtBuscar = new JTextField();
+		txtBuscar.setColumns(10);
+		txtBuscar.setBounds(68, 14, 367, 20);
+		panel_1.add(txtBuscar);
+		InputMap map = txtBuscar.getInputMap(JComponent.WHEN_FOCUSED);
+		map.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+		txtBuscar.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent ke) {
+				trsfiltroCodigo = new TableRowSorter(tabla.getModel());
+				tabla.setRowSorter(trsfiltroCodigo);
+
+				if (txtBuscar.getText().length() == 20)
+					ke.consume();
+
+				if (txtBuscar.getText().toString().equals(" ")) {
+					JOptionPane.showMessageDialog(null, "No esta permitido escribir espacios vacios!");
+					txtBuscar.setText("");
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent ke) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent ke) {
+				String cadena = (txtBuscar.getText().toString());
+				txtBuscar.setText(cadena);
+				repaint();
+				filtro();
+			}
+		});
+
+		JLabel label = new JLabel("BUSCAR");
+		label.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		label.setBounds(10, 14, 102, 20);
+		panel_1.add(label);
 	}
 
 	@SuppressWarnings("unlikely-arg-type")
@@ -421,7 +392,27 @@ public class ventana_alumnos extends JFrame {
 					"SELECT * FROM dbo.users where RNE_Alumno= '" + txtIdentidad.getText().toString() + "'");
 			ResultSet rsr = stmtr.executeQuery();
 			if (rsr.next()) {
-				USUARIO = rsr.getString("RNE_Alumno");
+				USUARIO_users = rsr.getString("RNE_Alumno");
+				USUARIO_id = rsr.getString("id");
+			}
+			;
+			stmtr.close();
+			rsr.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void preguntarPorGrupo() {
+		conexion objCon = new conexion();
+		Connection conn = objCon.getConexion();
+		try {
+			PreparedStatement stmtr = conn.prepareStatement(
+					"SELECT * FROM dbo.Prematriculas where RNE_Alumno= '" + txtIdentidad.getText().toString() + "'");
+			ResultSet rsr = stmtr.executeQuery();
+			if (rsr.next()) {
+				USUARIO_Prematriculas = rsr.getString("RNE_Alumno");
 			}
 			;
 			stmtr.close();
@@ -447,6 +438,164 @@ public class ventana_alumnos extends JFrame {
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void filtro() {
+		filtroCodigo = txtBuscar.getText().toString();
+		trsfiltroCodigo.setRowFilter(RowFilter.regexFilter("(?i)" + txtBuscar.getText().toString(), 0, 1, 2, 3, 4));
+	}
+
+	public void construirTabla() {
+		String titulos[] = { "N°", "Nombre", "Usuario", "Contraseña", "Rol" };
+		String informacion[][] = obtenerMatriz();
+		tabla = new JTable(informacion, titulos);
+		barra.setViewportView(tabla);
+		for (int c = 0; c < tabla.getColumnCount(); c++) {
+			Class<?> col_class = tabla.getColumnClass(c);
+			tabla.setDefaultEditor(col_class, null);
+			tabla.getTableHeader().setReorderingAllowed(false);
+
+		}
+	}
+
+	public static ArrayList<usuarios> buscarUsuariosConMatriz() {
+		conexion conex = new conexion();
+		ArrayList<usuarios> miLista = new ArrayList<usuarios>();
+		usuarios usuarios;
+		try {
+			Statement estatuto = conex.getConexion().createStatement();
+			ResultSet rs = estatuto.executeQuery("SELECT * FROM users");
+
+			while (rs.next()) {
+				usuarios = new usuarios();
+				usuarios.setId(Integer.parseInt(rs.getString("id")));
+				usuarios.setName(rs.getString("name"));
+				usuarios.setRNE_Alumno(rs.getString("RNE_Alumno"));
+				usuarios.setPassword(rs.getString("password"));
+				usuarios.setId_Rol(rs.getString("Id_Rol"));
+
+				miLista.add(usuarios);
+			}
+			rs.close();
+			estatuto.close();
+			conex.desconectar();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al consultar", "Error", JOptionPane.ERROR_MESSAGE);
+
+		}
+		return miLista;
+	}
+
+	public static String[][] obtenerMatriz() {
+		ArrayList<usuarios> miLista = buscarUsuariosConMatriz();
+		String matrizInfo[][] = new String[miLista.size()][5];
+		for (int i = 0; i < miLista.size(); i++) {
+			matrizInfo[i][0] = miLista.get(i).getId() + "";
+			matrizInfo[i][1] = miLista.get(i).getName() + "";
+			matrizInfo[i][2] = miLista.get(i).getRNE_Alumno() + "";
+			matrizInfo[i][3] = miLista.get(i).getPassword() + "";
+			matrizInfo[i][4] = miLista.get(i).getId_Rol() + "";
+
+		}
+
+		return matrizInfo;
+	}
+
+	public void Registrar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO() {
+		txtUsuario.setText(txtIdentidad.getText().toString());
+		generarCodigo();
+		txtContraseña.setText(cadena);
+		alumnos clase = new alumnos();
+		consultas_alumnos consulta = new consultas_alumnos();
+		clase.setRNE_Alumno(txtIdentidad.getText().toString());
+		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
+		clase.setPassword(contraseñaEncriptada);
+		clase.setId_Grupo("101");
+		clase.setId_Rol(ROL);
+		if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
+			JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
+			construirTabla();
+		} else {
+			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
+			construirTabla();
+		}
+
+	}
+
+	public void Registrar_Usuario_Contraseña_Identidad_Grupo_DECIMO() {
+		txtUsuario.setText(txtIdentidad.getText().toString());
+		generarCodigo();
+		txtContraseña.setText(cadena);
+		alumnos clase = new alumnos();
+		consultas_alumnos consulta = new consultas_alumnos();
+		clase.setRNE_Alumno(txtIdentidad.getText().toString());
+		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
+		clase.setPassword(contraseñaEncriptada);
+		clase.setId_Grupo("104");
+		clase.setId_Rol(ROL);
+		if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
+			JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
+			construirTabla();
+		} else {
+			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
+			construirTabla();
+		}
+
+	}
+
+	public void Actualizar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO() {
+		txtUsuario.setText(txtIdentidad.getText().toString());
+		generarCodigo();
+		txtContraseña.setText(cadena);
+		alumnos clase = new alumnos();
+		alumnos clase2 = new alumnos();
+		consultas_alumnos consulta = new consultas_alumnos();
+
+		clase.setRNE_Alumno(txtIdentidad.getText().toString());
+		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
+		clase.setPassword(contraseñaEncriptada);
+		clase.setId_Rol(ROL);
+		clase.setId(Integer.parseInt(USUARIO_id));
+
+		clase2.setRNE_Alumno(txtIdentidad.getText().toString());
+		clase2.setId_Grupo("101");
+
+		if (consulta.actualizarUserYpass(clase) && consulta.actualizarRNEyGrupo(clase2)) {
+			JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
+			construirTabla();
+		} else {
+			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO actualizadas!");
+			construirTabla();
+		}
+
+	}
+
+	public void Actualizar_Usuario_Contraseña_Identidad_Grupo_DECIMO() {
+		txtUsuario.setText(txtIdentidad.getText().toString());
+		generarCodigo();
+		txtContraseña.setText(cadena);
+		alumnos clase = new alumnos();
+		alumnos clase2 = new alumnos();
+		consultas_alumnos consulta = new consultas_alumnos();
+
+		clase.setRNE_Alumno(txtIdentidad.getText().toString());
+		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
+		clase.setPassword(contraseñaEncriptada);
+		clase.setId_Rol(ROL);
+		clase.setId(Integer.parseInt(USUARIO_id));
+
+		clase2.setRNE_Alumno(txtIdentidad.getText().toString());
+		clase2.setId_Grupo("104");
+
+		if (consulta.actualizarUserYpass(clase) && consulta.actualizarRNEyGrupo(clase2)) {
+			JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
+			construirTabla();
+		} else {
+			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO actualizadas!");
+			construirTabla();
 		}
 	}
 

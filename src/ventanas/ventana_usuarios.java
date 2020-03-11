@@ -289,6 +289,7 @@ public class ventana_usuarios extends JFrame {
 		btnEstudiante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventana_alumnos alumnos = new ventana_alumnos();
+				alumnos.construirTabla();
 				alumnos.setLocationRelativeTo(null);
 				alumnos.setVisible(true);
 				if (ventana_login.rol.equals("1")) {

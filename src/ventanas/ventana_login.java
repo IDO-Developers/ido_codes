@@ -143,6 +143,7 @@ public class ventana_login extends JFrame {
 
 									if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
 										ventana_alumnos alumnos = new ventana_alumnos();
+										alumnos.construirTabla();
 										alumnos.setLocationRelativeTo(null);
 										alumnos.setVisible(true);
 										if (rol.equals("1")) {
@@ -205,10 +206,12 @@ public class ventana_login extends JFrame {
 							lblAlerta.setForeground(Color.RED);
 						} else {
 							buscarUsuario();
+							
 							if (txtUsuario.getText().toString().equals(identidad)) {
 
 								if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
 									ventana_alumnos alumnos = new ventana_alumnos();
+									alumnos.construirTabla();
 									alumnos.setLocationRelativeTo(null);
 									alumnos.setVisible(true);
 									if (rol.equals("1")) {
