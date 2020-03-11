@@ -2,19 +2,18 @@ package clases;
 
 public class usuarios {
 
-	//users
+	// users
 	int id;
 	String RNE_Empleado;
+	String RNE_Alumno;
 	String password;
 	String Id_Rol;
 	String name;
-	//Prematricula
+	// Prematricula
 	int Id_Prematricula;
 	int Id_Grupo;
-	//String RNE_Empleado;
-	
-	
-	
+
+	// String RNE_Empleado;
 
 	public int getId() {
 		return id;
@@ -70,6 +69,14 @@ public class usuarios {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getRNE_Alumno() {
+		return RNE_Alumno;
+	}
+
+	public void setRNE_Alumno(String rNE_Alumno) {
+		RNE_Alumno = rNE_Alumno;
 	}
 
 }

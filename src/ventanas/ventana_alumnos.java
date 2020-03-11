@@ -85,6 +85,9 @@ public class ventana_alumnos extends JFrame {
 	public static String user;
 	public static String pass;
 
+	public static String USUARIO;
+	public static String ROL;
+
 	/**
 	 * Launch the application.
 	 */
@@ -131,7 +134,7 @@ public class ventana_alumnos extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblUsuario = new JLabel("Grado:");
-		lblUsuario.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
+		lblUsuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setBounds(81, 175, 112, 20);
 		panel.add(lblUsuario);
@@ -141,7 +144,7 @@ public class ventana_alumnos extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				ventana_detalle_comprobante comprobante = new ventana_detalle_comprobante();
 				ventana_detalle_comprobante.lblIdentidad.setText(user);
-				ventana_detalle_comprobante.lblCodigo.setText(pass);
+				ventana_detalle_comprobante.lblCodigo.setText(cadena);
 				ventana_detalle_comprobante.getHora();
 				ventana_detalle_comprobante.lblFecha.setText(ventana_detalle_comprobante.getFecha());
 				comprobante.setVisible(true);
@@ -156,14 +159,14 @@ public class ventana_alumnos extends JFrame {
 
 		JLabel USUARIOS = new JLabel("DATOS DEL COMPROBANTE");
 		USUARIOS.setForeground(new Color(46, 139, 87));
-		USUARIOS.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		USUARIOS.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		USUARIOS.setHorizontalAlignment(SwingConstants.CENTER);
 		USUARIOS.setBounds(8, 11, 256, 20);
 		panel.add(USUARIOS);
 
 		JLabel lblUsuario_1 = new JLabel("Usuario:");
 		lblUsuario_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario_1.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
+		lblUsuario_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblUsuario_1.setBounds(12, 268, 258, 20);
 		panel.add(lblUsuario_1);
 
@@ -178,7 +181,7 @@ public class ventana_alumnos extends JFrame {
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContrasea.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
+		lblContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblContrasea.setBounds(14, 311, 258, 20);
 		panel.add(lblContrasea);
 
@@ -191,24 +194,128 @@ public class ventana_alumnos extends JFrame {
 		txtContraseña.setBounds(45, 333, 183, 20);
 		panel.add(txtContraseña);
 
-		JButton btnGenerarUsuarioY = new JButton("GENERAR CREDENCIALES");
-		btnGenerarUsuarioY.addActionListener(new ActionListener() {
+		JButton btnCredenciales = new JButton("GENERAR CREDENCIALES");
+		btnCredenciales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				user = txtIdentidad.getText().toString();
-				pass = txtContraseña.getText().toString();
-				if (user.equals("")) {
+				if (txtIdentidad.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Por favor escriba la identidad del alumno");
 				} else {
 					txtUsuario.setText(txtIdentidad.getText().toString());
 					generarCodigo();
 					txtContraseña.setText(cadena);
 
-					alumnos clase = new alumnos();
-					consultas_alumnos consulta = new consultas_alumnos();
-					ventana_alumnos principal = new ventana_alumnos();
+					if (cbxGrado.getSelectedItem().toString().equals("Septimo")) {
+						preguntarPorCredenciales();
 
-					clase.setPassword(cadena);
-					clase.setRNE_Alumno(txtUsuario.getText().toString());
+						if (USUARIO == null) {
+							// Datos para registrar usuario, contraseña, RNE, y
+							// grupo.
+							alumnos clase = new alumnos();
+							consultas_alumnos consulta = new consultas_alumnos();
+
+							clase.setRNE_Alumno(txtIdentidad.getText().toString());
+							clase.setPassword(cadena);
+							clase.setId_Grupo("101");
+							preguntarPorRol();
+							clase.setId_Rol(ROL);
+
+							if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
+								JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
+
+							} else {
+								JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
+								txtIdentidad.setText("");
+								txtUsuario.setText("");
+								txtContraseña.setText("");
+								cbxGrado.setSelectedIndex(0);
+							}
+
+						} else {
+							if (JOptionPane.showConfirmDialog(rootPane, "Ya existen credencialeas para este alumno ¿Desea actualizarlas?",
+									"Actualizar Credenciales", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+								// Datos para actualizar usuario, contraseña,
+								// RNE, y
+								// grupo.
+								alumnos clase2 = new alumnos();
+								consultas_alumnos consulta2 = new consultas_alumnos();
+
+								clase2.setRNE_Alumno(txtIdentidad.getText().toString());
+								clase2.setPassword(cadena);
+								clase2.setId_Grupo("101");
+								preguntarPorRol();
+								clase2.setId_Rol(ROL);
+
+								if (consulta2.actualizarUserYpass(clase2) && consulta2.actualizarRNEyGrupo(clase2)) {
+									JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
+
+								} else {
+									JOptionPane.showMessageDialog(null,
+											"Error! Credenciales del alumno NO actualizadas!");
+									txtIdentidad.setText("");
+									txtUsuario.setText("");
+									txtContraseña.setText("");
+									cbxGrado.setSelectedIndex(0);
+								}
+
+							}
+						}
+
+					} else {
+						preguntarPorCredenciales();
+						if (USUARIO == null) {
+							// Datos para registrar usuario, contraseña, RNE, y
+							// grupo.
+							alumnos clase = new alumnos();
+							consultas_alumnos consulta = new consultas_alumnos();
+
+							clase.setRNE_Alumno(txtIdentidad.getText().toString());
+							clase.setPassword(cadena);
+							clase.setId_Grupo("104");
+							preguntarPorRol();
+							clase.setId_Rol(ROL);
+
+							if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
+								JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
+
+							} else {
+								JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
+								txtIdentidad.setText("");
+								txtUsuario.setText("");
+								txtContraseña.setText("");
+								cbxGrado.setSelectedIndex(0);
+							}
+						} else {
+							if (JOptionPane.showConfirmDialog(rootPane, "Ya existen credencialeas para este alumno ¿Desea actualizarlas?",
+									"Actualizar Credenciales", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+								// Datos para actualizar usuario, contraseña,
+								// RNE, y
+								// grupo.
+								alumnos clase2 = new alumnos();
+								consultas_alumnos consulta2 = new consultas_alumnos();
+
+								clase2.setRNE_Alumno(txtIdentidad.getText().toString());
+								clase2.setPassword(cadena);
+								clase2.setId_Grupo("104");
+								preguntarPorRol();
+								clase2.setId_Rol(ROL);
+
+								if (consulta2.actualizarUserYpass(clase2) && consulta2.actualizarRNEyGrupo(clase2)) {
+									JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
+
+								} else {
+									JOptionPane.showMessageDialog(null,
+											"Error! Credenciales del alumno NO actualizadas!");
+									txtIdentidad.setText("");
+									txtUsuario.setText("");
+									txtContraseña.setText("");
+									cbxGrado.setSelectedIndex(0);
+								}
+							}
+
+						}
+
+					}
 
 					btnImprimir.setVisible(true);
 
@@ -216,14 +323,14 @@ public class ventana_alumnos extends JFrame {
 			}
 
 		});
-		btnGenerarUsuarioY.setBackground(new Color(255, 215, 0));
-		btnGenerarUsuarioY.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnGenerarUsuarioY.setBounds(45, 234, 183, 23);
-		panel.add(btnGenerarUsuarioY);
+		btnCredenciales.setBackground(new Color(255, 215, 0));
+		btnCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnCredenciales.setBounds(45, 234, 183, 23);
+		panel.add(btnCredenciales);
 
 		JLabel lblIdentidad = new JLabel("Identidad:");
 		lblIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIdentidad.setFont(new Font("Segoe UI Black", Font.BOLD, 11));
+		lblIdentidad.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblIdentidad.setBounds(8, 133, 256, 20);
 		panel.add(lblIdentidad);
 
@@ -278,7 +385,7 @@ public class ventana_alumnos extends JFrame {
 				dispose();
 			}
 		});
-		btnMenu.setBounds(239, 11, 31, 29);
+		btnMenu.setBounds(235, 11, 33, 31);
 
 		panel.add(btnMenu);
 		final ImageIcon logom = new ImageIcon(getClass().getResource("/recursos/usuario.png"));
@@ -305,4 +412,42 @@ public class ventana_alumnos extends JFrame {
 	public static int genererNumero() {
 		return (int) (1000 * Math.random());
 	}
+
+	public void preguntarPorCredenciales() {
+		conexion objCon = new conexion();
+		Connection conn = objCon.getConexion();
+		try {
+			PreparedStatement stmtr = conn.prepareStatement(
+					"SELECT * FROM dbo.users where RNE_Alumno= '" + txtIdentidad.getText().toString() + "'");
+			ResultSet rsr = stmtr.executeQuery();
+			if (rsr.next()) {
+				USUARIO = rsr.getString("RNE_Alumno");
+			}
+			;
+			stmtr.close();
+			rsr.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void preguntarPorRol() {
+		conexion objCon = new conexion();
+		Connection conn = objCon.getConexion();
+		try {
+			PreparedStatement stmtr = conn.prepareStatement("SELECT * FROM dbo.Roles where Nombre_Rol='Alumno'");
+			ResultSet rsr = stmtr.executeQuery();
+			if (rsr.next()) {
+				ROL = rsr.getString("Id_Rol");
+			}
+			;
+			stmtr.close();
+			rsr.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

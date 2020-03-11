@@ -76,11 +76,11 @@ public class ventana_detalle_comprobante extends JFrame implements Printable {
 		lblInstitutoDepartamentalDe.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInstitutoDepartamentalDe.setForeground(new Color(0, 0, 0));
 		lblInstitutoDepartamentalDe.setFont(new Font("Cambria", Font.BOLD, 18));
-		lblInstitutoDepartamentalDe.setBounds(0, 11, 474, 49);
+		lblInstitutoDepartamentalDe.setBounds(0, 21, 474, 49);
 		contentPane.add(lblInstitutoDepartamentalDe);
 
 		JLabel label_1 = new JLabel("");
-		label_1.setBounds(150, 27, 160, 147);
+		label_1.setBounds(141, 32, 174, 165);
 		contentPane.add(label_1);
 		final ImageIcon logo = new ImageIcon(getClass().getResource("/recursos/logo_ido.png"));
 		final ImageIcon icono = new ImageIcon(
@@ -98,14 +98,14 @@ public class ventana_detalle_comprobante extends JFrame implements Printable {
 		});
 		btnImprimir.setFont(new Font("Calibri", Font.BOLD, 14));
 		btnImprimir.setBackground(new Color(102, 205, 170));
-		btnImprimir.setBounds(196, 6, 99, 21);
+		btnImprimir.setBounds(182, 11, 99, 21);
 		contentPane.add(btnImprimir);
 
 		JLabel lblInformacinDelAlumno = new JLabel("Informaci\u00F3n del alumno:");
 		lblInformacinDelAlumno.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInformacinDelAlumno.setForeground(new Color(0, 0, 128));
-		lblInformacinDelAlumno.setFont(new Font("Cambria", Font.BOLD, 17));
-		lblInformacinDelAlumno.setBounds(0, 182, 474, 34);
+		lblInformacinDelAlumno.setFont(new Font("Cambria", Font.BOLD, 16));
+		lblInformacinDelAlumno.setBounds(0, 188, 474, 28);
 		contentPane.add(lblInformacinDelAlumno);
 
 		JLabel lblIdentidadDelAlumno = new JLabel("Identidad del alumno:");
@@ -227,7 +227,7 @@ public class ventana_detalle_comprobante extends JFrame implements Printable {
 		panel.add(lblIdentidad);
 		lblIdentidad.setForeground(new Color(0, 100, 0));
 		lblIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIdentidad.setFont(new Font("Cambria", Font.BOLD, 15));
+		lblIdentidad.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
@@ -248,7 +248,7 @@ public class ventana_detalle_comprobante extends JFrame implements Printable {
 		panel_1.add(lblCodigo);
 		lblCodigo.setForeground(new Color(0, 100, 0));
 		lblCodigo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCodigo.setFont(new Font("Cambria", Font.BOLD, 15));
+		lblCodigo.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.LEFT);
@@ -267,8 +267,8 @@ public class ventana_detalle_comprobante extends JFrame implements Printable {
 		JLabel lblCredencialesParaMatricular = new JLabel("Credenciales para matricular: ");
 		lblCredencialesParaMatricular.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCredencialesParaMatricular.setForeground(new Color(0, 0, 0));
-		lblCredencialesParaMatricular.setFont(new Font("Cambria", Font.BOLD, 16));
-		lblCredencialesParaMatricular.setBounds(0, 151, 474, 34);
+		lblCredencialesParaMatricular.setFont(new Font("Cambria", Font.BOLD, 17));
+		lblCredencialesParaMatricular.setBounds(0, 160, 474, 34);
 		contentPane.add(lblCredencialesParaMatricular);
 
 	}

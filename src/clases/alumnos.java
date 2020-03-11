@@ -3,11 +3,11 @@ package clases;
 public class alumnos {
 
 	int id;
+	int Id_Prematricula;
 	String RNE_Alumno;
+	String Id_Rol;
 	String password;
 	String Id_Grupo;
-	
-	
 
 	public int getId() {
 		return id;
@@ -15,6 +15,14 @@ public class alumnos {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getId_Prematricula() {
+		return Id_Prematricula;
+	}
+
+	public void setId_Prematricula(int id_Prematricula) {
+		Id_Prematricula = id_Prematricula;
 	}
 
 	public String getRNE_Alumno() {
@@ -39,6 +47,14 @@ public class alumnos {
 
 	public void setId_Grupo(String id_Grupo) {
 		Id_Grupo = id_Grupo;
+	}
+
+	public String getId_Rol() {
+		return Id_Rol;
+	}
+
+	public void setId_Rol(String id_Rol) {
+		Id_Rol = id_Rol;
 	}
 
 }

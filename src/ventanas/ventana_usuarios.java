@@ -285,7 +285,7 @@ public class ventana_usuarios extends JFrame {
 		txtNombre.setBounds(29, 98, 192, 20);
 		panel.add(txtNombre);
 		
-		JButton btnEstudiante = new JButton("ACEPTAR");
+		JButton btnEstudiante = new JButton("");
 		btnEstudiante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventana_alumnos alumnos = new ventana_alumnos();
@@ -313,12 +313,12 @@ public class ventana_usuarios extends JFrame {
 			}
 		});
 		btnEstudiante.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnEstudiante.setBounds(0, 0, 31, 33);
+		btnEstudiante.setBounds(0, 0, 38, 33);
 		panel.add(btnEstudiante);
-		final ImageIcon logom = new ImageIcon(getClass().getResource("/recursos/estudiante.png"));
-		final ImageIcon iconom = new ImageIcon(
-				logom.getImage().getScaledInstance(btnEstudiante.getWidth(), btnEstudiante.getHeight(), Image.SCALE_DEFAULT));
-		btnEstudiante.setIcon(iconom);
+		final ImageIcon logomq = new ImageIcon(getClass().getResource("/recursos/estudiante.png"));
+		final ImageIcon iconomq = new ImageIcon(
+				logomq.getImage().getScaledInstance(btnEstudiante.getWidth(), btnEstudiante.getHeight(), Image.SCALE_DEFAULT));
+		btnEstudiante.setIcon(iconomq);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);

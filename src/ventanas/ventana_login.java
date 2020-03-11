@@ -145,14 +145,14 @@ public class ventana_login extends JFrame {
 										ventana_alumnos alumnos = new ventana_alumnos();
 										alumnos.setLocationRelativeTo(null);
 										alumnos.setVisible(true);
-										if (consultas_usuario.rol.equals("1")) {
+										if (rol.equals("1")) {
 											alumnos.btnMenu.setEnabled(true);
 										} else {
-											if (consultas_usuario.rol.equals("2")) {
+											if (rol.equals("2")) {
 												alumnos.btnMenu.setEnabled(false);
 
 											} else {
-												if (consultas_usuario.rol.equals("3")) {
+												if (rol.equals("3")) {
 													alumnos.btnMenu.setEnabled(false);
 
 												} else {
@@ -163,6 +163,7 @@ public class ventana_login extends JFrame {
 											}
 
 										}
+										dispose();
 
 									} else {
 										lblAlerta.setText("El usuario y contraseña son incorrectas");
@@ -177,7 +178,6 @@ public class ventana_login extends JFrame {
 							}
 						}
 					}
-
 				}
 			}
 

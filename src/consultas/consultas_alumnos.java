@@ -19,11 +19,12 @@ public class consultas_alumnos extends conexion {
 	public boolean insertarUserYpass(alumnos usuario) {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
-		String sql = "INSERT INTO dbo.users (RNE_Alumno, password) VALUES(?,?)";
+		String sql = "INSERT INTO dbo.users (RNE_Alumno, password, Id_Rol) VALUES(?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, usuario.getRNE_Alumno());
 			ps.setString(2, usuario.getPassword());
+			ps.setString(3, usuario.getId_Rol());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -42,13 +43,14 @@ public class consultas_alumnos extends conexion {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
 
-		String sql = "UPDATE dbo.users SET RNE_Alumno=?, password=? WHERE id=? ";
+		String sql = "UPDATE dbo.users SET RNE_Alumno=?, password=?, Id_Rol=? WHERE id=? ";
 
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, usuario.getRNE_Alumno());
 			ps.setString(2, usuario.getPassword());
-			ps.setInt(5, usuario.getId());
+			ps.setString(3, usuario.getId_Rol());
+			ps.setInt(4, usuario.getId());
 			ps.execute();
 
 			return true;
@@ -68,7 +70,7 @@ public class consultas_alumnos extends conexion {
 	public boolean insertarRNEyGrupo(alumnos usuario) {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
-		String sql = "INSERT INTO dbo.Prematricula (RNE_Alumno, Id_Grupo) VALUES(?,?)";
+		String sql = "INSERT INTO dbo.Prematriculas (RNE_Alumno, Id_Grupo) VALUES(?,?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, usuario.getRNE_Alumno());
@@ -91,13 +93,13 @@ public class consultas_alumnos extends conexion {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
 
-		String sql = "UPDATE dbo.Prematricula SET RNE_Alumno=?, Id_Grupo=? WHERE id=? ";
+		String sql = "UPDATE dbo.Prematriculas SET RNE_Alumno=?, Id_Grupo=? WHERE Id_Prematricula=? ";
 
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, usuario.getRNE_Alumno());
 			ps.setString(2, usuario.getId_Grupo());
-			ps.setInt(5, usuario.getId());
+			ps.setInt(3, usuario.getId_Prematricula());
 			ps.execute();
 
 			return true;
