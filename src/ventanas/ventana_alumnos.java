@@ -81,6 +81,9 @@ public class ventana_alumnos extends JFrame {
 	public JComboBox cbxGrado;
 	public static String cadena = null;
 
+	public static String user;
+	public static String pass;
+
 	/**
 	 * Launch the application.
 	 */
@@ -135,6 +138,15 @@ public class ventana_alumnos extends JFrame {
 		btnImprimir = new JButton("IMPRIMIR");
 		btnImprimir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ventana_detalle_comprobante comprobante = new ventana_detalle_comprobante();
+				ventana_detalle_comprobante.lblIdentidad.setText(user);
+				ventana_detalle_comprobante.lblCodigo.setText(pass);
+				ventana_detalle_comprobante.getHora();
+				ventana_detalle_comprobante.lblFecha.setText(ventana_detalle_comprobante.getFecha());
+				comprobante.setVisible(true);
+				comprobante.setLocationRelativeTo(null);
+				
+				
 
 			}
 		});
@@ -183,9 +195,9 @@ public class ventana_alumnos extends JFrame {
 		JButton btnGenerarUsuarioY = new JButton("GENERAR CREDENCIALES");
 		btnGenerarUsuarioY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String identidad = null;
-				identidad=txtIdentidad.getText().toString();
-				if (identidad==null) {
+				user = txtIdentidad.getText().toString();
+				pass = txtContraseña.getText().toString();
+				if (user.equals("")) {
 					JOptionPane.showMessageDialog(null, "Por favor escriba la identidad del alumno");
 				} else {
 					txtUsuario.setText(txtIdentidad.getText().toString());
@@ -198,10 +210,9 @@ public class ventana_alumnos extends JFrame {
 
 					clase.setPassword(cadena);
 					clase.setRNE_Alumno(txtUsuario.getText().toString());
-					
+
 					btnImprimir.setVisible(true);
 
-					
 				}
 			}
 

@@ -6,7 +6,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -20,10 +22,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,8 +39,8 @@ import java.awt.Font;
 public class ventana_login extends JFrame {
 
 	private JPanel contentPane;
-	public JTextField txtUsuario;
-	public JTextField txtContraseña;
+	public JFormattedTextField txtUsuario;
+	public JPasswordField txtContraseña;
 	public JButton btnIngresar;
 	public JLabel lblAlerta;
 
@@ -80,7 +85,14 @@ public class ventana_login extends JFrame {
 		lblUsuario.setBounds(31, 43, 84, 14);
 		panel.add(lblUsuario);
 
-		txtUsuario = new JTextField();
+		MaskFormatter identidadF = null;
+		try {
+			identidadF = new MaskFormatter("#############");
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtUsuario = new JFormattedTextField(identidadF);
+		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUsuario.setBounds(125, 40, 150, 20);
 		panel.add(txtUsuario);
 		txtUsuario.setColumns(10);
@@ -89,7 +101,8 @@ public class ventana_login extends JFrame {
 		lblContrasea.setBounds(31, 72, 84, 14);
 		panel.add(lblContrasea);
 
-		txtContraseña = new JTextField();
+		txtContraseña = new JPasswordField();
+		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		txtContraseña.setColumns(10);
 		txtContraseña.setBounds(125, 69, 150, 20);
 		panel.add(txtContraseña);
