@@ -183,10 +183,12 @@ public class ventana_alumnos extends JFrame {
 		JButton btnGenerarUsuarioY = new JButton("GENERAR CREDENCIALES");
 		btnGenerarUsuarioY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtIdentidad.getText().toString().equals(null)) {
+				String identidad = null;
+				identidad=txtIdentidad.getText().toString();
+				if (identidad==null) {
 					JOptionPane.showMessageDialog(null, "Por favor escriba la identidad del alumno");
 				} else {
-					txtIdentidad.setText(txtIdentidad.getText().toString());
+					txtUsuario.setText(txtIdentidad.getText().toString());
 					generarCodigo();
 					txtContraseña.setText(cadena);
 					
@@ -196,6 +198,8 @@ public class ventana_alumnos extends JFrame {
 
 					clase.setPassword(cadena);
 					clase.setRNE_Alumno(txtUsuario.getText().toString());
+					
+					btnImprimir.setVisible(true);
 
 					
 				}
