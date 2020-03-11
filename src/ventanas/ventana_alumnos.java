@@ -90,10 +90,11 @@ public class ventana_alumnos extends JFrame {
 	public static String user;
 	public static String pass;
 
-	public static String USUARIO_id;
-	public static String USUARIO_users;
-	public static String USUARIO_Prematriculas;
-	public static String ROL;
+	public static String USUARIO_id = null;
+	public static String USUARIO_users= null;
+	public static String USUARIO_Prematriculas= null;
+	public static String ID_Prematriculas= null;
+	public static String ROL= null;
 	public JTextField txtBuscar;
 
 	/**
@@ -133,6 +134,7 @@ public class ventana_alumnos extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
 		final ImageIcon ver = new ImageIcon(getClass().getResource("/recursos/ver.png"));
 		final ImageIcon ocultar = new ImageIcon(getClass().getResource("/recursos/ocultar.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -360,11 +362,10 @@ public class ventana_alumnos extends JFrame {
 	public void generarCodigo() {
 
 		String valorGrado = null;
-		if (cbxGrado.getSelectedItem().toString().equals("Septimo")) {
+		if (cbxGrado.getSelectedItem().toString().equals("Séptimo")) {
 			valorGrado = "SEP21-";
 		} else {
 			valorGrado = "DEC21-";
-
 		}
 
 		String NumGenerado = String.valueOf(genererNumero());
@@ -404,6 +405,7 @@ public class ventana_alumnos extends JFrame {
 			ResultSet rsr = stmtr.executeQuery();
 			if (rsr.next()) {
 				USUARIO_Prematriculas = rsr.getString("RNE_Alumno");
+				ID_Prematriculas = rsr.getString("Id_Prematricula");
 			}
 			;
 			stmtr.close();
@@ -545,6 +547,7 @@ public class ventana_alumnos extends JFrame {
 		} else {
 			clase2.setId_Grupo("104");
 		}
+		clase2.setId_Prematricula(Integer.parseInt(ID_Prematriculas));
 
 		if (consulta.actualizarUserYpass(clase) && consulta.actualizarRNEyGrupo(clase2)) {
 			JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
