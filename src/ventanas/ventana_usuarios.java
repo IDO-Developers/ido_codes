@@ -284,6 +284,41 @@ public class ventana_usuarios extends JFrame {
 		txtNombre.setColumns(10);
 		txtNombre.setBounds(29, 98, 192, 20);
 		panel.add(txtNombre);
+		
+		JButton btnEstudiante = new JButton("ACEPTAR");
+		btnEstudiante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ventana_alumnos alumnos = new ventana_alumnos();
+				alumnos.setLocationRelativeTo(null);
+				alumnos.setVisible(true);
+				if (ventana_login.rol.equals("1")) {
+					alumnos.btnMenu.setEnabled(true);
+				} else {
+					if (ventana_login.rol.equals("2")) {
+						alumnos.btnMenu.setEnabled(false);
+
+					} else {
+						if (ventana_login.rol.equals("3")) {
+							alumnos.btnMenu.setEnabled(false);
+
+						} else {
+							alumnos.btnMenu.setEnabled(false);
+
+						}
+
+					}
+
+				}
+				dispose();
+			}
+		});
+		btnEstudiante.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnEstudiante.setBounds(0, 0, 31, 33);
+		panel.add(btnEstudiante);
+		final ImageIcon logom = new ImageIcon(getClass().getResource("/recursos/estudiante.png"));
+		final ImageIcon iconom = new ImageIcon(
+				logom.getImage().getScaledInstance(btnEstudiante.getWidth(), btnEstudiante.getHeight(), Image.SCALE_DEFAULT));
+		btnEstudiante.setIcon(iconom);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);

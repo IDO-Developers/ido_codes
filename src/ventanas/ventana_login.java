@@ -25,6 +25,8 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -107,6 +109,84 @@ public class ventana_login extends JFrame {
 		txtContraseña.setBounds(125, 69, 150, 20);
 		panel.add(txtContraseña);
 
+		txtContraseña.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (txtContraseña.getText().length() == 15)
+					e.consume();
+
+				if (txtContraseña.getText().toString().equals(" ")) {
+					JOptionPane.showMessageDialog(null, "No esta permitido escribir espacios vacios!");
+					txtContraseña.setText("");
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String user = String.valueOf(txtUsuario.getText().toString());
+					String pass = String.valueOf(txtContraseña.getText().toString());
+					if (user.equals("") && pass.equals("")) {
+						lblAlerta.setText("Los campos (Usuario) y (Contraseña) estan vacios.");
+						lblAlerta.setForeground(Color.RED);
+					} else {
+						if (user.equals("")) {
+							lblAlerta.setText("El campo de (Usuario) esta vacio.");
+							lblAlerta.setForeground(Color.RED);
+						} else {
+							if (pass.equals("")) {
+								lblAlerta.setText("El campo de (Contraseña) esta vacio.");
+								lblAlerta.setForeground(Color.RED);
+							} else {
+								buscarUsuario();
+								if (txtUsuario.getText().toString().equals(identidad)) {
+
+									if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
+										ventana_alumnos alumnos = new ventana_alumnos();
+										alumnos.setLocationRelativeTo(null);
+										alumnos.setVisible(true);
+										if (consultas_usuario.rol.equals("1")) {
+											alumnos.btnMenu.setEnabled(true);
+										} else {
+											if (consultas_usuario.rol.equals("2")) {
+												alumnos.btnMenu.setEnabled(false);
+
+											} else {
+												if (consultas_usuario.rol.equals("3")) {
+													alumnos.btnMenu.setEnabled(false);
+
+												} else {
+													alumnos.btnMenu.setEnabled(false);
+
+												}
+
+											}
+
+										}
+
+									} else {
+										lblAlerta.setText("El usuario y contraseña son incorrectas");
+										lblAlerta.setForeground(Color.RED);
+
+									}
+
+								} else {
+									lblAlerta.setText("El usuario y contraseña son incorrectas");
+									lblAlerta.setForeground(Color.RED);
+								}
+							}
+						}
+					}
+
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		});
+
 		btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -127,27 +207,29 @@ public class ventana_login extends JFrame {
 							buscarUsuario();
 							if (txtUsuario.getText().toString().equals(identidad)) {
 
-								
+								if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
+									ventana_alumnos alumnos = new ventana_alumnos();
+									alumnos.setLocationRelativeTo(null);
+									alumnos.setVisible(true);
+									if (rol.equals("1")) {
+										alumnos.btnMenu.setEnabled(true);
+									} else {
+										if (rol.equals("2")) {
+											alumnos.btnMenu.setEnabled(false);
 
-								if (user.equals(identidad) &&  BCrypt.checkpw(pass, contraseña)) {
-									usuarios clase = new usuarios();
-									consultas_usuario consulta = new consultas_usuario();
-									ventana_usuarios formulario = new ventana_usuarios();
-									control_usuario control = new control_usuario(clase, consulta, formulario);
-									formulario.setVisible(true);
-									formulario.setLocationRelativeTo(null);
-									formulario.txtNombre.requestFocusInWindow();
-									formulario.construirTabla();
-									formulario.obtenerUltimoId();
-									formulario.llena_combobox_con_roles();
-									formulario.btnBorrar.setVisible(false);
-									formulario.btnGuardar.setVisible(true);
-									formulario.btnActualizar.setVisible(true);
-									formulario.btnActualizar_Usuario.setVisible(false);
-									formulario.btnVer.setVisible(true);
-									formulario.btnAceptar.setVisible(false);
+										} else {
+											if (rol.equals("3")) {
+												alumnos.btnMenu.setEnabled(false);
+
+											} else {
+												alumnos.btnMenu.setEnabled(false);
+
+											}
+
+										}
+
+									}
 									dispose();
-									
 
 								} else {
 									lblAlerta.setText("El usuario y contraseña son incorrectas");
