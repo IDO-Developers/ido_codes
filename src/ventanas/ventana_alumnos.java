@@ -213,18 +213,9 @@ public class ventana_alumnos extends JFrame {
 					preguntarPorGrupo();
 					preguntarPorRol();
 					if (USUARIO_users == null && USUARIO_Prematriculas == null) {
-						if (cbxGrado.getSelectedItem().equals("Séptimo")) {
-							Registrar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO();
-						} else {
-							Registrar_Usuario_Contraseña_Identidad_Grupo_DECIMO();
-						}
+						Registrar_Usuario_Contraseña_Identidad_Grupo();
 					} else {
-						if (cbxGrado.getSelectedItem().equals("Séptimo")) {
-							Actualizar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO();
-						} else {
-							Actualizar_Usuario_Contraseña_Identidad_Grupo_DECIMO();
-						}
-
+						Actualizar_Usuario_Contraseña_Identidad_Grupo();
 					}
 
 				}
@@ -504,18 +495,27 @@ public class ventana_alumnos extends JFrame {
 		return matrizInfo;
 	}
 
-	public void Registrar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO() {
+	public void Registrar_Usuario_Contraseña_Identidad_Grupo() {
 		txtUsuario.setText(txtIdentidad.getText().toString());
 		generarCodigo();
 		txtContraseña.setText(cadena);
 		alumnos clase = new alumnos();
+		alumnos clase2 = new alumnos();
 		consultas_alumnos consulta = new consultas_alumnos();
+
 		clase.setRNE_Alumno(txtIdentidad.getText().toString());
 		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
 		clase.setPassword(contraseñaEncriptada);
-		clase.setId_Grupo("101");
 		clase.setId_Rol(ROL);
-		if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
+
+		clase2.setRNE_Alumno(txtIdentidad.getText().toString());
+		if (cbxGrado.getSelectedItem().equals("Séptimo")) {
+			clase2.setId_Grupo("101");
+		} else {
+			clase2.setId_Grupo("104");
+		}
+
+		if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase2)) {
 			JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
 			construirTabla();
 		} else {
@@ -525,28 +525,7 @@ public class ventana_alumnos extends JFrame {
 
 	}
 
-	public void Registrar_Usuario_Contraseña_Identidad_Grupo_DECIMO() {
-		txtUsuario.setText(txtIdentidad.getText().toString());
-		generarCodigo();
-		txtContraseña.setText(cadena);
-		alumnos clase = new alumnos();
-		consultas_alumnos consulta = new consultas_alumnos();
-		clase.setRNE_Alumno(txtIdentidad.getText().toString());
-		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
-		clase.setPassword(contraseñaEncriptada);
-		clase.setId_Grupo("104");
-		clase.setId_Rol(ROL);
-		if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase)) {
-			JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
-			construirTabla();
-		} else {
-			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
-			construirTabla();
-		}
-
-	}
-
-	public void Actualizar_Usuario_Contraseña_Identidad_Grupo_SEPTIMO() {
+	public void Actualizar_Usuario_Contraseña_Identidad_Grupo() {
 		txtUsuario.setText(txtIdentidad.getText().toString());
 		generarCodigo();
 		txtContraseña.setText(cadena);
@@ -561,7 +540,11 @@ public class ventana_alumnos extends JFrame {
 		clase.setId(Integer.parseInt(USUARIO_id));
 
 		clase2.setRNE_Alumno(txtIdentidad.getText().toString());
-		clase2.setId_Grupo("101");
+		if (cbxGrado.getSelectedItem().equals("Séptimo")) {
+			clase2.setId_Grupo("101");
+		} else {
+			clase2.setId_Grupo("104");
+		}
 
 		if (consulta.actualizarUserYpass(clase) && consulta.actualizarRNEyGrupo(clase2)) {
 			JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
@@ -571,32 +554,6 @@ public class ventana_alumnos extends JFrame {
 			construirTabla();
 		}
 
-	}
-
-	public void Actualizar_Usuario_Contraseña_Identidad_Grupo_DECIMO() {
-		txtUsuario.setText(txtIdentidad.getText().toString());
-		generarCodigo();
-		txtContraseña.setText(cadena);
-		alumnos clase = new alumnos();
-		alumnos clase2 = new alumnos();
-		consultas_alumnos consulta = new consultas_alumnos();
-
-		clase.setRNE_Alumno(txtIdentidad.getText().toString());
-		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
-		clase.setPassword(contraseñaEncriptada);
-		clase.setId_Rol(ROL);
-		clase.setId(Integer.parseInt(USUARIO_id));
-
-		clase2.setRNE_Alumno(txtIdentidad.getText().toString());
-		clase2.setId_Grupo("104");
-
-		if (consulta.actualizarUserYpass(clase) && consulta.actualizarRNEyGrupo(clase2)) {
-			JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
-			construirTabla();
-		} else {
-			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO actualizadas!");
-			construirTabla();
-		}
 	}
 
 }
