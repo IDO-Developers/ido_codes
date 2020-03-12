@@ -50,6 +50,7 @@ public class ventana_login extends JFrame {
 	public JLabel lblAlerta;
 
 	public static String rol = null;
+	public static String NombreRol = null;
 	public static String nombre = null;
 	public static String identidad = null;
 	public static String contraseña = null;
@@ -172,6 +173,9 @@ public class ventana_login extends JFrame {
 										ventana_codigos_alumnos_7_10 alumnos = new ventana_codigos_alumnos_7_10();
 										alumnos.setLocationRelativeTo(null);
 										alumnos.setVisible(true);
+										buscarRol();
+										
+										alumnos.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
 										if (rol.equals("1")) {
 											alumnos.btnUsuarios.setEnabled(true);
 										} else {
@@ -322,6 +326,21 @@ public class ventana_login extends JFrame {
 				nombre = rs.getString("name");
 				identidad = rs.getString("RNE_Empleado");
 				contraseña = rs.getString("password");
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(usuarios.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(null, ex);
+		}
+	}
+	
+	public void buscarRol() {
+		conexion conex = new conexion();
+		try {
+			Statement estatuto = conex.getConexion().createStatement();
+			ResultSet rs = estatuto.executeQuery(
+					"SELECT * FROM dbo.Roles WHERE Id_Rol='" + rol + "'");
+			while (rs.next()) {
+				NombreRol = rs.getString("Nombre_Rol");
 			}
 		} catch (SQLException ex) {
 			Logger.getLogger(usuarios.class.getName()).log(Level.SEVERE, null, ex);

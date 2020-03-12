@@ -29,7 +29,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-public class ventana_detalle_comprobante extends JFrame implements Printable {
+public class ventana_principal extends JFrame implements Printable {
 
 	private JPanel contentPane;
 	public JButton btnImprimir;
@@ -49,7 +49,7 @@ public class ventana_detalle_comprobante extends JFrame implements Printable {
 			@Override
 			public void run() {
 				try {
-					ventana_detalle_comprobante frame = new ventana_detalle_comprobante();
+					ventana_principal frame = new ventana_principal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +61,7 @@ public class ventana_detalle_comprobante extends JFrame implements Printable {
 	/**
 	 * Create the frame.
 	 */
-	public ventana_detalle_comprobante() {
+	public ventana_principal() {
 		setType(Type.UTILITY);
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
