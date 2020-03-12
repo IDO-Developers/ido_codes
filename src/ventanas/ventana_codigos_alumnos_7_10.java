@@ -84,6 +84,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 	public static String cadena = null;
 	public static String contraseñaEncriptada = null;
 	public JButton btnUsuarios;
+	public JFormattedTextField txtIdentidad2;
 
 	public static String user;
 	public static String pass;
@@ -124,9 +125,9 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 636, 436);
+		setBounds(100, 100, 353, 436);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(47, 79, 79));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
@@ -141,7 +142,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(72, 0, 269, 407);
+		panel.setBounds(0, 0, 259, 407);
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panel);
@@ -150,7 +151,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		JLabel lblUsuario = new JLabel("Grado:");
 		lblUsuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario.setBounds(81, 175, 112, 20);
+		lblUsuario.setBounds(79, 202, 112, 20);
 		panel.add(lblUsuario);
 
 		btnImprimir = new JButton("IMPRIMIR");
@@ -168,20 +169,20 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		});
 		btnImprimir.setBackground(new Color(46, 139, 87));
 		btnImprimir.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnImprimir.setBounds(41, 357, 183, 23);
+		btnImprimir.setBounds(37, 373, 185, 23);
 		panel.add(btnImprimir);
 
-		JLabel USUARIOS = new JLabel("DATOS DEL COMPROBANTE");
+		JLabel USUARIOS = new JLabel("7\u00B0 y 10\u00B0");
 		USUARIOS.setForeground(new Color(46, 139, 87));
 		USUARIOS.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		USUARIOS.setHorizontalAlignment(SwingConstants.CENTER);
-		USUARIOS.setBounds(8, 11, 256, 20);
+		USUARIOS.setBounds(16, 50, 233, 20);
 		panel.add(USUARIOS);
 
 		JLabel lblUsuario_1 = new JLabel("Usuario:");
 		lblUsuario_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblUsuario_1.setBounds(8, 261, 258, 20);
+		lblUsuario_1.setBounds(4, 277, 258, 20);
 		panel.add(lblUsuario_1);
 
 		txtUsuario = new JTextField();
@@ -190,13 +191,13 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUsuario.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtUsuario.setColumns(10);
-		txtUsuario.setBounds(41, 283, 183, 20);
+		txtUsuario.setBounds(37, 299, 185, 20);
 		panel.add(txtUsuario);
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblContrasea.setBounds(10, 304, 258, 20);
+		lblContrasea.setBounds(6, 320, 258, 20);
 		panel.add(lblContrasea);
 
 		txtContraseña = new JTextField();
@@ -205,7 +206,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		txtContraseña.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtContraseña.setColumns(10);
-		txtContraseña.setBounds(41, 326, 183, 20);
+		txtContraseña.setBounds(37, 342, 185, 20);
 		panel.add(txtContraseña);
 
 		JButton btnCredenciales = new JButton("GENERAR CREDENCIALES");
@@ -230,13 +231,13 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		});
 		btnCredenciales.setBackground(new Color(255, 215, 0));
 		btnCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnCredenciales.setBounds(45, 227, 183, 23);
+		btnCredenciales.setBounds(37, 254, 185, 23);
 		panel.add(btnCredenciales);
 
 		JLabel lblIdentidad = new JLabel("Identidad:");
 		lblIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIdentidad.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblIdentidad.setBounds(8, 133, 256, 20);
+		lblIdentidad.setBounds(6, 160, 256, 20);
 		panel.add(lblIdentidad);
 
 		MaskFormatter identidad = null;
@@ -250,11 +251,11 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		txtIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
 		txtIdentidad.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtIdentidad.setColumns(10);
-		txtIdentidad.setBounds(56, 154, 160, 20);
+		txtIdentidad.setBounds(37, 181, 185, 20);
 		panel.add(txtIdentidad);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(66, 11, 139, 135);
+		lblNewLabel.setBounds(64, 50, 139, 135);
 		panel.add(lblNewLabel);
 		final ImageIcon logo = new ImageIcon(getClass().getResource("/recursos/logo_ido.png"));
 		final ImageIcon icono = new ImageIcon(logo.getImage().getScaledInstance(lblNewLabel.getWidth(),
@@ -264,110 +265,39 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		cbxGrado = new JComboBox();
 		cbxGrado.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		cbxGrado.setModel(new DefaultComboBoxModel(new String[] { "Séptimo", "Decimo" }));
-		cbxGrado.setBounds(91, 196, 93, 20);
+		cbxGrado.setBounds(37, 223, 185, 20);
 		panel.add(cbxGrado);
-
 		
-		JButton btnCerrarSesion = new JButton();
-		btnCerrarSesion.setBounds(10, 347, 52, 51);
-		contentPane.add(btnCerrarSesion);
-		btnCerrarSesion.addActionListener(new ActionListener() {
+		JLabel label_6 = new JLabel("DATOS DEL COMPROBANTE");
+		label_6.setHorizontalAlignment(SwingConstants.CENTER);
+		label_6.setForeground(Color.BLACK);
+		label_6.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		label_6.setBounds(6, 31, 253, 20);
+		panel.add(label_6);
+		
+		JLabel lblGeneradorDeCredenciales = new JLabel("GENERADOR DE CREDENCIALES");
+		lblGeneradorDeCredenciales.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGeneradorDeCredenciales.setForeground(Color.BLACK);
+		lblGeneradorDeCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblGeneradorDeCredenciales.setBounds(6, 11, 253, 20);
+		panel.add(lblGeneradorDeCredenciales);
+		
+		JToggleButton btnMenu = new JToggleButton();
+		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				ventana_login login = new ventana_login();
-				ventana_login principal = new ventana_login();
-	    		principal.setVisible(true);
-	    		principal.setLocationRelativeTo(null);
+				if (btnMenu.isSelected()) {
+					
+				}else {
+					
+				}
 			}
 		});
-		btnCerrarSesion.setBackground(new Color(178, 34, 34));
-		final ImageIcon iconom1 = new ImageIcon(
-				LOGOSALIR.getImage().getScaledInstance(btnCerrarSesion.getWidth(), btnCerrarSesion.getHeight(), Image.SCALE_DEFAULT));
-		btnCerrarSesion.setIcon(iconom1);
-		
-				btnUsuarios = new JButton();
-				btnUsuarios.setBounds(10, 285, 52, 51);
-				contentPane.add(btnUsuarios);
-				btnUsuarios.setBackground(new Color(30, 144, 255));
-				btnUsuarios.addActionListener(new ActionListener() {
-
-					public void actionPerformed(ActionEvent arg0) {
-						usuarios clase = new usuarios();
-						consultas_usuario consulta = new consultas_usuario();
-						ventana_usuarios formulario = new ventana_usuarios();
-						control_usuario control = new control_usuario(clase, consulta, formulario);
-						formulario.setVisible(true);
-						formulario.setLocationRelativeTo(null);
-						formulario.txtNombre.requestFocusInWindow();
-						formulario.construirTabla();
-						formulario.obtenerUltimoId();
-						formulario.llena_combobox_con_roles();
-						formulario.btnBorrar.setVisible(false);
-						formulario.btnGuardar.setVisible(true);
-						formulario.btnActualizar.setVisible(true);
-						formulario.btnActualizar_Usuario.setVisible(false);
-						formulario.btnVer.setVisible(true);
-						formulario.btnAceptar.setVisible(false);
-						dispose();
-					}
-				});
-				final ImageIcon iconom = new ImageIcon(
-						LOGOUSER.getImage().getScaledInstance(btnUsuarios.getWidth(), btnUsuarios.getHeight(), Image.SCALE_DEFAULT));
-				btnUsuarios.setIcon(iconom);
-				
-				JButton btn8_9_11_12 = new JButton();
-				btn8_9_11_12.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						panel.setVisible(false);
-						panel_1.setVisible(true);
-					}
-				});
-				btn8_9_11_12.setBackground(Color.ORANGE);
-				btn8_9_11_12.setBounds(10, 99, 52, 51);
-				contentPane.add(btn8_9_11_12);
-				final ImageIcon icono111= new ImageIcon(
-						OCTNOVUNDDUO.getImage().getScaledInstance(btn8_9_11_12.getWidth(), btn8_9_11_12.getHeight(), Image.SCALE_DEFAULT));
-				btn8_9_11_12.setIcon(icono111);
-				
-				JButton btnPrematricula = new JButton();
-				btnPrematricula.setBackground(new Color(0, 100, 0));
-				btnPrematricula.setBounds(10, 161, 52, 51);
-				contentPane.add(btnPrematricula);
-				final ImageIcon icono1112= new ImageIcon(
-						LogoPREMA.getImage().getScaledInstance(btnPrematricula.getWidth(), btnPrematricula.getHeight(), Image.SCALE_DEFAULT));
-				btnPrematricula.setIcon(icono1112);
-				
-				JButton btnComprobarMatricula = new JButton();
-				btnComprobarMatricula.setBackground(new Color(0, 100, 0));
-				btnComprobarMatricula.setBounds(10, 223, 52, 51);
-				contentPane.add(btnComprobarMatricula);
-				final ImageIcon icono1122= new ImageIcon(
-						LogoCompr.getImage().getScaledInstance(btnComprobarMatricula.getWidth(), btnComprobarMatricula.getHeight(), Image.SCALE_DEFAULT));
-				btnComprobarMatricula.setIcon(icono1122);
-				
-				JButton btn7_10 = new JButton();
-				btn7_10.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						panel.setVisible(true);
-						panel_1.setVisible(false);
-					}
-				});
-				btn7_10.setBackground(Color.ORANGE);
-				btn7_10.setBounds(10, 37, 52, 51);
-				contentPane.add(btn7_10);
-				final ImageIcon icono11= new ImageIcon(
-						SEPYDEC.getImage().getScaledInstance(btn7_10.getWidth(), btn7_10.getHeight(), Image.SCALE_DEFAULT));
-				btn7_10.setIcon(icono11);
-				
-				JLabel lblMen = new JLabel("Men\u00FA");
-				lblMen.setForeground(new Color(0, 0, 0));
-				lblMen.setHorizontalAlignment(SwingConstants.CENTER);
-				lblMen.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
-				lblMen.setBounds(10, 0, 52, 38);
-				contentPane.add(lblMen);
+		btnMenu.setBackground(Color.ORANGE);
+		btnMenu.setBounds(238, 0, 21, 20);
+		panel.add(btnMenu);
 				
 				 panel_1 = new JPanel();
-				panel_1.setBounds(361, 0, 269, 407);
+				panel_1.setBounds(0, 0, 259, 407);
 				contentPane.add(panel_1);
 				panel_1.setLayout(null);
 				panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -376,26 +306,26 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				JLabel label = new JLabel("Grado:");
 				label.setHorizontalAlignment(SwingConstants.CENTER);
 				label.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-				label.setBounds(81, 175, 112, 20);
+				label.setBounds(83, 202, 112, 20);
 				panel_1.add(label);
 				
 				JButton btnImprimir2 = new JButton("IMPRIMIR");
 				btnImprimir2.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 				btnImprimir2.setBackground(new Color(46, 139, 87));
-				btnImprimir2.setBounds(41, 357, 183, 23);
+				btnImprimir2.setBounds(38, 373, 188, 23);
 				panel_1.add(btnImprimir2);
 				
-				JLabel label_1 = new JLabel("DATOS DEL COMPROBANTE");
+				JLabel label_1 = new JLabel("8\u00B0,9\u00B0,11\u00B0,12\u00B0");
 				label_1.setHorizontalAlignment(SwingConstants.CENTER);
 				label_1.setForeground(new Color(46, 139, 87));
 				label_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-				label_1.setBounds(8, 11, 256, 20);
+				label_1.setBounds(20, 50, 239, 20);
 				panel_1.add(label_1);
 				
 				JLabel label_2 = new JLabel("Usuario:");
 				label_2.setHorizontalAlignment(SwingConstants.CENTER);
 				label_2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-				label_2.setBounds(8, 261, 258, 20);
+				label_2.setBounds(8, 277, 258, 20);
 				panel_1.add(label_2);
 				
 				txtUsuario2 = new JTextField();
@@ -404,13 +334,13 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				txtUsuario2.setFont(new Font("Tahoma", Font.BOLD, 10));
 				txtUsuario2.setEditable(false);
 				txtUsuario2.setColumns(10);
-				txtUsuario2.setBounds(41, 283, 183, 20);
+				txtUsuario2.setBounds(38, 299, 188, 20);
 				panel_1.add(txtUsuario2);
 				
 				JLabel label_3 = new JLabel("Contrase\u00F1a:");
 				label_3.setHorizontalAlignment(SwingConstants.CENTER);
 				label_3.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-				label_3.setBounds(10, 304, 258, 20);
+				label_3.setBounds(10, 320, 258, 20);
 				panel_1.add(label_3);
 				
 				txtContraseña2 = new JTextField();
@@ -419,31 +349,37 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				txtContraseña2.setFont(new Font("Tahoma", Font.BOLD, 10));
 				txtContraseña2.setEditable(false);
 				txtContraseña2.setColumns(10);
-				txtContraseña2.setBounds(41, 326, 183, 20);
+				txtContraseña2.setBounds(38, 342, 188, 20);
 				panel_1.add(txtContraseña2);
 				
 				JButton btnGenerarCredenciales2 = new JButton("GENERAR CREDENCIALES");
 				btnGenerarCredenciales2.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 				btnGenerarCredenciales2.setBackground(new Color(255, 215, 0));
-				btnGenerarCredenciales2.setBounds(45, 227, 183, 23);
+				btnGenerarCredenciales2.setBounds(38, 254, 188, 23);
 				panel_1.add(btnGenerarCredenciales2);
 				
 				JLabel label_4 = new JLabel("Identidad:");
 				label_4.setHorizontalAlignment(SwingConstants.CENTER);
 				label_4.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-				label_4.setBounds(8, 133, 256, 20);
+				label_4.setBounds(10, 160, 256, 20);
 				panel_1.add(label_4);
 				
-				JFormattedTextField txtIdentidad2 = new JFormattedTextField();
+				MaskFormatter identidad1 = null;
+				try {
+					identidad1 = new MaskFormatter("#############");
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+				 txtIdentidad2 = new JFormattedTextField(identidad1);
 				txtIdentidad2.setHorizontalAlignment(SwingConstants.CENTER);
 				txtIdentidad2.setForeground(new Color(0, 0, 128));
 				txtIdentidad2.setFont(new Font("Tahoma", Font.BOLD, 10));
 				txtIdentidad2.setColumns(10);
-				txtIdentidad2.setBounds(56, 154, 160, 20);
+				txtIdentidad2.setBounds(38, 181, 188, 20);
 				panel_1.add(txtIdentidad2);
 				
 				JLabel label_5 = new JLabel("");
-				label_5.setBounds(66, 11, 139, 135);
+				label_5.setBounds(68, 50, 139, 135);
 				panel_1.add(label_5);
 				final ImageIcon logo22 = new ImageIcon(getClass().getResource("/recursos/logo_ido.png"));
 				final ImageIcon icono22 = new ImageIcon(logo22.getImage().getScaledInstance(label_5.getWidth(),
@@ -451,9 +387,130 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				label_5.setIcon(icono22);
 				
 				JComboBox cbxGrado2 = new JComboBox();
+				cbxGrado2.setModel(new DefaultComboBoxModel(new String[] {"Octavo", "Noveno", "Und\u00E9cimo", "Duod\u00E9cimo"}));
 				cbxGrado2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-				cbxGrado2.setBounds(91, 196, 93, 20);
+				cbxGrado2.setBounds(38, 223, 188, 20);
 				panel_1.add(cbxGrado2);
+				
+				JLabel label_7 = new JLabel("DATOS DEL COMPROBANTE");
+				label_7.setHorizontalAlignment(SwingConstants.CENTER);
+				label_7.setForeground(Color.BLACK);
+				label_7.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				label_7.setBounds(10, 31, 249, 20);
+				panel_1.add(label_7);
+				
+				JLabel lblGeneradorDeCredenciales_1 = new JLabel("GENERADOR DE CREDENCIALES");
+				lblGeneradorDeCredenciales_1.setHorizontalAlignment(SwingConstants.CENTER);
+				lblGeneradorDeCredenciales_1.setForeground(Color.BLACK);
+				lblGeneradorDeCredenciales_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				lblGeneradorDeCredenciales_1.setBounds(10, 11, 249, 20);
+				panel_1.add(lblGeneradorDeCredenciales_1);
+								
+								JPanel panel_2 = new JPanel();
+								panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+								panel_2.setBounds(265, 0, 74, 407);
+								contentPane.add(panel_2);
+								panel_2.setBackground(new Color(255, 255, 255));
+								panel_2.setLayout(null);
+								
+								JLabel lblMen = new JLabel("Men\u00FA");
+								lblMen.setBounds(10, 0, 52, 38);
+								panel_2.add(lblMen);
+								lblMen.setForeground(new Color(0, 0, 0));
+								lblMen.setHorizontalAlignment(SwingConstants.CENTER);
+								lblMen.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
+								
+								JButton btn7_10 = new JButton();
+								btn7_10.setBounds(10, 37, 52, 51);
+								panel_2.add(btn7_10);
+								btn7_10.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+										panel.setVisible(true);
+										panel_1.setVisible(false);
+									}
+								});
+								btn7_10.setBackground(Color.ORANGE);
+								final ImageIcon icono11= new ImageIcon(
+										SEPYDEC.getImage().getScaledInstance(btn7_10.getWidth(), btn7_10.getHeight(), Image.SCALE_DEFAULT));
+								btn7_10.setIcon(icono11);
+								
+								JButton btn8_9_11_12 = new JButton();
+								btn8_9_11_12.setBounds(10, 99, 52, 51);
+								panel_2.add(btn8_9_11_12);
+								btn8_9_11_12.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent arg0) {
+										panel.setVisible(false);
+										panel_1.setVisible(true);
+									}
+								});
+								btn8_9_11_12.setBackground(Color.ORANGE);
+								final ImageIcon icono111= new ImageIcon(
+										OCTNOVUNDDUO.getImage().getScaledInstance(btn8_9_11_12.getWidth(), btn8_9_11_12.getHeight(), Image.SCALE_DEFAULT));
+								btn8_9_11_12.setIcon(icono111);
+								
+								JButton btnPrematricula = new JButton();
+								btnPrematricula.setBounds(10, 161, 52, 51);
+								panel_2.add(btnPrematricula);
+								btnPrematricula.setBackground(new Color(0, 100, 0));
+								final ImageIcon icono1112= new ImageIcon(
+										LogoPREMA.getImage().getScaledInstance(btnPrematricula.getWidth(), btnPrematricula.getHeight(), Image.SCALE_DEFAULT));
+								btnPrematricula.setIcon(icono1112);
+								
+								JButton btnComprobarMatricula = new JButton();
+								btnComprobarMatricula.setBounds(10, 223, 52, 51);
+								panel_2.add(btnComprobarMatricula);
+								btnComprobarMatricula.setBackground(new Color(0, 100, 0));
+								final ImageIcon icono1122= new ImageIcon(
+										LogoCompr.getImage().getScaledInstance(btnComprobarMatricula.getWidth(), btnComprobarMatricula.getHeight(), Image.SCALE_DEFAULT));
+								btnComprobarMatricula.setIcon(icono1122);
+								
+										btnUsuarios = new JButton();
+										btnUsuarios.setBounds(10, 285, 52, 51);
+										panel_2.add(btnUsuarios);
+										btnUsuarios.setBackground(new Color(30, 144, 255));
+										btnUsuarios.addActionListener(new ActionListener() {
+
+											public void actionPerformed(ActionEvent arg0) {
+												usuarios clase = new usuarios();
+												consultas_usuario consulta = new consultas_usuario();
+												ventana_usuarios formulario = new ventana_usuarios();
+												control_usuario control = new control_usuario(clase, consulta, formulario);
+												formulario.setVisible(true);
+												formulario.setLocationRelativeTo(null);
+												formulario.txtNombre.requestFocusInWindow();
+												formulario.construirTabla();
+												formulario.obtenerUltimoId();
+												formulario.llena_combobox_con_roles();
+												formulario.btnBorrar.setVisible(false);
+												formulario.btnGuardar.setVisible(true);
+												formulario.btnActualizar.setVisible(true);
+												formulario.btnActualizar_Usuario.setVisible(false);
+												formulario.btnVer.setVisible(true);
+												formulario.btnAceptar.setVisible(false);
+												dispose();
+											}
+										});
+										final ImageIcon iconom = new ImageIcon(
+												LOGOUSER.getImage().getScaledInstance(btnUsuarios.getWidth(), btnUsuarios.getHeight(), Image.SCALE_DEFAULT));
+										btnUsuarios.setIcon(iconom);
+										
+												
+												JButton btnCerrarSesion = new JButton();
+												btnCerrarSesion.setBounds(10, 347, 52, 51);
+												panel_2.add(btnCerrarSesion);
+												btnCerrarSesion.addActionListener(new ActionListener() {
+													public void actionPerformed(ActionEvent arg0) {
+														dispose();
+														ventana_login login = new ventana_login();
+														ventana_login principal = new ventana_login();
+	    		principal.setVisible(true);
+	    		principal.setLocationRelativeTo(null);
+													}
+												});
+												btnCerrarSesion.setBackground(new Color(178, 34, 34));
+												final ImageIcon iconom1 = new ImageIcon(
+														LOGOSALIR.getImage().getScaledInstance(btnCerrarSesion.getWidth(), btnCerrarSesion.getHeight(), Image.SCALE_DEFAULT));
+												btnCerrarSesion.setIcon(iconom1);
 	
 	}
 
