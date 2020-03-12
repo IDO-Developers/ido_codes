@@ -288,7 +288,7 @@ public class ventana_usuarios extends JFrame {
 		JButton btnEstudiante = new JButton("");
 		btnEstudiante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ventana_codigos_alumnos_7_10 alumnos = new ventana_codigos_alumnos_7_10();
+				ventana_principal alumnos = new ventana_principal();
 				alumnos.setLocationRelativeTo(null);
 				alumnos.setVisible(true);
 				if (ventana_login.rol.equals("1")) {
