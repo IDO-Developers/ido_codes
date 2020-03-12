@@ -70,6 +70,7 @@ import java.awt.Component;
 public class ventana_codigos_alumnos_7_10 extends JFrame {
 
 	private JPanel contentPane;
+	public JPanel panel_1;
 	public JButton btnImprimir;
 	public TableRowSorter<TableModel> trsfiltroCodigo;
 	String filtroCodigo;
@@ -92,6 +93,8 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 	public static String USUARIO_Prematriculas= null;
 	public static String ID_Prematriculas= null;
 	public static String ROL= null;
+	private JTextField txtUsuario2;
+	private JTextField txtContraseña2;
 
 	/**
 	 * Launch the application.
@@ -312,6 +315,12 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				btnUsuarios.setIcon(iconom);
 				
 				JButton btn8_9_11_12 = new JButton();
+				btn8_9_11_12.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						panel.setVisible(false);
+						panel_1.setVisible(true);
+					}
+				});
 				btn8_9_11_12.setBackground(Color.ORANGE);
 				btn8_9_11_12.setBounds(279, 99, 52, 51);
 				contentPane.add(btn8_9_11_12);
@@ -336,6 +345,12 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				btnComprobarMatricula.setIcon(icono1122);
 				
 				JButton btn7_10 = new JButton();
+				btn7_10.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						panel.setVisible(true);
+						panel_1.setVisible(false);
+					}
+				});
 				btn7_10.setBackground(Color.ORANGE);
 				btn7_10.setBounds(279, 37, 52, 51);
 				contentPane.add(btn7_10);
@@ -349,6 +364,91 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				lblMen.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 				lblMen.setBounds(279, 0, 52, 38);
 				contentPane.add(lblMen);
+				
+				 panel_1 = new JPanel();
+				panel_1.setBounds(0, 0, 278, 398);
+				contentPane.add(panel_1);
+				panel_1.setLayout(null);
+				panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+				panel_1.setBackground(Color.WHITE);
+				
+				JLabel label = new JLabel("Grado:");
+				label.setHorizontalAlignment(SwingConstants.CENTER);
+				label.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				label.setBounds(81, 175, 112, 20);
+				panel_1.add(label);
+				
+				JButton btnImprimir2 = new JButton("IMPRIMIR");
+				btnImprimir2.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+				btnImprimir2.setBackground(new Color(46, 139, 87));
+				btnImprimir2.setBounds(41, 357, 183, 23);
+				panel_1.add(btnImprimir2);
+				
+				JLabel label_1 = new JLabel("DATOS DEL COMPROBANTE");
+				label_1.setHorizontalAlignment(SwingConstants.CENTER);
+				label_1.setForeground(new Color(46, 139, 87));
+				label_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				label_1.setBounds(8, 11, 256, 20);
+				panel_1.add(label_1);
+				
+				JLabel label_2 = new JLabel("Usuario:");
+				label_2.setHorizontalAlignment(SwingConstants.CENTER);
+				label_2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				label_2.setBounds(8, 261, 258, 20);
+				panel_1.add(label_2);
+				
+				txtUsuario2 = new JTextField();
+				txtUsuario2.setHorizontalAlignment(SwingConstants.CENTER);
+				txtUsuario2.setForeground(new Color(0, 0, 128));
+				txtUsuario2.setFont(new Font("Tahoma", Font.BOLD, 10));
+				txtUsuario2.setEditable(false);
+				txtUsuario2.setColumns(10);
+				txtUsuario2.setBounds(41, 283, 183, 20);
+				panel_1.add(txtUsuario2);
+				
+				JLabel label_3 = new JLabel("Contrase\u00F1a:");
+				label_3.setHorizontalAlignment(SwingConstants.CENTER);
+				label_3.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				label_3.setBounds(10, 304, 258, 20);
+				panel_1.add(label_3);
+				
+				txtContraseña2 = new JTextField();
+				txtContraseña2.setHorizontalAlignment(SwingConstants.CENTER);
+				txtContraseña2.setForeground(new Color(0, 0, 128));
+				txtContraseña2.setFont(new Font("Tahoma", Font.BOLD, 10));
+				txtContraseña2.setEditable(false);
+				txtContraseña2.setColumns(10);
+				txtContraseña2.setBounds(41, 326, 183, 20);
+				panel_1.add(txtContraseña2);
+				
+				JButton btnGenerarCredenciales2 = new JButton("GENERAR CREDENCIALES");
+				btnGenerarCredenciales2.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+				btnGenerarCredenciales2.setBackground(new Color(255, 215, 0));
+				btnGenerarCredenciales2.setBounds(45, 227, 183, 23);
+				panel_1.add(btnGenerarCredenciales2);
+				
+				JLabel label_4 = new JLabel("Identidad:");
+				label_4.setHorizontalAlignment(SwingConstants.CENTER);
+				label_4.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				label_4.setBounds(8, 133, 256, 20);
+				panel_1.add(label_4);
+				
+				JFormattedTextField txtIdentidad2 = new JFormattedTextField();
+				txtIdentidad2.setHorizontalAlignment(SwingConstants.CENTER);
+				txtIdentidad2.setForeground(new Color(0, 0, 128));
+				txtIdentidad2.setFont(new Font("Tahoma", Font.BOLD, 10));
+				txtIdentidad2.setColumns(10);
+				txtIdentidad2.setBounds(56, 154, 160, 20);
+				panel_1.add(txtIdentidad2);
+				
+				JLabel label_5 = new JLabel("");
+				label_5.setBounds(66, 11, 139, 135);
+				panel_1.add(label_5);
+				
+				JComboBox cbxGrado2 = new JComboBox();
+				cbxGrado2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				cbxGrado2.setBounds(91, 196, 93, 20);
+				panel_1.add(cbxGrado2);
 	
 	}
 
