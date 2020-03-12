@@ -295,6 +295,24 @@ public class ventana_alumnos extends JFrame {
 		final ImageIcon iconom = new ImageIcon(
 				logom.getImage().getScaledInstance(btnMenu.getWidth(), btnMenu.getHeight(), Image.SCALE_DEFAULT));
 		btnMenu.setIcon(iconom);
+		
+		JButton button = new JButton();
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				ventana_login login = new ventana_login();
+				ventana_login principal = new ventana_login();
+	    		principal.setVisible(true);
+	    		principal.setLocationRelativeTo(null);
+			}
+		});
+		button.setBackground(Color.RED);
+		button.setBounds(8, 11, 33, 31);
+		panel.add(button);
+		final ImageIcon logom1 = new ImageIcon(getClass().getResource("/recursos/logout.png"));
+		final ImageIcon iconom1 = new ImageIcon(
+				logom1.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_DEFAULT));
+		button.setIcon(iconom1);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
@@ -558,5 +576,4 @@ public class ventana_alumnos extends JFrame {
 		}
 
 	}
-
 }

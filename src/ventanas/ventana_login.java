@@ -85,20 +85,20 @@ public class ventana_login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
-		
-				lblAlerta = new JLabel("");
-				lblAlerta.setBounds(53, 285, 321, 26);
-				contentPane.add(lblAlerta);
-				lblAlerta.setForeground(Color.WHITE);
-				lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-				lblAlerta.setBackground(Color.WHITE);
-				lblAlerta.setHorizontalAlignment(SwingConstants.CENTER);
+
+		lblAlerta = new JLabel("");
+		lblAlerta.setBounds(53, 285, 321, 26);
+		contentPane.add(lblAlerta);
+		lblAlerta.setForeground(Color.WHITE);
+		lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+		lblAlerta.setBackground(Color.WHITE);
+		lblAlerta.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(53, 11, 321, 270);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		panel.setBackground(new Color(0,0,0,100));
+		panel.setBackground(new Color(0, 0, 0, 100));
 
 		JLabel lblUsuario = new JLabel("USUARIO: ");
 		lblUsuario.setForeground(Color.WHITE);
@@ -114,7 +114,8 @@ public class ventana_login extends JFrame {
 			e1.printStackTrace();
 		}
 		txtUsuario = new JFormattedTextField(identidadF);
-		txtUsuario.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		txtUsuario.setForeground(new Color(0, 0, 0));
+		txtUsuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUsuario.setBounds(91, 164, 150, 20);
 		panel.add(txtUsuario);
@@ -128,7 +129,8 @@ public class ventana_login extends JFrame {
 		panel.add(lblContrasea);
 
 		txtContraseña = new JPasswordField();
-		txtContraseña.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		txtContraseña.setForeground(new Color(0, 0, 0));
+		txtContraseña.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		txtContraseña.setColumns(10);
 		txtContraseña.setBounds(91, 199, 150, 20);
@@ -221,18 +223,21 @@ public class ventana_login extends JFrame {
 				String pass = String.valueOf(txtContraseña.getText().toString());
 				if (user.equals("") && pass.equals("")) {
 					lblAlerta.setText("Los campos (Usuario) y (Contraseña) estan vacios.");
-					lblAlerta.setForeground(Color.RED);
+					lblAlerta.setForeground(Color.WHITE);
+					lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 				} else {
 					if (user.equals("")) {
 						lblAlerta.setText("El campo de (Usuario) esta vacio.");
-						lblAlerta.setForeground(Color.RED);
+						lblAlerta.setForeground(Color.WHITE);
+						lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 					} else {
 						if (pass.equals("")) {
 							lblAlerta.setText("El campo de (Contraseña) esta vacio.");
-							lblAlerta.setForeground(Color.RED);
+							lblAlerta.setForeground(Color.WHITE);
+							lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 						} else {
 							buscarUsuario();
-							
+
 							if (txtUsuario.getText().toString().equals(identidad)) {
 
 								if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
@@ -278,29 +283,29 @@ public class ventana_login extends JFrame {
 		});
 		btnIngresar.setBounds(91, 230, 150, 23);
 		panel.add(btnIngresar);
-		
+
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(91, 23, 150, 140);
 		panel.add(lblNewLabel);
 		final ImageIcon logo11 = new ImageIcon(getClass().getResource("/recursos/logo_ido.png"));
-		final ImageIcon icono11 = new ImageIcon(
-				logo11.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_DEFAULT));
+		final ImageIcon icono11 = new ImageIcon(logo11.getImage().getScaledInstance(lblNewLabel.getWidth(),
+				lblNewLabel.getHeight(), Image.SCALE_DEFAULT));
 		lblNewLabel.setIcon(icono11);
-		
+
 		lblSistemaDeGeneracion = new JLabel("SISTEMA DE GENERACION DE CREDENCIALES");
 		lblSistemaDeGeneracion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSistemaDeGeneracion.setForeground(Color.WHITE);
 		lblSistemaDeGeneracion.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblSistemaDeGeneracion.setBounds(10, 11, 301, 14);
 		panel.add(lblSistemaDeGeneracion);
-		
+
 		lblParaLaMatricula = new JLabel("PARA LA MATRICULA IDO");
 		lblParaLaMatricula.setHorizontalAlignment(SwingConstants.CENTER);
 		lblParaLaMatricula.setForeground(Color.WHITE);
 		lblParaLaMatricula.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblParaLaMatricula.setBounds(10, 23, 301, 14);
 		panel.add(lblParaLaMatricula);
-		
+
 		JLabel lblFoto = new JLabel("");
 		lblFoto.setBounds(-15, 0, 464, 331);
 		contentPane.add(lblFoto);
