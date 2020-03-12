@@ -124,9 +124,10 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 336, 427);
+		setBounds(100, 100, 636, 436);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
 		final ImageIcon SEPYDEC = new ImageIcon(getClass().getResource("/recursos/7,10.png"));
@@ -140,7 +141,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 278, 398);
+		panel.setBounds(72, 0, 269, 407);
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.add(panel);
@@ -268,7 +269,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 
 		
 		JButton btnCerrarSesion = new JButton();
-		btnCerrarSesion.setBounds(279, 347, 52, 51);
+		btnCerrarSesion.setBounds(10, 347, 52, 51);
 		contentPane.add(btnCerrarSesion);
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -285,7 +286,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 		btnCerrarSesion.setIcon(iconom1);
 		
 				btnUsuarios = new JButton();
-				btnUsuarios.setBounds(279, 285, 52, 51);
+				btnUsuarios.setBounds(10, 285, 52, 51);
 				contentPane.add(btnUsuarios);
 				btnUsuarios.setBackground(new Color(30, 144, 255));
 				btnUsuarios.addActionListener(new ActionListener() {
@@ -322,7 +323,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 					}
 				});
 				btn8_9_11_12.setBackground(Color.ORANGE);
-				btn8_9_11_12.setBounds(279, 99, 52, 51);
+				btn8_9_11_12.setBounds(10, 99, 52, 51);
 				contentPane.add(btn8_9_11_12);
 				final ImageIcon icono111= new ImageIcon(
 						OCTNOVUNDDUO.getImage().getScaledInstance(btn8_9_11_12.getWidth(), btn8_9_11_12.getHeight(), Image.SCALE_DEFAULT));
@@ -330,7 +331,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				
 				JButton btnPrematricula = new JButton();
 				btnPrematricula.setBackground(new Color(0, 100, 0));
-				btnPrematricula.setBounds(279, 161, 52, 51);
+				btnPrematricula.setBounds(10, 161, 52, 51);
 				contentPane.add(btnPrematricula);
 				final ImageIcon icono1112= new ImageIcon(
 						LogoPREMA.getImage().getScaledInstance(btnPrematricula.getWidth(), btnPrematricula.getHeight(), Image.SCALE_DEFAULT));
@@ -338,7 +339,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				
 				JButton btnComprobarMatricula = new JButton();
 				btnComprobarMatricula.setBackground(new Color(0, 100, 0));
-				btnComprobarMatricula.setBounds(279, 223, 52, 51);
+				btnComprobarMatricula.setBounds(10, 223, 52, 51);
 				contentPane.add(btnComprobarMatricula);
 				final ImageIcon icono1122= new ImageIcon(
 						LogoCompr.getImage().getScaledInstance(btnComprobarMatricula.getWidth(), btnComprobarMatricula.getHeight(), Image.SCALE_DEFAULT));
@@ -352,7 +353,7 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 					}
 				});
 				btn7_10.setBackground(Color.ORANGE);
-				btn7_10.setBounds(279, 37, 52, 51);
+				btn7_10.setBounds(10, 37, 52, 51);
 				contentPane.add(btn7_10);
 				final ImageIcon icono11= new ImageIcon(
 						SEPYDEC.getImage().getScaledInstance(btn7_10.getWidth(), btn7_10.getHeight(), Image.SCALE_DEFAULT));
@@ -362,11 +363,11 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				lblMen.setForeground(new Color(0, 0, 0));
 				lblMen.setHorizontalAlignment(SwingConstants.CENTER);
 				lblMen.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
-				lblMen.setBounds(279, 0, 52, 38);
+				lblMen.setBounds(10, 0, 52, 38);
 				contentPane.add(lblMen);
 				
 				 panel_1 = new JPanel();
-				panel_1.setBounds(0, 0, 278, 398);
+				panel_1.setBounds(361, 0, 269, 407);
 				contentPane.add(panel_1);
 				panel_1.setLayout(null);
 				panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -444,6 +445,10 @@ public class ventana_codigos_alumnos_7_10 extends JFrame {
 				JLabel label_5 = new JLabel("");
 				label_5.setBounds(66, 11, 139, 135);
 				panel_1.add(label_5);
+				final ImageIcon logo22 = new ImageIcon(getClass().getResource("/recursos/logo_ido.png"));
+				final ImageIcon icono22 = new ImageIcon(logo22.getImage().getScaledInstance(label_5.getWidth(),
+						label_5.getHeight(), Image.SCALE_DEFAULT));
+				label_5.setIcon(icono22);
 				
 				JComboBox cbxGrado2 = new JComboBox();
 				cbxGrado2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
