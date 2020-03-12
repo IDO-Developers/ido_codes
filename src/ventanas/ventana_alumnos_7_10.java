@@ -67,7 +67,7 @@ import javax.swing.JToggleButton;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import java.awt.Component;
 
-public class ventana_alumnos extends JFrame {
+public class ventana_alumnos_7_10 extends JFrame {
 
 	private JPanel contentPane;
 	public JButton btnImprimir;
@@ -84,9 +84,6 @@ public class ventana_alumnos extends JFrame {
 	public static String contraseñaEncriptada = null;
 	public JButton btnMenu;
 
-	public JScrollPane barra;
-	public JTable tabla;
-
 	public static String user;
 	public static String pass;
 
@@ -95,7 +92,6 @@ public class ventana_alumnos extends JFrame {
 	public static String USUARIO_Prematriculas= null;
 	public static String ID_Prematriculas= null;
 	public static String ROL= null;
-	public JTextField txtBuscar;
 
 	/**
 	 * Launch the application.
@@ -106,13 +102,11 @@ public class ventana_alumnos extends JFrame {
 				try {
 					usuarios clase = new usuarios();
 					consultas_usuario consulta = new consultas_usuario();
-					ventana_alumnos formulario = new ventana_alumnos();
+					ventana_alumnos_7_10 formulario = new ventana_alumnos_7_10();
 					formulario.setVisible(true);
 					formulario.setLocationRelativeTo(null);
 					formulario.txtIdentidad.requestFocusInWindow();
 					formulario.btnImprimir.setVisible(false);
-					formulario.construirTabla();
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -123,11 +117,11 @@ public class ventana_alumnos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventana_alumnos() {
+	public ventana_alumnos_7_10() {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 730, 427);
+		setBounds(100, 100, 337, 427);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -263,40 +257,12 @@ public class ventana_alumnos extends JFrame {
 		cbxGrado.setModel(new DefaultComboBoxModel(new String[] { "Séptimo", "Decimo" }));
 		cbxGrado.setBounds(91, 196, 93, 20);
 		panel.add(cbxGrado);
-
-		btnMenu = new JButton();
-		btnMenu.setBackground(new Color(0, 128, 128));
-		btnMenu.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				usuarios clase = new usuarios();
-				consultas_usuario consulta = new consultas_usuario();
-				ventana_usuarios formulario = new ventana_usuarios();
-				control_usuario control = new control_usuario(clase, consulta, formulario);
-				formulario.setVisible(true);
-				formulario.setLocationRelativeTo(null);
-				formulario.txtNombre.requestFocusInWindow();
-				formulario.construirTabla();
-				formulario.obtenerUltimoId();
-				formulario.llena_combobox_con_roles();
-				formulario.btnBorrar.setVisible(false);
-				formulario.btnGuardar.setVisible(true);
-				formulario.btnActualizar.setVisible(true);
-				formulario.btnActualizar_Usuario.setVisible(false);
-				formulario.btnVer.setVisible(true);
-				formulario.btnAceptar.setVisible(false);
-				dispose();
-			}
-		});
-		btnMenu.setBounds(235, 11, 33, 31);
-
-		panel.add(btnMenu);
 		final ImageIcon logom = new ImageIcon(getClass().getResource("/recursos/usuario.png"));
-		final ImageIcon iconom = new ImageIcon(
-				logom.getImage().getScaledInstance(btnMenu.getWidth(), btnMenu.getHeight(), Image.SCALE_DEFAULT));
-		btnMenu.setIcon(iconom);
+		final ImageIcon logom1 = new ImageIcon(getClass().getResource("/recursos/logout.png"));
 		
 		JButton button = new JButton();
+		button.setBounds(279, 347, 52, 51);
+		contentPane.add(button);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -306,74 +272,67 @@ public class ventana_alumnos extends JFrame {
 	    		principal.setLocationRelativeTo(null);
 			}
 		});
-		button.setBackground(Color.RED);
-		button.setBounds(8, 11, 33, 31);
-		panel.add(button);
-		final ImageIcon logom1 = new ImageIcon(getClass().getResource("/recursos/logout.png"));
+		button.setBackground(Color.WHITE);
 		final ImageIcon iconom1 = new ImageIcon(
 				logom1.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_DEFAULT));
 		button.setIcon(iconom1);
+		
+				btnMenu = new JButton();
+				btnMenu.setBounds(279, 285, 52, 51);
+				contentPane.add(btnMenu);
+				btnMenu.setBackground(Color.WHITE);
+				btnMenu.addActionListener(new ActionListener() {
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 255));
-		panel_1.setLayout(null);
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(279, 0, 445, 398);
-		contentPane.add(panel_1);
-
-		JPanel panel_2 = new JPanel();
-		panel_2.setLayout(null);
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(10, 38, 425, 349);
-		panel_1.add(panel_2);
-
-		barra = new JScrollPane(tabla, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		panel_2.add(barra);
-		barra.setBounds(0, 0, 425, 349);
-
-		tabla = new JTable();
-		barra.setViewportView(tabla);
-
-		txtBuscar = new JTextField();
-		txtBuscar.setColumns(10);
-		txtBuscar.setBounds(68, 14, 367, 20);
-		panel_1.add(txtBuscar);
-		InputMap map = txtBuscar.getInputMap(JComponent.WHEN_FOCUSED);
-		map.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
-		txtBuscar.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent ke) {
-				trsfiltroCodigo = new TableRowSorter(tabla.getModel());
-				tabla.setRowSorter(trsfiltroCodigo);
-
-				if (txtBuscar.getText().length() == 20)
-					ke.consume();
-
-				if (txtBuscar.getText().toString().equals(" ")) {
-					JOptionPane.showMessageDialog(null, "No esta permitido escribir espacios vacios!");
-					txtBuscar.setText("");
-				}
-			}
-
-			@Override
-			public void keyPressed(KeyEvent ke) {
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent ke) {
-				String cadena = (txtBuscar.getText().toString());
-				txtBuscar.setText(cadena);
-				repaint();
-				filtro();
-			}
-		});
-
-		JLabel label = new JLabel("BUSCAR");
-		label.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		label.setBounds(10, 14, 102, 20);
-		panel_1.add(label);
+					public void actionPerformed(ActionEvent arg0) {
+						usuarios clase = new usuarios();
+						consultas_usuario consulta = new consultas_usuario();
+						ventana_usuarios formulario = new ventana_usuarios();
+						control_usuario control = new control_usuario(clase, consulta, formulario);
+						formulario.setVisible(true);
+						formulario.setLocationRelativeTo(null);
+						formulario.txtNombre.requestFocusInWindow();
+						formulario.construirTabla();
+						formulario.obtenerUltimoId();
+						formulario.llena_combobox_con_roles();
+						formulario.btnBorrar.setVisible(false);
+						formulario.btnGuardar.setVisible(true);
+						formulario.btnActualizar.setVisible(true);
+						formulario.btnActualizar_Usuario.setVisible(false);
+						formulario.btnVer.setVisible(true);
+						formulario.btnAceptar.setVisible(false);
+						dispose();
+					}
+				});
+				final ImageIcon iconom = new ImageIcon(
+						logom.getImage().getScaledInstance(btnMenu.getWidth(), btnMenu.getHeight(), Image.SCALE_DEFAULT));
+				btnMenu.setIcon(iconom);
+				
+				JButton button_7 = new JButton();
+				button_7.setBackground(Color.WHITE);
+				button_7.setBounds(279, 99, 52, 51);
+				contentPane.add(button_7);
+				
+				JButton button_2 = new JButton();
+				button_2.setBackground(Color.WHITE);
+				button_2.setBounds(279, 161, 52, 51);
+				contentPane.add(button_2);
+				
+				JButton button_3 = new JButton();
+				button_3.setBackground(Color.WHITE);
+				button_3.setBounds(279, 223, 52, 51);
+				contentPane.add(button_3);
+				
+				JButton button_4 = new JButton();
+				button_4.setBackground(Color.WHITE);
+				button_4.setBounds(279, 37, 52, 51);
+				contentPane.add(button_4);
+				
+				JLabel lblMen = new JLabel("Men\u00FA");
+				lblMen.setHorizontalAlignment(SwingConstants.CENTER);
+				lblMen.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+				lblMen.setBounds(279, 0, 52, 31);
+				contentPane.add(lblMen);
+	
 	}
 
 	@SuppressWarnings("unlikely-arg-type")
@@ -452,68 +411,7 @@ public class ventana_alumnos extends JFrame {
 		}
 	}
 
-	public void filtro() {
-		filtroCodigo = txtBuscar.getText().toString();
-		trsfiltroCodigo.setRowFilter(RowFilter.regexFilter("(?i)" + txtBuscar.getText().toString(), 0, 1, 2, 3, 4));
-	}
-
-	public void construirTabla() {
-		String titulos[] = { "N°", "Nombre", "Usuario", "Contraseña", "Rol" };
-		String informacion[][] = obtenerMatriz();
-		tabla = new JTable(informacion, titulos);
-		barra.setViewportView(tabla);
-		for (int c = 0; c < tabla.getColumnCount(); c++) {
-			Class<?> col_class = tabla.getColumnClass(c);
-			tabla.setDefaultEditor(col_class, null);
-			tabla.getTableHeader().setReorderingAllowed(false);
-
-		}
-	}
-
-	public static ArrayList<usuarios> buscarUsuariosConMatriz() {
-		conexion conex = new conexion();
-		ArrayList<usuarios> miLista = new ArrayList<usuarios>();
-		usuarios usuarios;
-		try {
-			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery("SELECT * FROM users");
-
-			while (rs.next()) {
-				usuarios = new usuarios();
-				usuarios.setId(Integer.parseInt(rs.getString("id")));
-				usuarios.setName(rs.getString("name"));
-				usuarios.setRNE_Alumno(rs.getString("RNE_Alumno"));
-				usuarios.setPassword(rs.getString("password"));
-				usuarios.setId_Rol(rs.getString("Id_Rol"));
-
-				miLista.add(usuarios);
-			}
-			rs.close();
-			estatuto.close();
-			conex.desconectar();
-
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al consultar", "Error", JOptionPane.ERROR_MESSAGE);
-
-		}
-		return miLista;
-	}
-
-	public static String[][] obtenerMatriz() {
-		ArrayList<usuarios> miLista = buscarUsuariosConMatriz();
-		String matrizInfo[][] = new String[miLista.size()][5];
-		for (int i = 0; i < miLista.size(); i++) {
-			matrizInfo[i][0] = miLista.get(i).getId() + "";
-			matrizInfo[i][1] = miLista.get(i).getName() + "";
-			matrizInfo[i][2] = miLista.get(i).getRNE_Alumno() + "";
-			matrizInfo[i][3] = miLista.get(i).getPassword() + "";
-			matrizInfo[i][4] = miLista.get(i).getId_Rol() + "";
-
-		}
-
-		return matrizInfo;
-	}
+	
 
 	public void Registrar_Usuario_Contraseña_Identidad_Grupo() {
 		txtUsuario.setText(txtIdentidad.getText().toString());
@@ -537,10 +435,10 @@ public class ventana_alumnos extends JFrame {
 
 		if (consulta.insertarUserYpass(clase) && consulta.insertarRNEyGrupo(clase2)) {
 			JOptionPane.showMessageDialog(null, "Credenciales del alumno registradas!");
-			construirTabla();
+
 		} else {
 			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO registradas!");
-			construirTabla();
+
 		}
 
 	}
@@ -569,10 +467,10 @@ public class ventana_alumnos extends JFrame {
 
 		if (consulta.actualizarUserYpass(clase) && consulta.actualizarRNEyGrupo(clase2)) {
 			JOptionPane.showMessageDialog(null, "Credenciales del alumno actualizadas!");
-			construirTabla();
+
 		} else {
 			JOptionPane.showMessageDialog(null, "Error! Credenciales del alumno NO actualizadas!");
-			construirTabla();
+
 		}
 
 	}

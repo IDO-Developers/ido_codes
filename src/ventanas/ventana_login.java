@@ -79,7 +79,7 @@ public class ventana_login extends JFrame {
 	public ventana_login() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 350);
+		setBounds(100, 100, 433, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -90,7 +90,7 @@ public class ventana_login extends JFrame {
 		lblAlerta.setBounds(53, 285, 321, 26);
 		contentPane.add(lblAlerta);
 		lblAlerta.setForeground(Color.WHITE);
-		lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+		lblAlerta.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblAlerta.setBackground(Color.WHITE);
 		lblAlerta.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -169,8 +169,7 @@ public class ventana_login extends JFrame {
 								if (txtUsuario.getText().toString().equals(identidad)) {
 
 									if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
-										ventana_alumnos alumnos = new ventana_alumnos();
-										alumnos.construirTabla();
+										ventana_alumnos_7_10 alumnos = new ventana_alumnos_7_10();
 										alumnos.setLocationRelativeTo(null);
 										alumnos.setVisible(true);
 										if (rol.equals("1")) {
@@ -224,25 +223,21 @@ public class ventana_login extends JFrame {
 				if (user.equals("") && pass.equals("")) {
 					lblAlerta.setText("Los campos (Usuario) y (Contraseña) estan vacios.");
 					lblAlerta.setForeground(Color.WHITE);
-					lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 				} else {
 					if (user.equals("")) {
 						lblAlerta.setText("El campo de (Usuario) esta vacio.");
 						lblAlerta.setForeground(Color.WHITE);
-						lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 					} else {
 						if (pass.equals("")) {
 							lblAlerta.setText("El campo de (Contraseña) esta vacio.");
 							lblAlerta.setForeground(Color.WHITE);
-							lblAlerta.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 						} else {
 							buscarUsuario();
 
 							if (txtUsuario.getText().toString().equals(identidad)) {
 
 								if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
-									ventana_alumnos alumnos = new ventana_alumnos();
-									alumnos.construirTabla();
+									ventana_alumnos_7_10 alumnos = new ventana_alumnos_7_10();
 									alumnos.setLocationRelativeTo(null);
 									alumnos.setVisible(true);
 									if (rol.equals("1")) {
@@ -307,7 +302,7 @@ public class ventana_login extends JFrame {
 		panel.add(lblParaLaMatricula);
 
 		JLabel lblFoto = new JLabel("");
-		lblFoto.setBounds(-15, 0, 464, 331);
+		lblFoto.setBounds(-15, 0, 455, 331);
 		contentPane.add(lblFoto);
 		final ImageIcon logo = new ImageIcon(getClass().getResource("/recursos/ido_foto.jpg"));
 		final ImageIcon icono = new ImageIcon(

@@ -288,8 +288,7 @@ public class ventana_usuarios extends JFrame {
 		JButton btnEstudiante = new JButton("");
 		btnEstudiante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ventana_alumnos alumnos = new ventana_alumnos();
-				alumnos.construirTabla();
+				ventana_alumnos_7_10 alumnos = new ventana_alumnos_7_10();
 				alumnos.setLocationRelativeTo(null);
 				alumnos.setVisible(true);
 				if (ventana_login.rol.equals("1")) {
@@ -314,9 +313,9 @@ public class ventana_usuarios extends JFrame {
 			}
 		});
 		btnEstudiante.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnEstudiante.setBounds(0, 0, 38, 33);
+		btnEstudiante.setBounds(0, 0, 43, 43);
 		panel.add(btnEstudiante);
-		final ImageIcon logomq = new ImageIcon(getClass().getResource("/recursos/estudiante.png"));
+		final ImageIcon logomq = new ImageIcon(getClass().getResource("/recursos/profile.png"));
 		final ImageIcon iconomq = new ImageIcon(
 				logomq.getImage().getScaledInstance(btnEstudiante.getWidth(), btnEstudiante.getHeight(), Image.SCALE_DEFAULT));
 		btnEstudiante.setIcon(iconomq);
