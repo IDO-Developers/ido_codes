@@ -288,21 +288,21 @@ public class ventana_usuarios extends JFrame {
 		JButton btnEstudiante = new JButton("");
 		btnEstudiante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ventana_alumnos_7_10 alumnos = new ventana_alumnos_7_10();
+				ventana_codigos_alumnos_7_10 alumnos = new ventana_codigos_alumnos_7_10();
 				alumnos.setLocationRelativeTo(null);
 				alumnos.setVisible(true);
 				if (ventana_login.rol.equals("1")) {
-					alumnos.btnMenu.setEnabled(true);
+					alumnos.btnUsuarios.setEnabled(true);
 				} else {
 					if (ventana_login.rol.equals("2")) {
-						alumnos.btnMenu.setEnabled(false);
+						alumnos.btnUsuarios.setEnabled(false);
 
 					} else {
 						if (ventana_login.rol.equals("3")) {
-							alumnos.btnMenu.setEnabled(false);
+							alumnos.btnUsuarios.setEnabled(false);
 
 						} else {
-							alumnos.btnMenu.setEnabled(false);
+							alumnos.btnUsuarios.setEnabled(false);
 
 						}
 

@@ -67,7 +67,7 @@ import javax.swing.JToggleButton;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import java.awt.Component;
 
-public class ventana_alumnos_7_10 extends JFrame {
+public class ventana_codigos_alumnos_7_10 extends JFrame {
 
 	private JPanel contentPane;
 	public JButton btnImprimir;
@@ -82,7 +82,7 @@ public class ventana_alumnos_7_10 extends JFrame {
 	public JComboBox cbxGrado;
 	public static String cadena = null;
 	public static String contraseñaEncriptada = null;
-	public JButton btnMenu;
+	public JButton btnUsuarios;
 
 	public static String user;
 	public static String pass;
@@ -102,7 +102,7 @@ public class ventana_alumnos_7_10 extends JFrame {
 				try {
 					usuarios clase = new usuarios();
 					consultas_usuario consulta = new consultas_usuario();
-					ventana_alumnos_7_10 formulario = new ventana_alumnos_7_10();
+					ventana_codigos_alumnos_7_10 formulario = new ventana_codigos_alumnos_7_10();
 					formulario.setVisible(true);
 					formulario.setLocationRelativeTo(null);
 					formulario.txtIdentidad.requestFocusInWindow();
@@ -117,18 +117,23 @@ public class ventana_alumnos_7_10 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventana_alumnos_7_10() {
+	public ventana_codigos_alumnos_7_10() {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 337, 427);
+		setBounds(100, 100, 336, 427);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
-		final ImageIcon ver = new ImageIcon(getClass().getResource("/recursos/ver.png"));
-		final ImageIcon ocultar = new ImageIcon(getClass().getResource("/recursos/ocultar.png"));
-		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
+		final ImageIcon SEPYDEC = new ImageIcon(getClass().getResource("/recursos/7,10.png"));
+		final ImageIcon OCTNOVUNDDUO = new ImageIcon(getClass().getResource("/recursos/8,9,11,12.png"));
+		final ImageIcon LOGOUSER = new ImageIcon(getClass().getResource("/recursos/usuario.png"));
+		final ImageIcon LOGOSALIR = new ImageIcon(getClass().getResource("/recursos/logout.png"));
+		final ImageIcon LOGOPREMATRICULA = new ImageIcon(getClass().getResource("/recursos/usuario.png"));
+		final ImageIcon LOGOCOMPROBARMATRICULA = new ImageIcon(getClass().getResource("/recursos/logout.png"));
+		final ImageIcon LogoPREMA = new ImageIcon(getClass().getResource("/recursos/pre_matricula.png"));
+		final ImageIcon LogoCompr = new ImageIcon(getClass().getResource("/recursos/prueba.png"));
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -159,7 +164,7 @@ public class ventana_alumnos_7_10 extends JFrame {
 		});
 		btnImprimir.setBackground(new Color(46, 139, 87));
 		btnImprimir.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnImprimir.setBounds(45, 364, 183, 23);
+		btnImprimir.setBounds(41, 357, 183, 23);
 		panel.add(btnImprimir);
 
 		JLabel USUARIOS = new JLabel("DATOS DEL COMPROBANTE");
@@ -172,7 +177,7 @@ public class ventana_alumnos_7_10 extends JFrame {
 		JLabel lblUsuario_1 = new JLabel("Usuario:");
 		lblUsuario_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblUsuario_1.setBounds(12, 268, 258, 20);
+		lblUsuario_1.setBounds(8, 261, 258, 20);
 		panel.add(lblUsuario_1);
 
 		txtUsuario = new JTextField();
@@ -181,13 +186,13 @@ public class ventana_alumnos_7_10 extends JFrame {
 		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUsuario.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtUsuario.setColumns(10);
-		txtUsuario.setBounds(45, 290, 183, 20);
+		txtUsuario.setBounds(41, 283, 183, 20);
 		panel.add(txtUsuario);
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblContrasea.setBounds(14, 311, 258, 20);
+		lblContrasea.setBounds(10, 304, 258, 20);
 		panel.add(lblContrasea);
 
 		txtContraseña = new JTextField();
@@ -196,7 +201,7 @@ public class ventana_alumnos_7_10 extends JFrame {
 		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		txtContraseña.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtContraseña.setColumns(10);
-		txtContraseña.setBounds(45, 333, 183, 20);
+		txtContraseña.setBounds(41, 326, 183, 20);
 		panel.add(txtContraseña);
 
 		JButton btnCredenciales = new JButton("GENERAR CREDENCIALES");
@@ -221,7 +226,7 @@ public class ventana_alumnos_7_10 extends JFrame {
 		});
 		btnCredenciales.setBackground(new Color(255, 215, 0));
 		btnCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnCredenciales.setBounds(45, 234, 183, 23);
+		btnCredenciales.setBounds(45, 227, 183, 23);
 		panel.add(btnCredenciales);
 
 		JLabel lblIdentidad = new JLabel("Identidad:");
@@ -257,13 +262,12 @@ public class ventana_alumnos_7_10 extends JFrame {
 		cbxGrado.setModel(new DefaultComboBoxModel(new String[] { "Séptimo", "Decimo" }));
 		cbxGrado.setBounds(91, 196, 93, 20);
 		panel.add(cbxGrado);
-		final ImageIcon logom = new ImageIcon(getClass().getResource("/recursos/usuario.png"));
-		final ImageIcon logom1 = new ImageIcon(getClass().getResource("/recursos/logout.png"));
+
 		
-		JButton button = new JButton();
-		button.setBounds(279, 347, 52, 51);
-		contentPane.add(button);
-		button.addActionListener(new ActionListener() {
+		JButton btnCerrarSesion = new JButton();
+		btnCerrarSesion.setBounds(279, 347, 52, 51);
+		contentPane.add(btnCerrarSesion);
+		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				ventana_login login = new ventana_login();
@@ -272,16 +276,16 @@ public class ventana_alumnos_7_10 extends JFrame {
 	    		principal.setLocationRelativeTo(null);
 			}
 		});
-		button.setBackground(Color.WHITE);
+		btnCerrarSesion.setBackground(new Color(178, 34, 34));
 		final ImageIcon iconom1 = new ImageIcon(
-				logom1.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_DEFAULT));
-		button.setIcon(iconom1);
+				LOGOSALIR.getImage().getScaledInstance(btnCerrarSesion.getWidth(), btnCerrarSesion.getHeight(), Image.SCALE_DEFAULT));
+		btnCerrarSesion.setIcon(iconom1);
 		
-				btnMenu = new JButton();
-				btnMenu.setBounds(279, 285, 52, 51);
-				contentPane.add(btnMenu);
-				btnMenu.setBackground(Color.WHITE);
-				btnMenu.addActionListener(new ActionListener() {
+				btnUsuarios = new JButton();
+				btnUsuarios.setBounds(279, 285, 52, 51);
+				contentPane.add(btnUsuarios);
+				btnUsuarios.setBackground(new Color(30, 144, 255));
+				btnUsuarios.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent arg0) {
 						usuarios clase = new usuarios();
@@ -304,33 +308,46 @@ public class ventana_alumnos_7_10 extends JFrame {
 					}
 				});
 				final ImageIcon iconom = new ImageIcon(
-						logom.getImage().getScaledInstance(btnMenu.getWidth(), btnMenu.getHeight(), Image.SCALE_DEFAULT));
-				btnMenu.setIcon(iconom);
+						LOGOUSER.getImage().getScaledInstance(btnUsuarios.getWidth(), btnUsuarios.getHeight(), Image.SCALE_DEFAULT));
+				btnUsuarios.setIcon(iconom);
 				
-				JButton button_7 = new JButton();
-				button_7.setBackground(Color.WHITE);
-				button_7.setBounds(279, 99, 52, 51);
-				contentPane.add(button_7);
+				JButton btn8_9_11_12 = new JButton();
+				btn8_9_11_12.setBackground(Color.ORANGE);
+				btn8_9_11_12.setBounds(279, 99, 52, 51);
+				contentPane.add(btn8_9_11_12);
+				final ImageIcon icono111= new ImageIcon(
+						OCTNOVUNDDUO.getImage().getScaledInstance(btn8_9_11_12.getWidth(), btn8_9_11_12.getHeight(), Image.SCALE_DEFAULT));
+				btn8_9_11_12.setIcon(icono111);
 				
-				JButton button_2 = new JButton();
-				button_2.setBackground(Color.WHITE);
-				button_2.setBounds(279, 161, 52, 51);
-				contentPane.add(button_2);
+				JButton btnPrematricula = new JButton();
+				btnPrematricula.setBackground(new Color(0, 100, 0));
+				btnPrematricula.setBounds(279, 161, 52, 51);
+				contentPane.add(btnPrematricula);
+				final ImageIcon icono1112= new ImageIcon(
+						LogoPREMA.getImage().getScaledInstance(btnPrematricula.getWidth(), btnPrematricula.getHeight(), Image.SCALE_DEFAULT));
+				btnPrematricula.setIcon(icono1112);
 				
-				JButton button_3 = new JButton();
-				button_3.setBackground(Color.WHITE);
-				button_3.setBounds(279, 223, 52, 51);
-				contentPane.add(button_3);
+				JButton btnComprobarMatricula = new JButton();
+				btnComprobarMatricula.setBackground(new Color(0, 100, 0));
+				btnComprobarMatricula.setBounds(279, 223, 52, 51);
+				contentPane.add(btnComprobarMatricula);
+				final ImageIcon icono1122= new ImageIcon(
+						LogoCompr.getImage().getScaledInstance(btnComprobarMatricula.getWidth(), btnComprobarMatricula.getHeight(), Image.SCALE_DEFAULT));
+				btnComprobarMatricula.setIcon(icono1122);
 				
-				JButton button_4 = new JButton();
-				button_4.setBackground(Color.WHITE);
-				button_4.setBounds(279, 37, 52, 51);
-				contentPane.add(button_4);
+				JButton btn7_10 = new JButton();
+				btn7_10.setBackground(Color.ORANGE);
+				btn7_10.setBounds(279, 37, 52, 51);
+				contentPane.add(btn7_10);
+				final ImageIcon icono11= new ImageIcon(
+						SEPYDEC.getImage().getScaledInstance(btn7_10.getWidth(), btn7_10.getHeight(), Image.SCALE_DEFAULT));
+				btn7_10.setIcon(icono11);
 				
 				JLabel lblMen = new JLabel("Men\u00FA");
+				lblMen.setForeground(new Color(0, 0, 0));
 				lblMen.setHorizontalAlignment(SwingConstants.CENTER);
-				lblMen.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-				lblMen.setBounds(279, 0, 52, 31);
+				lblMen.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
+				lblMen.setBounds(279, 0, 52, 38);
 				contentPane.add(lblMen);
 	
 	}
