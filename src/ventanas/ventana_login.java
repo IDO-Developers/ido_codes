@@ -170,24 +170,26 @@ public class ventana_login extends JFrame {
 								if (txtUsuario.getText().toString().equals(identidad)) {
 
 									if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
-										ventana_principal alumnos = new ventana_principal();
-										alumnos.setLocationRelativeTo(null);
-										alumnos.setVisible(true);
+										ventana_principal principal = new ventana_principal();
+										Timer time = new Timer();
+										time.schedule(principal.tarea, 0, 1000);
+										principal.setLocationRelativeTo(null);
+										principal.setVisible(true);
 										buscarRol();
-										
-										alumnos.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+										principal.lblFechaActual.setText(ventana_principal.getFecha());
+										principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
 										if (rol.equals("1")) {
-											alumnos.btnUsuarios.setEnabled(true);
+											principal.btnUsuarios.setEnabled(true);
 										} else {
 											if (rol.equals("2")) {
-												alumnos.btnUsuarios.setEnabled(false);
+												principal.btnUsuarios.setEnabled(false);
 
 											} else {
 												if (rol.equals("3")) {
-													alumnos.btnUsuarios.setEnabled(false);
+													principal.btnUsuarios.setEnabled(false);
 
 												} else {
-													alumnos.btnUsuarios.setEnabled(false);
+													principal.btnUsuarios.setEnabled(false);
 
 												}
 
@@ -241,21 +243,54 @@ public class ventana_login extends JFrame {
 							if (txtUsuario.getText().toString().equals(identidad)) {
 
 								if (user.equals(identidad) && BCrypt.checkpw(pass, contraseña)) {
-									ventana_principal alumnos = new ventana_principal();
-									alumnos.setLocationRelativeTo(null);
-									alumnos.setVisible(true);
+									ventana_principal principal = new ventana_principal();
+									Timer time = new Timer();
+									time.schedule(principal.tarea, 0, 1000);
+									principal.setLocationRelativeTo(null);
+									principal.setVisible(true);
+									buscarRol();
+									principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+									principal.lblFechaActual.setText(ventana_principal.getFecha());
 									if (rol.equals("1")) {
-										alumnos.btnUsuarios.setEnabled(true);
+										principal.btnUsuarios.setEnabled(true);
+										principal.btn7_10.setEnabled(true);
+										principal.btn8_9_11_12.setEnabled(true);
+										principal.btnComprobarMatricula.setEnabled(true);
+										principal.btnCredencialesRegistradas.setEnabled(true);
+										principal.btnMatricula.setEnabled(true);
+										principal.btnPrematricula.setEnabled(true);
 									} else {
 										if (rol.equals("2")) {
-											alumnos.btnUsuarios.setEnabled(false);
+											principal.btnUsuarios.setEnabled(false);
+											principal.btnUsuarios.setEnabled(true);
+											principal.btn7_10.setEnabled(true);
+											principal.btn8_9_11_12.setEnabled(true);
+											principal.btnComprobarMatricula.setEnabled(true);
+											principal.btnCredencialesRegistradas.setEnabled(true);
+											principal.btnMatricula.setEnabled(true);
+											principal.btnPrematricula.setEnabled(true);
 
 										} else {
 											if (rol.equals("3")) {
-												alumnos.btnUsuarios.setEnabled(false);
+												principal.btnUsuarios.setEnabled(false);
+												principal.btnUsuarios.setEnabled(false);
+												principal.btn7_10.setEnabled(false);
+												principal.btn8_9_11_12.setEnabled(false);
+												principal.btnComprobarMatricula.setEnabled(false);
+												principal.btnCredencialesRegistradas.setEnabled(false);
+												principal.btnMatricula.setEnabled(false);
+												principal.btnPrematricula.setEnabled(false);
+												principal.btnComprobarMatricula.setEnabled(false);
+												principal.btnImprimir.setEnabled(false);
 
 											} else {
-												alumnos.btnUsuarios.setEnabled(false);
+												principal.btnUsuarios.setEnabled(false);
+												principal.btn7_10.setEnabled(true);
+												principal.btn8_9_11_12.setEnabled(true);
+												principal.btnComprobarMatricula.setEnabled(true);
+												principal.btnCredencialesRegistradas.setEnabled(true);
+												principal.btnMatricula.setEnabled(true);
+												principal.btnPrematricula.setEnabled(true);
 
 											}
 
