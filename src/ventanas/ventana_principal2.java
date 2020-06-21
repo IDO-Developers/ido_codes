@@ -75,7 +75,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
 
-public class ventana_principal extends JFrame {
+public class ventana_principal2 extends JFrame {
 
 	public JPanel contentPane;
 	public JPanel panel_1;
@@ -119,7 +119,7 @@ public class ventana_principal extends JFrame {
 			@Override
 			public void run() {
 				try {
-					ventana_principal principal = new ventana_principal();
+					ventana_principal2 principal = new ventana_principal2();
 					principal.setVisible(true);
 					principal.setLocationRelativeTo(null);
 					principal.setVisible(true);
@@ -133,7 +133,7 @@ public class ventana_principal extends JFrame {
 		});
 	}
 
-	public ventana_principal() {
+	public ventana_principal2() {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -311,7 +311,7 @@ public class ventana_principal extends JFrame {
 		panel_2.add(lblAcercaDe);
 
 		btnMatricula = new JButton();
-		btnMatricula.setToolTipText("Matr\u00EDcula IDO");
+		btnMatricula.setToolTipText("Pre-matr\u00EDcula IDO");
 		btnMatricula.setBackground(new Color(0, 100, 0));
 		btnMatricula.setBounds(118, 169, 89, 85);
 		panel_2.add(btnMatricula);
@@ -433,7 +433,7 @@ public class ventana_principal extends JFrame {
 		USUARIOS.setForeground(new Color(46, 139, 87));
 		USUARIOS.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		USUARIOS.setHorizontalAlignment(SwingConstants.CENTER);
-		USUARIOS.setBounds(16, 49, 222, 20);
+		USUARIOS.setBounds(16, 31, 222, 20);
 		panel.add(USUARIOS);
 
 		JLabel lblUsuario_1 = new JLabel("Usuario:");
@@ -494,18 +494,18 @@ public class ventana_principal extends JFrame {
 		JLabel lblIdentidad = new JLabel("Identidad:");
 		lblIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIdentidad.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblIdentidad.setBounds(6, 162, 256, 20);
+		lblIdentidad.setBounds(6, 160, 256, 20);
 		panel.add(lblIdentidad);
 		txtIdentidad = new JFormattedTextField(identidad);
 		txtIdentidad.setForeground(new Color(0, 0, 128));
 		txtIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
 		txtIdentidad.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtIdentidad.setColumns(10);
-		txtIdentidad.setBounds(37, 183, 185, 20);
+		txtIdentidad.setBounds(37, 181, 185, 20);
 		panel.add(txtIdentidad);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(61, 49, 139, 135);
+		lblNewLabel.setBounds(58, 47, 139, 135);
 		panel.add(lblNewLabel);
 		final ImageIcon icono = new ImageIcon(logo.getImage().getScaledInstance(lblNewLabel.getWidth(),
 				lblNewLabel.getHeight(), Image.SCALE_DEFAULT));
@@ -521,7 +521,7 @@ public class ventana_principal extends JFrame {
 		label_6.setHorizontalAlignment(SwingConstants.CENTER);
 		label_6.setForeground(Color.BLACK);
 		label_6.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label_6.setBounds(16, 31, 233, 20);
+		label_6.setBounds(10, 47, 233, 20);
 		panel.add(label_6);
 
 		JLabel lblGeneradorDeCredenciales = new JLabel("GENERADOR DE CREDENCIALES");

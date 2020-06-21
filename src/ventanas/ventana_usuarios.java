@@ -291,6 +291,7 @@ public class ventana_usuarios extends JFrame {
 				ventana_principal alumnos = new ventana_principal();
 				alumnos.setLocationRelativeTo(null);
 				alumnos.setVisible(true);
+				alumnos.lblFechaActual.setText(ventana_principal.getFecha());
 				if (ventana_login.rol.equals("1")) {
 					alumnos.btnUsuarios.setEnabled(true);
 				} else {

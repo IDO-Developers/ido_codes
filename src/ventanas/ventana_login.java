@@ -55,7 +55,6 @@ public class ventana_login extends JFrame {
 	public static String identidad = null;
 	public static String contraseña = null;
 	private JLabel lblNewLabel;
-	private JLabel lblSistemaDeGeneracion;
 	private JLabel lblParaLaMatricula;
 
 	/**
@@ -178,6 +177,7 @@ public class ventana_login extends JFrame {
 										buscarRol();
 										principal.lblFechaActual.setText(ventana_principal.getFecha());
 										principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+										principal.btn7_10.setEnabled(false);
 										if (rol.equals("1")) {
 											principal.btnUsuarios.setEnabled(true);
 										} else {
@@ -249,8 +249,9 @@ public class ventana_login extends JFrame {
 									principal.setLocationRelativeTo(null);
 									principal.setVisible(true);
 									buscarRol();
-									principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
 									principal.lblFechaActual.setText(ventana_principal.getFecha());
+									principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+									principal.btn7_10.setEnabled(false);
 									if (rol.equals("1")) {
 										principal.btnUsuarios.setEnabled(true);
 										principal.btn7_10.setEnabled(true);
@@ -326,18 +327,11 @@ public class ventana_login extends JFrame {
 				lblNewLabel.getHeight(), Image.SCALE_DEFAULT));
 		lblNewLabel.setIcon(icono11);
 
-		lblSistemaDeGeneracion = new JLabel("SISTEMA DE GENERACION DE CREDENCIALES");
-		lblSistemaDeGeneracion.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSistemaDeGeneracion.setForeground(Color.WHITE);
-		lblSistemaDeGeneracion.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblSistemaDeGeneracion.setBounds(10, 11, 301, 14);
-		panel.add(lblSistemaDeGeneracion);
-
-		lblParaLaMatricula = new JLabel("PARA LA MATRICULA IDO");
+		lblParaLaMatricula = new JLabel("SISTEMA ADMINISTRATIVO IDO 2020");
 		lblParaLaMatricula.setHorizontalAlignment(SwingConstants.CENTER);
 		lblParaLaMatricula.setForeground(Color.WHITE);
-		lblParaLaMatricula.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblParaLaMatricula.setBounds(10, 23, 301, 14);
+		lblParaLaMatricula.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
+		lblParaLaMatricula.setBounds(10, 11, 301, 26);
 		panel.add(lblParaLaMatricula);
 
 		JLabel lblFoto = new JLabel("");

@@ -9,10 +9,10 @@ import java.util.logging.Logger;
 public class conexion {
 
 	private final String base = "MatriculaIDO2020";
-	private final String user = "Mat";
-	private final String password = "Ido2018";
-	public static String urlGlobal = "192.168.100.120";
-	private final String url = "jdbc:sqlserver://192.168.100.120:1433;databaseName=MatriculaIDO2020;";
+	private final String user = "Emmanuel";
+	private final String password = "Emmandiaz11.";
+	public static String urlGlobal = "localhost:1433";
+	private final String url = "jdbc:sqlserver://"+urlGlobal+";databaseName="+base+"";
 	private Connection con = null;
 
 	public Connection getConexion() {
