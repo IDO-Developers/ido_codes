@@ -79,17 +79,11 @@ public class ventana_principal2 extends JFrame {
 
 	public JPanel contentPane;
 	public JPanel panel_1;
-	public JPanel panel;
-	public JButton btnImprimir;
 	public TableRowSorter<TableModel> trsfiltroCodigo;
 	String filtroCodigo;
 	public static DefaultComboBoxModel modelo;
 	public static String id_rol;
 	public static String identidadRepetida;
-	public static JTextField txtUsuario;
-	public static JTextField txtContraseña;
-	public static JFormattedTextField txtIdentidad;
-	public JComboBox cbxGrado;
 	public static String cadena = null;
 	public static String contraseñaEncriptada = null;
 	public JButton btnUsuarios;
@@ -100,6 +94,7 @@ public class ventana_principal2 extends JFrame {
 	public JButton btnMatricula;
 	public JButton btn8_9_11_12;
 	public JButton btn7_10;
+	public JButton btnImprimir2;
 
 	public static String user;
 	public static String pass;
@@ -204,8 +199,7 @@ public class ventana_principal2 extends JFrame {
 		panel_2.add(btn7_10);
 		btn7_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(true);
-				panel_1.setVisible(false);
+				
 			}
 		});
 		btn7_10.setBackground(Color.ORANGE);
@@ -219,8 +213,7 @@ public class ventana_principal2 extends JFrame {
 		panel_2.add(btn8_9_11_12);
 		btn8_9_11_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(false);
-				panel_1.setVisible(true);
+				
 			}
 		});
 		btn8_9_11_12.setBackground(Color.ORANGE);
@@ -398,139 +391,6 @@ public class ventana_principal2 extends JFrame {
 				btnCredencialesRegistradas.getWidth(), btnCredencialesRegistradas.getHeight(), Image.SCALE_DEFAULT));
 		btnCredencialesRegistradas.setIcon(iconoxx);
 
-		panel = new JPanel();
-		panel.setBounds(6, 11, 253, 419);
-		contentPane.add(panel);
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setLayout(null);
-
-		JLabel lblUsuario = new JLabel("Grado:");
-		lblUsuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario.setBounds(79, 202, 112, 20);
-		panel.add(lblUsuario);
-
-		btnImprimir = new JButton("IMPRIMIR");
-		btnImprimir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ventana_comprobante comprobante = new ventana_comprobante();
-				ventana_comprobante.lblIdentidad.setText(user);
-				ventana_comprobante.lblCodigo.setText(cadena);
-				ventana_comprobante.getHora();
-				ventana_comprobante.lblFecha.setText(ventana_comprobante.getFecha());
-				comprobante.setVisible(true);
-				comprobante.setLocationRelativeTo(null);
-
-			}
-		});
-		btnImprimir.setBackground(new Color(46, 139, 87));
-		btnImprimir.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnImprimir.setBounds(37, 373, 185, 23);
-		panel.add(btnImprimir);
-
-		JLabel USUARIOS = new JLabel("7\u00B0 y 10\u00B0");
-		USUARIOS.setForeground(new Color(46, 139, 87));
-		USUARIOS.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		USUARIOS.setHorizontalAlignment(SwingConstants.CENTER);
-		USUARIOS.setBounds(16, 31, 222, 20);
-		panel.add(USUARIOS);
-
-		JLabel lblUsuario_1 = new JLabel("Usuario:");
-		lblUsuario_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblUsuario_1.setBounds(4, 277, 258, 20);
-		panel.add(lblUsuario_1);
-
-		txtUsuario = new JTextField();
-		txtUsuario.setForeground(new Color(0, 0, 128));
-		txtUsuario.setEditable(false);
-		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		txtUsuario.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtUsuario.setColumns(10);
-		txtUsuario.setBounds(37, 299, 185, 20);
-		panel.add(txtUsuario);
-
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblContrasea.setBounds(6, 320, 258, 20);
-		panel.add(lblContrasea);
-
-		txtContraseña = new JTextField();
-		txtContraseña.setForeground(new Color(0, 0, 128));
-		txtContraseña.setEditable(false);
-		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
-		txtContraseña.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtContraseña.setColumns(10);
-		txtContraseña.setBounds(37, 342, 185, 20);
-		panel.add(txtContraseña);
-
-		JButton btnCredenciales = new JButton("GENERAR CREDENCIALES");
-		btnCredenciales.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (txtIdentidad.getText().toString().equals("")) {
-					JOptionPane.showMessageDialog(null, "Por favor escriba la identidad del alumno");
-				} else {
-					preguntarPorCredenciales();
-					preguntarPorGrupo();
-					preguntarPorRol();
-					if (USUARIO_users == null && USUARIO_Prematriculas == null) {
-						Registrar_Usuario_Contraseña_Identidad_Grupo();
-					} else {
-						Actualizar_Usuario_Contraseña_Identidad_Grupo();
-					}
-
-				}
-				btnImprimir.setVisible(true);
-			}
-
-		});
-		btnCredenciales.setBackground(new Color(255, 215, 0));
-		btnCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnCredenciales.setBounds(37, 254, 185, 23);
-		panel.add(btnCredenciales);
-
-		JLabel lblIdentidad = new JLabel("Identidad:");
-		lblIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIdentidad.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblIdentidad.setBounds(6, 160, 256, 20);
-		panel.add(lblIdentidad);
-		txtIdentidad = new JFormattedTextField(identidad);
-		txtIdentidad.setForeground(new Color(0, 0, 128));
-		txtIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
-		txtIdentidad.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtIdentidad.setColumns(10);
-		txtIdentidad.setBounds(37, 181, 185, 20);
-		panel.add(txtIdentidad);
-
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(58, 47, 139, 135);
-		panel.add(lblNewLabel);
-		final ImageIcon icono = new ImageIcon(logo.getImage().getScaledInstance(lblNewLabel.getWidth(),
-				lblNewLabel.getHeight(), Image.SCALE_DEFAULT));
-		lblNewLabel.setIcon(icono);
-
-		cbxGrado = new JComboBox();
-		cbxGrado.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		cbxGrado.setModel(new DefaultComboBoxModel(new String[] { "Séptimo", "Decimo" }));
-		cbxGrado.setBounds(37, 223, 185, 20);
-		panel.add(cbxGrado);
-
-		JLabel label_6 = new JLabel("DATOS DEL COMPROBANTE");
-		label_6.setHorizontalAlignment(SwingConstants.CENTER);
-		label_6.setForeground(Color.BLACK);
-		label_6.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label_6.setBounds(10, 47, 233, 20);
-		panel.add(label_6);
-
-		JLabel lblGeneradorDeCredenciales = new JLabel("GENERADOR DE CREDENCIALES");
-		lblGeneradorDeCredenciales.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGeneradorDeCredenciales.setForeground(Color.BLACK);
-		lblGeneradorDeCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblGeneradorDeCredenciales.setBounds(16, 11, 222, 20);
-		panel.add(lblGeneradorDeCredenciales);
-
 		panel_1 = new JPanel();
 		panel_1.setBounds(6, 11, 253, 419);
 		contentPane.add(panel_1);
@@ -544,7 +404,7 @@ public class ventana_principal2 extends JFrame {
 		label.setBounds(83, 202, 112, 20);
 		panel_1.add(label);
 
-		JButton btnImprimir2 = new JButton("IMPRIMIR");
+		btnImprimir2 = new JButton("IMPRIMIR");
 		btnImprimir2.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		btnImprimir2.setBackground(new Color(46, 139, 87));
 		btnImprimir2.setBounds(38, 373, 188, 23);

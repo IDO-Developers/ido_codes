@@ -78,7 +78,6 @@ import javax.swing.JTextPane;
 public class ventana_principal extends JFrame {
 
 	public JPanel contentPane;
-	public JPanel panel_1;
 	public JPanel panel;
 	public JButton btnImprimir;
 	public TableRowSorter<TableModel> trsfiltroCodigo;
@@ -94,7 +93,6 @@ public class ventana_principal extends JFrame {
 	public static String contraseñaEncriptada = null;
 	public JButton btnUsuarios;
 	public JButton btnComprobarMatricula;
-	public JFormattedTextField txtIdentidad2;
 	public JButton btnCredencialesRegistradas;
 	public JButton btnPrematricula;
 	public JButton btnMatricula;
@@ -111,8 +109,12 @@ public class ventana_principal extends JFrame {
 	public static String USUARIO_Prematriculas = null;
 	public static String ID_Prematriculas = null;
 	public static String ROL = null;
-	private JTextField txtUsuario2;
-	private JTextField txtContraseña2;
+	
+	public static String rol = null;
+	public static String NombreRol = null;
+	public static String nombre = null;
+	public static String identidad = null;
+	public static String contraseña = null;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -204,8 +206,62 @@ public class ventana_principal extends JFrame {
 		panel_2.add(btn7_10);
 		btn7_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(true);
-				panel_1.setVisible(false);
+				ventana_principal principal = new ventana_principal();
+				Timer time = new Timer();
+				time.schedule(principal.tarea, 0, 1000);
+				principal.setLocationRelativeTo(null);
+				principal.setVisible(true);
+				buscarRol();
+				principal.lblFechaActual.setText(ventana_principal.getFecha());
+				principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+				principal.btn7_10.setEnabled(false);
+				if (rol.equals("1")) {
+					principal.btnUsuarios.setEnabled(true);
+					principal.btn7_10.setEnabled(false);
+					principal.btn8_9_11_12.setEnabled(true);
+					principal.btnComprobarMatricula.setEnabled(true);
+					principal.btnCredencialesRegistradas.setEnabled(true);
+					principal.btnMatricula.setEnabled(true);
+					principal.btnPrematricula.setEnabled(true);
+				} else {
+					if (rol.equals("2")) {
+						principal.btnUsuarios.setEnabled(false);
+						principal.btnUsuarios.setEnabled(true);
+						principal.btn7_10.setEnabled(true);
+						principal.btn8_9_11_12.setEnabled(true);
+						principal.btnComprobarMatricula.setEnabled(true);
+						principal.btnCredencialesRegistradas.setEnabled(true);
+						principal.btnMatricula.setEnabled(true);
+						principal.btnPrematricula.setEnabled(true);
+
+					} else {
+						if (rol.equals("3")) {
+							principal.btnUsuarios.setEnabled(false);
+							principal.btnUsuarios.setEnabled(false);
+							principal.btn7_10.setEnabled(false);
+							principal.btn8_9_11_12.setEnabled(false);
+							principal.btnComprobarMatricula.setEnabled(false);
+							principal.btnCredencialesRegistradas.setEnabled(false);
+							principal.btnMatricula.setEnabled(false);
+							principal.btnPrematricula.setEnabled(false);
+							principal.btnComprobarMatricula.setEnabled(false);
+							principal.btnImprimir.setEnabled(false);
+
+						} else {
+							principal.btnUsuarios.setEnabled(false);
+							principal.btn7_10.setEnabled(true);
+							principal.btn8_9_11_12.setEnabled(true);
+							principal.btnComprobarMatricula.setEnabled(true);
+							principal.btnCredencialesRegistradas.setEnabled(true);
+							principal.btnMatricula.setEnabled(true);
+							principal.btnPrematricula.setEnabled(true);
+
+						}
+
+					}
+
+				}
+				dispose();
 			}
 		});
 		btn7_10.setBackground(Color.ORANGE);
@@ -219,9 +275,65 @@ public class ventana_principal extends JFrame {
 		panel_2.add(btn8_9_11_12);
 		btn8_9_11_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(false);
-				panel_1.setVisible(true);
+				ventana_principal2 principal2 = new ventana_principal2();
+				Timer time = new Timer();
+				time.schedule(principal2.tarea, 0, 1000);
+				principal2.setLocationRelativeTo(null);
+				principal2.setVisible(true);
+				buscarRol();
+				principal2.lblFechaActual.setText(ventana_principal.getFecha());
+				principal2.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+				principal2.btn7_10.setEnabled(false);
+				if (rol.equals("1")) {
+					principal2.btnUsuarios.setEnabled(true);
+					principal2.btn7_10.setEnabled(true);
+					principal2.btn8_9_11_12.setEnabled(false);
+					principal2.btnComprobarMatricula.setEnabled(true);
+					principal2.btnCredencialesRegistradas.setEnabled(true);
+					principal2.btnMatricula.setEnabled(true);
+					principal2.btnPrematricula.setEnabled(true);
+				} else {
+					if (rol.equals("2")) {
+						principal2.btnUsuarios.setEnabled(false);
+						principal2.btnUsuarios.setEnabled(true);
+						principal2.btn7_10.setEnabled(true);
+						principal2.btn8_9_11_12.setEnabled(true);
+						principal2.btnComprobarMatricula.setEnabled(true);
+						principal2.btnCredencialesRegistradas.setEnabled(true);
+						principal2.btnMatricula.setEnabled(true);
+						principal2.btnPrematricula.setEnabled(true);
+
+					} else {
+						if (rol.equals("3")) {
+							principal2.btnUsuarios.setEnabled(false);
+							principal2.btnUsuarios.setEnabled(false);
+							principal2.btn7_10.setEnabled(false);
+							principal2.btn8_9_11_12.setEnabled(false);
+							principal2.btnComprobarMatricula.setEnabled(false);
+							principal2.btnCredencialesRegistradas.setEnabled(false);
+							principal2.btnMatricula.setEnabled(false);
+							principal2.btnPrematricula.setEnabled(false);
+							principal2.btnComprobarMatricula.setEnabled(false);
+							principal2.btnImprimir2.setEnabled(false);
+
+						} else {
+							principal2.btnUsuarios.setEnabled(false);
+							principal2.btn7_10.setEnabled(true);
+							principal2.btn8_9_11_12.setEnabled(true);
+							principal2.btnComprobarMatricula.setEnabled(true);
+							principal2.btnCredencialesRegistradas.setEnabled(true);
+							principal2.btnMatricula.setEnabled(true);
+							principal2.btnPrematricula.setEnabled(true);
+
+						}
+
+					}
+
+				}
+				dispose();
 			}
+			
+			
 		});
 		btn8_9_11_12.setBackground(Color.ORANGE);
 		final ImageIcon icono111 = new ImageIcon(OCTNOVUNDDUO.getImage().getScaledInstance(btn8_9_11_12.getWidth(),
@@ -531,109 +643,6 @@ public class ventana_principal extends JFrame {
 		lblGeneradorDeCredenciales.setBounds(16, 11, 222, 20);
 		panel.add(lblGeneradorDeCredenciales);
 
-		panel_1 = new JPanel();
-		panel_1.setBounds(6, 11, 253, 419);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBackground(Color.WHITE);
-
-		JLabel label = new JLabel("Grado:");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label.setBounds(83, 202, 112, 20);
-		panel_1.add(label);
-
-		JButton btnImprimir2 = new JButton("IMPRIMIR");
-		btnImprimir2.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnImprimir2.setBackground(new Color(46, 139, 87));
-		btnImprimir2.setBounds(38, 373, 188, 23);
-		panel_1.add(btnImprimir2);
-
-		JLabel label_1 = new JLabel("8\u00B0,9\u00B0,11\u00B0,12\u00B0");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setForeground(new Color(46, 139, 87));
-		label_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label_1.setBounds(20, 50, 239, 20);
-		panel_1.add(label_1);
-
-		JLabel label_2 = new JLabel("Usuario:");
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label_2.setBounds(8, 277, 258, 20);
-		panel_1.add(label_2);
-
-		txtUsuario2 = new JTextField();
-		txtUsuario2.setHorizontalAlignment(SwingConstants.CENTER);
-		txtUsuario2.setForeground(new Color(0, 0, 128));
-		txtUsuario2.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtUsuario2.setEditable(false);
-		txtUsuario2.setColumns(10);
-		txtUsuario2.setBounds(38, 299, 188, 20);
-		panel_1.add(txtUsuario2);
-
-		JLabel label_3 = new JLabel("Contrase\u00F1a:");
-		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label_3.setBounds(10, 320, 258, 20);
-		panel_1.add(label_3);
-
-		txtContraseña2 = new JTextField();
-		txtContraseña2.setHorizontalAlignment(SwingConstants.CENTER);
-		txtContraseña2.setForeground(new Color(0, 0, 128));
-		txtContraseña2.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtContraseña2.setEditable(false);
-		txtContraseña2.setColumns(10);
-		txtContraseña2.setBounds(38, 342, 188, 20);
-		panel_1.add(txtContraseña2);
-
-		JButton btnGenerarCredenciales2 = new JButton("GENERAR CREDENCIALES");
-		btnGenerarCredenciales2.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnGenerarCredenciales2.setBackground(new Color(255, 215, 0));
-		btnGenerarCredenciales2.setBounds(38, 254, 188, 23);
-		panel_1.add(btnGenerarCredenciales2);
-
-		JLabel label_4 = new JLabel("Identidad:");
-		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		label_4.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label_4.setBounds(10, 160, 256, 20);
-		panel_1.add(label_4);
-		txtIdentidad2 = new JFormattedTextField(identidad1);
-		txtIdentidad2.setHorizontalAlignment(SwingConstants.CENTER);
-		txtIdentidad2.setForeground(new Color(0, 0, 128));
-		txtIdentidad2.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtIdentidad2.setColumns(10);
-		txtIdentidad2.setBounds(38, 181, 188, 20);
-		panel_1.add(txtIdentidad2);
-
-		JLabel label_5 = new JLabel("");
-		label_5.setBounds(68, 50, 139, 135);
-		panel_1.add(label_5);
-		final ImageIcon icono22 = new ImageIcon(
-				logo22.getImage().getScaledInstance(label_5.getWidth(), label_5.getHeight(), Image.SCALE_DEFAULT));
-		label_5.setIcon(icono22);
-
-		JComboBox cbxGrado2 = new JComboBox();
-		cbxGrado2.setModel(
-				new DefaultComboBoxModel(new String[] { "Octavo", "Noveno", "Und\u00E9cimo", "Duod\u00E9cimo" }));
-		cbxGrado2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		cbxGrado2.setBounds(38, 223, 188, 20);
-		panel_1.add(cbxGrado2);
-
-		JLabel label_7 = new JLabel("DATOS DEL COMPROBANTE");
-		label_7.setHorizontalAlignment(SwingConstants.CENTER);
-		label_7.setForeground(Color.BLACK);
-		label_7.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		label_7.setBounds(10, 31, 249, 20);
-		panel_1.add(label_7);
-
-		JLabel lblGeneradorDeCredenciales_1 = new JLabel("GENERADOR DE CREDENCIALES");
-		lblGeneradorDeCredenciales_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGeneradorDeCredenciales_1.setForeground(Color.BLACK);
-		lblGeneradorDeCredenciales_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblGeneradorDeCredenciales_1.setBounds(10, 11, 239, 20);
-		panel_1.add(lblGeneradorDeCredenciales_1);
-
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(6, 432, 253, 32);
 		contentPane.add(panel_3);
@@ -855,5 +864,38 @@ public class ventana_principal extends JFrame {
 		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea realmente salir del sistema?", "Salir del sistema",
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
 			System.exit(0);
+	}
+	
+	public void buscarUsuario() {
+		conexion conex = new conexion();
+		try {
+			Statement estatuto = conex.getConexion().createStatement();
+			ResultSet rs = estatuto.executeQuery(
+					"SELECT * FROM dbo.users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
+			while (rs.next()) {
+				rol = rs.getString("Id_Rol");
+				nombre = rs.getString("name");
+				identidad = rs.getString("RNE_Empleado");
+				contraseña = rs.getString("password");
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(usuarios.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(null, ex);
+		}
+	}
+	
+	public void buscarRol() {
+		conexion conex = new conexion();
+		try {
+			Statement estatuto = conex.getConexion().createStatement();
+			ResultSet rs = estatuto.executeQuery(
+					"SELECT * FROM dbo.Roles WHERE Id_Rol='" + rol + "'");
+			while (rs.next()) {
+				NombreRol = rs.getString("Nombre_Rol");
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(usuarios.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(null, ex);
+		}
 	}
 }
