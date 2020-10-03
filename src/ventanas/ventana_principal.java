@@ -314,7 +314,7 @@ public class ventana_principal extends JFrame {
 							principal2.btnMatricula.setEnabled(false);
 							principal2.btnPrematricula.setEnabled(false);
 							principal2.btnComprobarMatricula.setEnabled(false);
-							principal2.btnImprimir2.setEnabled(false);
+							principal2.btnImprimir.setEnabled(false);
 
 						} else {
 							principal2.btnUsuarios.setEnabled(false);
@@ -527,7 +527,7 @@ public class ventana_principal extends JFrame {
 		btnImprimir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventana_comprobante comprobante = new ventana_comprobante();
-				ventana_comprobante.lblIdentidad.setText(user);
+				ventana_comprobante.lblIdentidad.setText(txtUsuario.getText().toString());;
 				ventana_comprobante.lblCodigo.setText(cadena);
 				ventana_comprobante.getHora();
 				ventana_comprobante.lblFecha.setText(ventana_comprobante.getFecha());

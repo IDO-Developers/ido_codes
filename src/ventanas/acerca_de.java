@@ -56,7 +56,7 @@ public class acerca_de extends JFrame {
 		lblAcercaDe.setBounds(0, 0, 371, 28);
 		contentPane.add(lblAcercaDe);
 
-		JLabel lblSistemaAdministrativoBy = new JLabel("Generador de credenciales IDO");
+		JLabel lblSistemaAdministrativoBy = new JLabel("Generador de pines IDO");
 		lblSistemaAdministrativoBy.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSistemaAdministrativoBy.setFont(new Font("Segoe UI Black", Font.PLAIN, 15));
 		lblSistemaAdministrativoBy.setBounds(10, 22, 345, 32);

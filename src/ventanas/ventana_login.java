@@ -79,7 +79,7 @@ public class ventana_login extends JFrame {
 	public ventana_login() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 433, 350);
+		setBounds(100, 100, 433, 391);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,7 +87,7 @@ public class ventana_login extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/recursos/logo_ido.png")));
 
 		lblAlerta = new JLabel("");
-		lblAlerta.setBounds(53, 285, 321, 26);
+		lblAlerta.setBounds(53, 325, 321, 26);
 		contentPane.add(lblAlerta);
 		lblAlerta.setForeground(Color.WHITE);
 		lblAlerta.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
@@ -95,7 +95,7 @@ public class ventana_login extends JFrame {
 		lblAlerta.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(53, 11, 321, 270);
+		panel.setBounds(53, 11, 321, 303);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		panel.setBackground(new Color(0, 0, 0, 100));
@@ -117,7 +117,7 @@ public class ventana_login extends JFrame {
 		txtUsuario.setForeground(new Color(0, 0, 0));
 		txtUsuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		txtUsuario.setBounds(91, 164, 150, 20);
+		txtUsuario.setBounds(91, 180, 150, 20);
 		panel.add(txtUsuario);
 		txtUsuario.setColumns(10);
 
@@ -125,7 +125,7 @@ public class ventana_login extends JFrame {
 		lblContrasea.setForeground(Color.WHITE);
 		lblContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContrasea.setBounds(91, 184, 150, 14);
+		lblContrasea.setBounds(91, 201, 150, 14);
 		panel.add(lblContrasea);
 
 		txtContraseña = new JPasswordField();
@@ -133,7 +133,7 @@ public class ventana_login extends JFrame {
 		txtContraseña.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		txtContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		txtContraseña.setColumns(10);
-		txtContraseña.setBounds(91, 199, 150, 20);
+		txtContraseña.setBounds(91, 230, 150, 20);
 		panel.add(txtContraseña);
 
 		txtContraseña.addKeyListener(new KeyListener() {
@@ -316,7 +316,7 @@ public class ventana_login extends JFrame {
 			}
 
 		});
-		btnIngresar.setBounds(91, 230, 150, 23);
+		btnIngresar.setBounds(91, 261, 150, 23);
 		panel.add(btnIngresar);
 
 		lblNewLabel = new JLabel("");
@@ -327,15 +327,29 @@ public class ventana_login extends JFrame {
 				lblNewLabel.getHeight(), Image.SCALE_DEFAULT));
 		lblNewLabel.setIcon(icono11);
 
-		lblParaLaMatricula = new JLabel("SISTEMA ADMINISTRATIVO IDO 2020");
+		lblParaLaMatricula = new JLabel("SISTEMA GENERADOR DE PINES IDO 2020");
 		lblParaLaMatricula.setHorizontalAlignment(SwingConstants.CENTER);
 		lblParaLaMatricula.setForeground(Color.WHITE);
 		lblParaLaMatricula.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 		lblParaLaMatricula.setBounds(10, 11, 301, 26);
 		panel.add(lblParaLaMatricula);
+		
+		JLabel lblI = new JLabel("Ingrese su identidad:");
+		lblI.setHorizontalAlignment(SwingConstants.CENTER);
+		lblI.setForeground(Color.WHITE);
+		lblI.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblI.setBounds(91, 163, 150, 14);
+		panel.add(lblI);
+		
+		JLabel lblIngreseSuContrasea = new JLabel("Ingrese su contrase\u00F1a:");
+		lblIngreseSuContrasea.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngreseSuContrasea.setForeground(Color.WHITE);
+		lblIngreseSuContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblIngreseSuContrasea.setBounds(91, 213, 150, 14);
+		panel.add(lblIngreseSuContrasea);
 
 		JLabel lblFoto = new JLabel("");
-		lblFoto.setBounds(-15, 0, 455, 331);
+		lblFoto.setBounds(-44, 0, 611, 374);
 		contentPane.add(lblFoto);
 		final ImageIcon logo = new ImageIcon(getClass().getResource("/recursos/ido_foto.jpg"));
 		final ImageIcon icono = new ImageIcon(

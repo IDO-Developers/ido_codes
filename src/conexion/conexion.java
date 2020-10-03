@@ -1,35 +1,27 @@
 package conexion;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.sql.*;
+import javax.swing.*;
 public class conexion {
-
-	private final String base = "MatriculaIDO2020";
-	private final String user = "Emmanuel";
-	private final String password = "Emmandiaz11.";
-	public static String urlGlobal = "localhost:1433";
-	private final String url = "jdbc:sqlserver://"+urlGlobal+";databaseName="+base+"";
-	private Connection con = null;
-
-	public Connection getConexion() {
-		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection(this.url, this.user, this.password);
-
-		} catch (SQLException e) {
-			System.err.println(e);
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
-		}
-		return con;
-	}
-
-	public void desconectar() {
-		con = null;
-	}
-
-}
+Connection conect = null;
+   public Connection conexion()
+    {
+      try {
+             
+           //Cargamos el Driver MySQL
+           Class.forName("com.mysql.jdbc.Driver");
+           conect = DriverManager.getConnection("jdbc:mysql://-NOMBRESERVIDOR-/-NOMBRE BD-", "-USERNAME-", "-PASSWORD-");
+           //JOptionPane.showMessageDialog(null, "conectado");
+           //Cargamos el Driver Access
+           //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+           //Conectar en red base 
+           //String strConect = "jdbc:odbc:Driver=Microsoft Access Driver (*.mdb);DBQ=//servidor/bd_cw/cw.mdb";
+           //Conectar Localmente
+           //String strConect = "jdbc:odbc:Driver=Microsoft Access Driver (*.mdb);DBQ=D:/cwnetbeans/cw.mdb";
+          //conect = DriverManager.getConnection(strConect,"",""); 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error "+e);
+        }
+        return conect;
+     
+}}
