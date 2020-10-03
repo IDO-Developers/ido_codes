@@ -1,27 +1,39 @@
 package conexion;
 
-import java.sql.*;
-import javax.swing.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+
 public class conexion {
-Connection conect = null;
-   public Connection conexion()
-    {
-      try {
-             
-           //Cargamos el Driver MySQL
-           Class.forName("com.mysql.jdbc.Driver");
-           conect = DriverManager.getConnection("jdbc:mysql://-NOMBRESERVIDOR-/-NOMBRE BD-", "-USERNAME-", "-PASSWORD-");
-           //JOptionPane.showMessageDialog(null, "conectado");
-           //Cargamos el Driver Access
-           //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-           //Conectar en red base 
-           //String strConect = "jdbc:odbc:Driver=Microsoft Access Driver (*.mdb);DBQ=//servidor/bd_cw/cw.mdb";
-           //Conectar Localmente
-           //String strConect = "jdbc:odbc:Driver=Microsoft Access Driver (*.mdb);DBQ=D:/cwnetbeans/cw.mdb";
-          //conect = DriverManager.getConnection(strConect,"",""); 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error "+e);
-        }
-        return conect;
-     
-}}
+
+	private final String base = "u102794322_matricula_ido";
+	private final String user = "u102794322_root";
+	private final String password = "Adminido@20";
+	public static String urlGlobal = "sql266.main-hosting.eu:3306";
+	private final String url = "jdbc:mysql://" + urlGlobal + "/" + base;
+	private Connection con = null;
+
+	public Connection getConexion() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(this.url, this.user, this.password);
+
+		} catch (SQLException e) {
+			System.err.println(e);
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return con;
+	}
+
+	public void desconectar() {
+		con = null;
+	}
+
+}

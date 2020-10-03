@@ -363,7 +363,7 @@ public class ventana_login extends JFrame {
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
 			ResultSet rs = estatuto.executeQuery(
-					"SELECT * FROM dbo.users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
+					"SELECT * FROM users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
 			while (rs.next()) {
 				rol = rs.getString("Id_Rol");
 				nombre = rs.getString("name");
@@ -381,7 +381,7 @@ public class ventana_login extends JFrame {
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
 			ResultSet rs = estatuto.executeQuery(
-					"SELECT * FROM dbo.Roles WHERE Id_Rol='" + rol + "'");
+					"SELECT * FROM Roles WHERE Id_Rol='" + rol + "'");
 			while (rs.next()) {
 				NombreRol = rs.getString("Nombre_Rol");
 			}

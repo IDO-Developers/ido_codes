@@ -9,7 +9,7 @@
 	<classpathentry kind="lib" path="C:/Users/Emmanuel/Documents/GitHub/ido_codes/librerias/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Emmanuel/Documents/GitHub/ido_codes/librerias/JTattoo-1.6.13.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Emmanuel/Documents/GitHub/ido_codes/librerias/liquidlnf.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Emmanuel/Documents/GitHub/ido_codes/librerias/mysql-connector-java-8.0.15.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Emmanuel/Documents/GitHub/ido_codes/librerias/spring-security-crypto-3.1.2.release.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Emmanuel/Documents/GitHub/ido_codes/librerias/sqljdbc42.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

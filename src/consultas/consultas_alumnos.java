@@ -19,7 +19,7 @@ public class consultas_alumnos extends conexion {
 	public boolean insertarUserYpass(alumnos usuario) {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
-		String sql = "INSERT INTO dbo.users (RNE_Alumno, password, Id_Rol) VALUES(?,?,?)";
+		String sql = "INSERT INTO users (RNE_Alumno, password, Id_Rol) VALUES(?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, usuario.getRNE_Alumno());
@@ -43,7 +43,7 @@ public class consultas_alumnos extends conexion {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
 
-		String sql = "UPDATE dbo.users SET RNE_Alumno=?, password=?, Id_Rol=? WHERE id=? ";
+		String sql = "UPDATE users SET RNE_Alumno=?, password=?, Id_Rol=? WHERE id=? ";
 
 		try {
 			ps = con.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class consultas_alumnos extends conexion {
 	public boolean insertarRNEyGrupo(alumnos usuario) {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
-		String sql = "INSERT INTO dbo.Prematriculas (RNE_Alumno, Id_Grupo) VALUES(?,?)";
+		String sql = "INSERT INTO Prematriculas (RNE_Alumno, Id_Grupo) VALUES(?,?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, usuario.getRNE_Alumno());
@@ -93,7 +93,7 @@ public class consultas_alumnos extends conexion {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
 
-		String sql = "UPDATE dbo.Prematriculas SET RNE_Alumno=?, Id_Grupo=? WHERE Id_Prematricula=? ";
+		String sql = "UPDATE Prematriculas SET RNE_Alumno=?, Id_Grupo=? WHERE Id_Prematricula=? ";
 
 		try {
 			ps = con.prepareStatement(sql);

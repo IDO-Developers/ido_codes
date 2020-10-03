@@ -406,7 +406,7 @@ public class ventana_usuarios extends JFrame {
 		conexion conex = new conexion();
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery("SELECT RNE_Empleado FROM dbo.users where RNE_Empleado = '"
+			ResultSet rs = estatuto.executeQuery("SELECT RNE_Empleado FROM users where RNE_Empleado = '"
 					+ txtIdentidad.getText().toString() + "'");
 
 			if (rs.next()) {
@@ -467,7 +467,7 @@ public class ventana_usuarios extends JFrame {
 		conexion objCon = new conexion();
 		Connection conn = objCon.getConexion();
 		try {
-			PreparedStatement stmtr = conn.prepareStatement("SELECT * FROM dbo.users ORDER BY id DESC");
+			PreparedStatement stmtr = conn.prepareStatement("SELECT * FROM users ORDER BY id DESC");
 			ResultSet rsr = stmtr.executeQuery();
 			if (rsr.next()) {
 				ultimoValor = rsr.getString("id");
