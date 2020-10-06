@@ -2,6 +2,7 @@ package ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Event;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -21,8 +22,11 @@ import recursos.BCrypt;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 
 import java.awt.event.ActionListener;
@@ -135,7 +139,8 @@ public class ventana_login extends JFrame {
 		txtContraseña.setColumns(10);
 		txtContraseña.setBounds(91, 230, 150, 20);
 		panel.add(txtContraseña);
-
+		InputMap map1 = txtContraseña.getInputMap(JComponent.WHEN_FOCUSED);
+		map1.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
 		txtContraseña.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -177,7 +182,6 @@ public class ventana_login extends JFrame {
 										buscarRol();
 										principal.lblFechaActual.setText(ventana_principal.getFecha());
 										principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
-										principal.btn7_10.setEnabled(false);
 										if (rol.equals("1")) {
 											principal.btnUsuarios.setEnabled(true);
 										} else {
@@ -251,7 +255,6 @@ public class ventana_login extends JFrame {
 									buscarRol();
 									principal.lblFechaActual.setText(ventana_principal.getFecha());
 									principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
-									principal.btn7_10.setEnabled(false);
 									if (rol.equals("1")) {
 										principal.btnUsuarios.setEnabled(true);
 										principal.btn7_10.setEnabled(true);

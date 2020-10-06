@@ -93,6 +93,8 @@ public class ventana_comprobante extends JFrame implements Printable {
 			public void actionPerformed(ActionEvent e) {
 				btnImprimir.setVisible(false);
 				imprimirInformacionDelAlumno();
+				ventana_principal.txtIdentidad.requestFocusInWindow();
+				dispose();
 
 			}
 		});
@@ -257,11 +259,11 @@ public class ventana_comprobante extends JFrame implements Printable {
 		lblContrasea.setBounds(10, 0, 91, 28);
 		panel_1.add(lblContrasea);
 
-		JLabel lblNotaParaMatricular = new JLabel("Nota: para matricular ingrese a www.ido.edu.hn");
+		JLabel lblNotaParaMatricular = new JLabel("Nota: para matricular ingrese a ");
 		lblNotaParaMatricular.setForeground(new Color(0, 0, 0));
 		lblNotaParaMatricular.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNotaParaMatricular.setFont(new Font("Cambria", Font.BOLD, 13));
-		lblNotaParaMatricular.setBounds(0, 535, 474, 34);
+		lblNotaParaMatricular.setBounds(26, 535, 255, 34);
 		contentPane.add(lblNotaParaMatricular);
 
 		JLabel lblCredencialesParaMatricular = new JLabel("Credenciales para matricular: ");
@@ -270,6 +272,13 @@ public class ventana_comprobante extends JFrame implements Printable {
 		lblCredencialesParaMatricular.setFont(new Font("Cambria", Font.BOLD, 17));
 		lblCredencialesParaMatricular.setBounds(0, 160, 474, 34);
 		contentPane.add(lblCredencialesParaMatricular);
+		
+		JLabel lblWwwmatriculaidocom = new JLabel("www.matriculaido.com");
+		lblWwwmatriculaidocom.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWwwmatriculaidocom.setForeground(Color.BLUE);
+		lblWwwmatriculaidocom.setFont(new Font("Cambria", Font.BOLD, 15));
+		lblWwwmatriculaidocom.setBounds(210, 534, 255, 34);
+		contentPane.add(lblWwwmatriculaidocom);
 
 	}
 

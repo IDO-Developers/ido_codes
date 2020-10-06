@@ -19,12 +19,13 @@ public class consultas_alumnos extends conexion {
 	public boolean insertarUserYpass(alumnos usuario) {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
-		String sql = "INSERT INTO users (RNE_Alumno, password, Id_Rol) VALUES(?,?,?)";
+		String sql = "INSERT INTO users (RNE_Alumno, password, Id_Rol, name) VALUES(?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, usuario.getRNE_Alumno());
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getId_Rol());
+			ps.setString(4, "Alumno");
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
