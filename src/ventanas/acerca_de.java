@@ -15,6 +15,7 @@ import javax.swing.WindowConstants;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import java.awt.Window.Type;
+import javax.swing.border.BevelBorder;
 
 public class acerca_de extends JFrame {
 
@@ -43,7 +44,7 @@ public class acerca_de extends JFrame {
 	public acerca_de() {
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 387, 490);
+		setBounds(100, 100, 387, 508);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -63,11 +64,11 @@ public class acerca_de extends JFrame {
 		contentPane.add(lblSistemaAdministrativoBy);
 
 		JTextArea txtrTodosLosDerechos = new JTextArea();
+		txtrTodosLosDerechos.setEditable(false);
 		txtrTodosLosDerechos.setText(
 				"          Todos los derechos reservados a.\r\n            Programadores y Dise\u00F1adores:\r\n   Licenciados en Inform\u00E1tica Administrativa.\r\n        Abd\u00EDas Ismael Vel\u00E1squez Gonzalez\r\n        Justin Mois\u00E9s Chac\u00F3n Ferrari\r\n        Cristian Emmanuel D\u00EDaz Rodr\u00EDguez\r\n      Contacto: krizemandiaz11@gmail.com\r\n UNAH-Tec Danl\u00ED, El Para\u00EDso Honduras 2020\r\n");
 		txtrTodosLosDerechos.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
-		txtrTodosLosDerechos.setBounds(53, 316, 291, 129);
-		txtrTodosLosDerechos.setEditable(false);
+		txtrTodosLosDerechos.setBounds(50, 329, 291, 129);
 		contentPane.add(txtrTodosLosDerechos);
 
 		JLabel label = new JLabel("");
@@ -90,14 +91,15 @@ public class acerca_de extends JFrame {
 		final ImageIcon logo000 = new ImageIcon(getClass().getResource("/recursos/cris.jpg"));
 
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(15, 177, 340, 123);
+		panel.setBounds(10, 195, 351, 123);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JLabel label_2 = new JLabel("");
 		label_2.setToolTipText("Lic. Abd\u00EDas Ismael Vel\u00E1squez Gonzalez");
-		label_2.setBounds(6, 33, 84, 101);
+		label_2.setBounds(10, 33, 85, 101);
 		panel.add(label_2);
 		label_2.setBackground(Color.WHITE);
 		final ImageIcon icono0 = new ImageIcon(
@@ -106,7 +108,7 @@ public class acerca_de extends JFrame {
 
 		JLabel label_3 = new JLabel("");
 		label_3.setToolTipText("Lic. Justin Mois\u00E9s Chac\u00F3n Ferrari");
-		label_3.setBounds(100, 33, 101, 101);
+		label_3.setBounds(113, 33, 101, 101);
 		panel.add(label_3);
 		final ImageIcon icono00 = new ImageIcon(
 				logo00.getImage().getScaledInstance(label_3.getWidth(), label_3.getHeight(), Image.SCALE_DEFAULT));
@@ -114,7 +116,7 @@ public class acerca_de extends JFrame {
 
 		JLabel label_4 = new JLabel("");
 		label_4.setToolTipText("Lic.  Cristian Emmanuel D\u00EDaz Rodr\u00EDguez");
-		label_4.setBounds(211, 33, 115, 101);
+		label_4.setBounds(230, 33, 111, 101);
 		panel.add(label_4);
 		final ImageIcon icono000 = new ImageIcon(
 				logo000.getImage().getScaledInstance(label_4.getWidth(), label_4.getHeight(), Image.SCALE_DEFAULT));

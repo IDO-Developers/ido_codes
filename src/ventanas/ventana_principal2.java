@@ -94,8 +94,6 @@ public class ventana_principal2 extends JFrame {
 	public JButton btnUsuarios;
 	public JButton btnComprobarMatricula;
 	public JButton btnCredencialesRegistradas;
-	public JButton btnPrematricula;
-	public JButton btnMatricula;
 	public JButton btn8_9_11_12;
 	public JButton btn7_10;
 
@@ -109,7 +107,7 @@ public class ventana_principal2 extends JFrame {
 	public static String USUARIO_Prematriculas = null;
 	public static String ID_Prematriculas = null;
 	public static String ROL = null;
-	
+
 	public static String rol = null;
 	public static String NombreRol = null;
 	public static String nombre = null;
@@ -139,7 +137,7 @@ public class ventana_principal2 extends JFrame {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 497, 506);
+		setBounds(100, 100, 503, 506);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -194,7 +192,7 @@ public class ventana_principal2 extends JFrame {
 		panel_2.setLayout(null);
 
 		JLabel lblMen = new JLabel("Men\u00FA");
-		lblMen.setBounds(78, 0, 52, 30);
+		lblMen.setBounds(10, 11, 197, 19);
 		panel_2.add(lblMen);
 		lblMen.setForeground(new Color(0, 100, 0));
 		lblMen.setHorizontalAlignment(SwingConstants.CENTER);
@@ -202,7 +200,7 @@ public class ventana_principal2 extends JFrame {
 
 		btn7_10 = new JButton();
 		btn7_10.setToolTipText("Generador de credenciales para 7\u00B0 y 10\u00B0");
-		btn7_10.setBounds(10, 58, 89, 85);
+		btn7_10.setBounds(10, 68, 89, 85);
 		panel_2.add(btn7_10);
 		btn7_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -216,15 +214,14 @@ public class ventana_principal2 extends JFrame {
 				principal.setVisible(true);
 				buscarRol();
 				principal.lblFechaActual.setText(ventana_principal.getFecha());
-				principal.setTitle("Usuario: "+Nombre+"    Permisos: "+NombreRol);
+				principal.setTitle("Usuario: " + Nombre + "    Permisos: " + NombreRol);
 				if (Rol.equals("1")) {
 					principal.btnUsuarios.setEnabled(true);
 					principal.btn7_10.setEnabled(true);
 					principal.btn8_9_11_12.setEnabled(true);
 					principal.btnComprobarMatricula.setEnabled(true);
 					principal.btnCredencialesRegistradas.setEnabled(true);
-					principal.btnMatricula.setEnabled(true);
-					principal.btnPrematricula.setEnabled(true);
+
 				} else {
 					if (Rol.equals("2")) {
 						principal.btnUsuarios.setEnabled(false);
@@ -233,8 +230,6 @@ public class ventana_principal2 extends JFrame {
 						principal.btn8_9_11_12.setEnabled(true);
 						principal.btnComprobarMatricula.setEnabled(true);
 						principal.btnCredencialesRegistradas.setEnabled(true);
-						principal.btnMatricula.setEnabled(true);
-						principal.btnPrematricula.setEnabled(true);
 
 					} else {
 						if (Rol.equals("3")) {
@@ -244,8 +239,6 @@ public class ventana_principal2 extends JFrame {
 							principal.btn8_9_11_12.setEnabled(false);
 							principal.btnComprobarMatricula.setEnabled(false);
 							principal.btnCredencialesRegistradas.setEnabled(false);
-							principal.btnMatricula.setEnabled(false);
-							principal.btnPrematricula.setEnabled(false);
 							principal.btnComprobarMatricula.setEnabled(false);
 							principal.btnImprimir.setEnabled(false);
 
@@ -255,8 +248,6 @@ public class ventana_principal2 extends JFrame {
 							principal.btn8_9_11_12.setEnabled(true);
 							principal.btnComprobarMatricula.setEnabled(true);
 							principal.btnCredencialesRegistradas.setEnabled(true);
-							principal.btnMatricula.setEnabled(true);
-							principal.btnPrematricula.setEnabled(true);
 
 						}
 
@@ -273,7 +264,7 @@ public class ventana_principal2 extends JFrame {
 
 		btn8_9_11_12 = new JButton();
 		btn8_9_11_12.setToolTipText("Generador de credenciales para 8\u00B0,9\u00B0,11\u00B0 y 12\u00B0");
-		btn8_9_11_12.setBounds(118, 58, 89, 85);
+		btn8_9_11_12.setBounds(118, 68, 89, 85);
 		panel_2.add(btn8_9_11_12);
 		btn8_9_11_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -287,15 +278,14 @@ public class ventana_principal2 extends JFrame {
 				principal.setVisible(true);
 				buscarRol();
 				principal.lblFechaActual.setText(ventana_principal2.getFecha());
-				principal.setTitle("Usuario: "+Nombre+"    Permisos: "+NombreRol);
+				principal.setTitle("Usuario: " + Nombre + "    Permisos: " + NombreRol);
 				if (Rol.equals("1")) {
 					principal.btnUsuarios.setEnabled(true);
 					principal.btn7_10.setEnabled(true);
 					principal.btn8_9_11_12.setEnabled(true);
 					principal.btnComprobarMatricula.setEnabled(true);
 					principal.btnCredencialesRegistradas.setEnabled(true);
-					principal.btnMatricula.setEnabled(true);
-					principal.btnPrematricula.setEnabled(true);
+
 				} else {
 					if (Rol.equals("2")) {
 						principal.btnUsuarios.setEnabled(false);
@@ -304,8 +294,6 @@ public class ventana_principal2 extends JFrame {
 						principal.btn8_9_11_12.setEnabled(true);
 						principal.btnComprobarMatricula.setEnabled(true);
 						principal.btnCredencialesRegistradas.setEnabled(true);
-						principal.btnMatricula.setEnabled(true);
-						principal.btnPrematricula.setEnabled(true);
 
 					} else {
 						if (Rol.equals("3")) {
@@ -315,8 +303,7 @@ public class ventana_principal2 extends JFrame {
 							principal.btn8_9_11_12.setEnabled(false);
 							principal.btnComprobarMatricula.setEnabled(false);
 							principal.btnCredencialesRegistradas.setEnabled(false);
-							principal.btnMatricula.setEnabled(false);
-							principal.btnPrematricula.setEnabled(false);
+
 							principal.btnComprobarMatricula.setEnabled(false);
 							principal.btnImprimir.setEnabled(false);
 
@@ -326,8 +313,6 @@ public class ventana_principal2 extends JFrame {
 							principal.btn8_9_11_12.setEnabled(true);
 							principal.btnComprobarMatricula.setEnabled(true);
 							principal.btnCredencialesRegistradas.setEnabled(true);
-							principal.btnMatricula.setEnabled(true);
-							principal.btnPrematricula.setEnabled(true);
 
 						}
 
@@ -336,26 +321,16 @@ public class ventana_principal2 extends JFrame {
 				}
 				dispose();
 			}
-			
-			
+
 		});
 		btn8_9_11_12.setBackground(Color.ORANGE);
 		final ImageIcon icono111 = new ImageIcon(OCTNOVUNDDUO.getImage().getScaledInstance(btn8_9_11_12.getWidth(),
 				btn8_9_11_12.getHeight(), Image.SCALE_DEFAULT));
 		btn8_9_11_12.setIcon(icono111);
 
-		btnPrematricula = new JButton();
-		btnPrematricula.setToolTipText("Pre-matr\u00EDcula IDO");
-		btnPrematricula.setBounds(10, 169, 89, 85);
-		panel_2.add(btnPrematricula);
-		btnPrematricula.setBackground(new Color(0, 100, 0));
-		final ImageIcon icono1112 = new ImageIcon(LogoPREMA.getImage().getScaledInstance(btnPrematricula.getWidth(),
-				btnPrematricula.getHeight(), Image.SCALE_DEFAULT));
-		btnPrematricula.setIcon(icono1112);
-
 		btnComprobarMatricula = new JButton();
 		btnComprobarMatricula.setToolTipText("Verificaci\u00F3n de matricula");
-		btnComprobarMatricula.setBounds(118, 291, 89, 85);
+		btnComprobarMatricula.setBounds(118, 202, 89, 85);
 		panel_2.add(btnComprobarMatricula);
 		btnComprobarMatricula.setBackground(new Color(0, 100, 0));
 		final ImageIcon icono1122 = new ImageIcon(LogoCompr.getImage().getScaledInstance(
@@ -364,7 +339,7 @@ public class ventana_principal2 extends JFrame {
 
 		btnUsuarios = new JButton();
 		btnUsuarios.setToolTipText("Registro de usuarios");
-		btnUsuarios.setBounds(64, 387, 44, 41);
+		btnUsuarios.setBounds(10, 322, 89, 85);
 		panel_2.add(btnUsuarios);
 		btnUsuarios.setBackground(new Color(30, 144, 255));
 		btnUsuarios.addActionListener(new ActionListener() {
@@ -395,7 +370,7 @@ public class ventana_principal2 extends JFrame {
 
 		JButton btnCerrarSesion = new JButton();
 		btnCerrarSesion.setToolTipText("Cerrar Sesi\u00F3n");
-		btnCerrarSesion.setBounds(109, 387, 44, 41);
+		btnCerrarSesion.setBounds(118, 322, 89, 85);
 		panel_2.add(btnCerrarSesion);
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -423,17 +398,8 @@ public class ventana_principal2 extends JFrame {
 		lblAcercaDe.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAcercaDe.setForeground(new Color(0, 100, 0));
 		lblAcercaDe.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblAcercaDe.setBounds(64, 429, 89, 24);
+		lblAcercaDe.setBounds(10, 418, 197, 24);
 		panel_2.add(lblAcercaDe);
-
-		btnMatricula = new JButton();
-		btnMatricula.setToolTipText("Matr\u00EDcula IDO");
-		btnMatricula.setBackground(new Color(0, 100, 0));
-		btnMatricula.setBounds(118, 169, 89, 85);
-		panel_2.add(btnMatricula);
-		final ImageIcon icono1111 = new ImageIcon(MATRI.getImage().getScaledInstance(btnMatricula.getWidth(),
-				btnMatricula.getHeight(), Image.SCALE_DEFAULT));
-		btnMatricula.setIcon(icono1111);
 
 		JLabel lblCredencialesPara = new JLabel("Pines");
 		lblCredencialesPara.setHorizontalAlignment(SwingConstants.CENTER);
@@ -463,56 +429,56 @@ public class ventana_principal2 extends JFrame {
 		lblParaY_1.setBounds(109, 44, 108, 13);
 		panel_2.add(lblParaY_1);
 
-		JLabel lblPrematrculaIdo = new JLabel("Pre-matr\u00EDcula IDO");
-		lblPrematrculaIdo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPrematrculaIdo.setForeground(Color.BLACK);
-		lblPrematrculaIdo.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblPrematrculaIdo.setBounds(0, 154, 108, 13);
-		panel_2.add(lblPrematrculaIdo);
-
-		JLabel lblMatrculaIdo = new JLabel("Matr\u00EDcula IDO");
-		lblMatrculaIdo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMatrculaIdo.setForeground(Color.BLACK);
-		lblMatrculaIdo.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblMatrculaIdo.setBounds(118, 153, 89, 13);
-		panel_2.add(lblMatrculaIdo);
-
 		JLabel lblVerificacin = new JLabel("Verificaci\u00F3n ");
 		lblVerificacin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVerificacin.setForeground(Color.BLACK);
 		lblVerificacin.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblVerificacin.setBounds(118, 265, 89, 13);
+		lblVerificacin.setBounds(118, 168, 89, 13);
 		panel_2.add(lblVerificacin);
 
 		JLabel lblDeMatrculaIdo = new JLabel("de matr\u00EDcula IDO");
 		lblDeMatrculaIdo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDeMatrculaIdo.setForeground(Color.BLACK);
 		lblDeMatrculaIdo.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblDeMatrculaIdo.setBounds(109, 275, 108, 13);
+		lblDeMatrculaIdo.setBounds(109, 178, 108, 13);
 		panel_2.add(lblDeMatrculaIdo);
 
 		JLabel lblListado = new JLabel("Listado de ");
 		lblListado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListado.setForeground(Color.BLACK);
 		lblListado.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblListado.setBounds(9, 265, 89, 13);
+		lblListado.setBounds(9, 168, 89, 13);
 		panel_2.add(lblListado);
 
 		JLabel lblDeCredencialesRegistradas = new JLabel("Pines generados");
 		lblDeCredencialesRegistradas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDeCredencialesRegistradas.setForeground(Color.BLACK);
 		lblDeCredencialesRegistradas.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblDeCredencialesRegistradas.setBounds(0, 275, 108, 13);
+		lblDeCredencialesRegistradas.setBounds(0, 178, 108, 13);
 		panel_2.add(lblDeCredencialesRegistradas);
 
 		btnCredencialesRegistradas = new JButton();
-		btnCredencialesRegistradas.setToolTipText("Verificaci\u00F3n de matricula");
+		btnCredencialesRegistradas.setToolTipText("Listado de pines entregados.");
 		btnCredencialesRegistradas.setBackground(new Color(0, 100, 0));
-		btnCredencialesRegistradas.setBounds(10, 291, 89, 85);
+		btnCredencialesRegistradas.setBounds(10, 202, 89, 85);
 		panel_2.add(btnCredencialesRegistradas);
 		final ImageIcon iconoxx = new ImageIcon(estudiante.getImage().getScaledInstance(
 				btnCredencialesRegistradas.getWidth(), btnCredencialesRegistradas.getHeight(), Image.SCALE_DEFAULT));
 		btnCredencialesRegistradas.setIcon(iconoxx);
+
+		JLabel lblUsuarios = new JLabel("Usuarios");
+		lblUsuarios.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuarios.setForeground(Color.BLACK);
+		lblUsuarios.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		lblUsuarios.setBounds(10, 300, 89, 13);
+		panel_2.add(lblUsuarios);
+
+		JLabel lblUsuarios_1 = new JLabel("Cerrar sesi\u00F3n");
+		lblUsuarios_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuarios_1.setForeground(Color.BLACK);
+		lblUsuarios_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		lblUsuarios_1.setBounds(118, 300, 89, 13);
+		panel_2.add(lblUsuarios_1);
 
 		panel = new JPanel();
 		panel.setBounds(6, 11, 253, 419);
@@ -869,13 +835,13 @@ public class ventana_principal2 extends JFrame {
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
 			System.exit(0);
 	}
-	
+
 	public void buscarUsuario() {
 		conexion conex = new conexion();
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery(
-					"SELECT * FROM users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
+			ResultSet rs = estatuto
+					.executeQuery("SELECT * FROM users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
 			while (rs.next()) {
 				rol = rs.getString("Id_Rol");
 				nombre = rs.getString("name");
@@ -887,13 +853,12 @@ public class ventana_principal2 extends JFrame {
 			JOptionPane.showMessageDialog(null, ex);
 		}
 	}
-	
+
 	public void buscarRol() {
 		conexion conex = new conexion();
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery(
-					"SELECT * FROM Roles WHERE Id_Rol='" + rol + "'");
+			ResultSet rs = estatuto.executeQuery("SELECT * FROM Roles WHERE Id_Rol='" + rol + "'");
 			while (rs.next()) {
 				NombreRol = rs.getString("Nombre_Rol");
 			}

@@ -117,6 +117,7 @@ public class ventana_login extends JFrame {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
+		
 		txtUsuario = new JFormattedTextField(identidadF);
 		txtUsuario.setForeground(new Color(0, 0, 0));
 		txtUsuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
@@ -124,6 +125,8 @@ public class ventana_login extends JFrame {
 		txtUsuario.setBounds(91, 180, 150, 20);
 		panel.add(txtUsuario);
 		txtUsuario.setColumns(10);
+		InputMap map1 = txtUsuario.getInputMap(JComponent.WHEN_FOCUSED);
+		map1.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
 
 		JLabel lblContrasea = new JLabel("CONTRASE\u00D1A");
 		lblContrasea.setForeground(Color.WHITE);
@@ -139,8 +142,8 @@ public class ventana_login extends JFrame {
 		txtContraseña.setColumns(10);
 		txtContraseña.setBounds(91, 230, 150, 20);
 		panel.add(txtContraseña);
-		InputMap map1 = txtContraseña.getInputMap(JComponent.WHEN_FOCUSED);
-		map1.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+		InputMap map2 = txtContraseña.getInputMap(JComponent.WHEN_FOCUSED);
+		map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
 		txtContraseña.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -181,7 +184,7 @@ public class ventana_login extends JFrame {
 										principal.setVisible(true);
 										buscarRol();
 										principal.lblFechaActual.setText(ventana_principal.getFecha());
-										principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+										principal.setTitle("Usuario: " + nombre + "    Permisos: " + NombreRol);
 										if (rol.equals("1")) {
 											principal.btnUsuarios.setEnabled(true);
 										} else {
@@ -230,7 +233,7 @@ public class ventana_login extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String user = String.valueOf(txtUsuario.getText().toString());
 				String pass = String.valueOf(txtContraseña.getText().toString());
-				if (user.equals("") && pass.equals("")) {
+				if (user.equals("             ") && pass.equals("")) {
 					lblAlerta.setText("Los campos (Usuario) y (Contraseña) estan vacios.");
 					lblAlerta.setForeground(Color.WHITE);
 				} else {
@@ -254,15 +257,14 @@ public class ventana_login extends JFrame {
 									principal.setVisible(true);
 									buscarRol();
 									principal.lblFechaActual.setText(ventana_principal.getFecha());
-									principal.setTitle("Usuario: "+nombre+"    Permisos: "+NombreRol);
+									principal.setTitle("Usuario: " + nombre + "    Permisos: " + NombreRol);
 									if (rol.equals("1")) {
 										principal.btnUsuarios.setEnabled(true);
 										principal.btn7_10.setEnabled(true);
 										principal.btn8_9_11_12.setEnabled(true);
 										principal.btnComprobarMatricula.setEnabled(true);
 										principal.btnCredencialesRegistradas.setEnabled(true);
-										principal.btnMatricula.setEnabled(true);
-										principal.btnPrematricula.setEnabled(true);
+
 									} else {
 										if (rol.equals("2")) {
 											principal.btnUsuarios.setEnabled(false);
@@ -271,8 +273,6 @@ public class ventana_login extends JFrame {
 											principal.btn8_9_11_12.setEnabled(true);
 											principal.btnComprobarMatricula.setEnabled(true);
 											principal.btnCredencialesRegistradas.setEnabled(true);
-											principal.btnMatricula.setEnabled(true);
-											principal.btnPrematricula.setEnabled(true);
 
 										} else {
 											if (rol.equals("3")) {
@@ -282,8 +282,8 @@ public class ventana_login extends JFrame {
 												principal.btn8_9_11_12.setEnabled(false);
 												principal.btnComprobarMatricula.setEnabled(false);
 												principal.btnCredencialesRegistradas.setEnabled(false);
-												principal.btnMatricula.setEnabled(false);
-												principal.btnPrematricula.setEnabled(false);
+												principal.btnCredenciales.setEnabled(false);
+
 												principal.btnComprobarMatricula.setEnabled(false);
 												principal.btnImprimir.setEnabled(false);
 
@@ -293,8 +293,6 @@ public class ventana_login extends JFrame {
 												principal.btn8_9_11_12.setEnabled(true);
 												principal.btnComprobarMatricula.setEnabled(true);
 												principal.btnCredencialesRegistradas.setEnabled(true);
-												principal.btnMatricula.setEnabled(true);
-												principal.btnPrematricula.setEnabled(true);
 
 											}
 
@@ -336,18 +334,18 @@ public class ventana_login extends JFrame {
 		lblParaLaMatricula.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 		lblParaLaMatricula.setBounds(10, 11, 301, 26);
 		panel.add(lblParaLaMatricula);
-		
+
 		JLabel lblI = new JLabel("Ingrese su identidad:");
 		lblI.setHorizontalAlignment(SwingConstants.CENTER);
 		lblI.setForeground(Color.WHITE);
-		lblI.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblI.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
 		lblI.setBounds(91, 163, 150, 14);
 		panel.add(lblI);
-		
+
 		JLabel lblIngreseSuContrasea = new JLabel("Ingrese su contrase\u00F1a:");
 		lblIngreseSuContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngreseSuContrasea.setForeground(Color.WHITE);
-		lblIngreseSuContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblIngreseSuContrasea.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
 		lblIngreseSuContrasea.setBounds(91, 213, 150, 14);
 		panel.add(lblIngreseSuContrasea);
 
@@ -365,8 +363,8 @@ public class ventana_login extends JFrame {
 		conexion conex = new conexion();
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery(
-					"SELECT * FROM users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
+			ResultSet rs = estatuto
+					.executeQuery("SELECT * FROM users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
 			while (rs.next()) {
 				rol = rs.getString("Id_Rol");
 				nombre = rs.getString("name");
@@ -378,13 +376,12 @@ public class ventana_login extends JFrame {
 			JOptionPane.showMessageDialog(null, ex);
 		}
 	}
-	
+
 	public void buscarRol() {
 		conexion conex = new conexion();
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery(
-					"SELECT * FROM Roles WHERE Id_Rol='" + rol + "'");
+			ResultSet rs = estatuto.executeQuery("SELECT * FROM Roles WHERE Id_Rol='" + rol + "'");
 			while (rs.next()) {
 				NombreRol = rs.getString("Nombre_Rol");
 			}
