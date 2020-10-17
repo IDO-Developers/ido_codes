@@ -80,7 +80,7 @@ public class ventana_comprobante extends JFrame implements Printable {
 		contentPane.add(lblInstitutoDepartamentalDe);
 
 		JLabel label_1 = new JLabel("");
-		label_1.setBounds(141, 32, 174, 165);
+		label_1.setBounds(141, 32, 197, 190);
 		contentPane.add(label_1);
 		final ImageIcon logo = new ImageIcon(getClass().getResource("/recursos/logo_ido.png"));
 		final ImageIcon icono = new ImageIcon(
@@ -106,20 +106,20 @@ public class ventana_comprobante extends JFrame implements Printable {
 		JLabel lblInformacinDelAlumno = new JLabel("Informaci\u00F3n del alumno:");
 		lblInformacinDelAlumno.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInformacinDelAlumno.setForeground(new Color(0, 0, 128));
-		lblInformacinDelAlumno.setFont(new Font("Cambria", Font.BOLD, 16));
-		lblInformacinDelAlumno.setBounds(0, 188, 474, 28);
+		lblInformacinDelAlumno.setFont(new Font("Cambria", Font.BOLD, 17));
+		lblInformacinDelAlumno.setBounds(0, 188, 474, 34);
 		contentPane.add(lblInformacinDelAlumno);
 
 		JLabel lblIdentidadDelAlumno = new JLabel("Identidad del alumno:");
 		lblIdentidadDelAlumno.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIdentidadDelAlumno.setFont(new Font("PMingLiU-ExtB", Font.BOLD, 16));
-		lblIdentidadDelAlumno.setBounds(0, 219, 474, 21);
+		lblIdentidadDelAlumno.setBounds(98, 219, 282, 21);
 		contentPane.add(lblIdentidadDelAlumno);
 
 		JLabel lblCdigo = new JLabel("C\u00F3digo: ");
 		lblCdigo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCdigo.setFont(new Font("PMingLiU-ExtB", Font.BOLD, 16));
-		lblCdigo.setBounds(0, 264, 474, 21);
+		lblCdigo.setBounds(98, 264, 282, 21);
 		contentPane.add(lblCdigo);
 
 		JLabel label_8 = new JLabel("Hora :");
@@ -265,13 +265,6 @@ public class ventana_comprobante extends JFrame implements Printable {
 		lblNotaParaMatricular.setFont(new Font("Cambria", Font.BOLD, 13));
 		lblNotaParaMatricular.setBounds(26, 535, 255, 34);
 		contentPane.add(lblNotaParaMatricular);
-
-		JLabel lblCredencialesParaMatricular = new JLabel("Credenciales para matricular: ");
-		lblCredencialesParaMatricular.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCredencialesParaMatricular.setForeground(new Color(0, 0, 0));
-		lblCredencialesParaMatricular.setFont(new Font("Cambria", Font.BOLD, 17));
-		lblCredencialesParaMatricular.setBounds(0, 160, 474, 34);
-		contentPane.add(lblCredencialesParaMatricular);
 		
 		JLabel lblWwwmatriculaidocom = new JLabel("www.matriculaido.com");
 		lblWwwmatriculaidocom.setHorizontalAlignment(SwingConstants.CENTER);

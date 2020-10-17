@@ -405,57 +405,29 @@ public class ventana_principal2 extends JFrame {
 		lblCredencialesPara.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCredencialesPara.setForeground(Color.BLACK);
 		lblCredencialesPara.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblCredencialesPara.setBounds(10, 34, 89, 13);
+		lblCredencialesPara.setBounds(10, 44, 89, 13);
 		panel_2.add(lblCredencialesPara);
 
 		JLabel lblParaY = new JLabel("Para 7\u00B0 y 10\u00B0");
 		lblParaY.setHorizontalAlignment(SwingConstants.CENTER);
 		lblParaY.setForeground(Color.BLACK);
 		lblParaY.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblParaY.setBounds(10, 44, 89, 13);
+		lblParaY.setBounds(10, 54, 89, 13);
 		panel_2.add(lblParaY);
 
 		JLabel lblPines = new JLabel("Pines");
 		lblPines.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPines.setForeground(Color.BLACK);
 		lblPines.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblPines.setBounds(118, 34, 89, 13);
+		lblPines.setBounds(118, 44, 89, 13);
 		panel_2.add(lblPines);
 
 		JLabel lblParaY_1 = new JLabel("Para 8\u00B0,9\u00B0,11\u00B0 y 12\u00B0");
 		lblParaY_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblParaY_1.setForeground(Color.BLACK);
 		lblParaY_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblParaY_1.setBounds(109, 44, 108, 13);
+		lblParaY_1.setBounds(109, 54, 108, 13);
 		panel_2.add(lblParaY_1);
-
-		JLabel lblVerificacin = new JLabel("Verificaci\u00F3n ");
-		lblVerificacin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVerificacin.setForeground(Color.BLACK);
-		lblVerificacin.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblVerificacin.setBounds(118, 168, 89, 13);
-		panel_2.add(lblVerificacin);
-
-		JLabel lblDeMatrculaIdo = new JLabel("de matr\u00EDcula IDO");
-		lblDeMatrculaIdo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDeMatrculaIdo.setForeground(Color.BLACK);
-		lblDeMatrculaIdo.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblDeMatrculaIdo.setBounds(109, 178, 108, 13);
-		panel_2.add(lblDeMatrculaIdo);
-
-		JLabel lblListado = new JLabel("Listado de ");
-		lblListado.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListado.setForeground(Color.BLACK);
-		lblListado.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblListado.setBounds(9, 168, 89, 13);
-		panel_2.add(lblListado);
-
-		JLabel lblDeCredencialesRegistradas = new JLabel("Pines generados");
-		lblDeCredencialesRegistradas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDeCredencialesRegistradas.setForeground(Color.BLACK);
-		lblDeCredencialesRegistradas.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblDeCredencialesRegistradas.setBounds(0, 178, 108, 13);
-		panel_2.add(lblDeCredencialesRegistradas);
 
 		btnCredencialesRegistradas = new JButton();
 		btnCredencialesRegistradas.setToolTipText("Listado de pines entregados.");
@@ -470,15 +442,43 @@ public class ventana_principal2 extends JFrame {
 		lblUsuarios.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuarios.setForeground(Color.BLACK);
 		lblUsuarios.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblUsuarios.setBounds(10, 300, 89, 13);
+		lblUsuarios.setBounds(10, 311, 89, 13);
 		panel_2.add(lblUsuarios);
 
 		JLabel lblUsuarios_1 = new JLabel("Cerrar sesi\u00F3n");
 		lblUsuarios_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuarios_1.setForeground(Color.BLACK);
 		lblUsuarios_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblUsuarios_1.setBounds(118, 300, 89, 13);
+		lblUsuarios_1.setBounds(118, 311, 89, 13);
 		panel_2.add(lblUsuarios_1);
+		
+		JLabel lblVerificacin_1 = new JLabel("Verificaci\u00F3n ");
+		lblVerificacin_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVerificacin_1.setForeground(Color.BLACK);
+		lblVerificacin_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		lblVerificacin_1.setBounds(10, 175, 89, 16);
+		panel_2.add(lblVerificacin_1);
+		
+		JLabel lblYPre_1 = new JLabel("Prematr\u00EDcula");
+		lblYPre_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYPre_1.setForeground(Color.BLACK);
+		lblYPre_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
+		lblYPre_1.setBounds(10, 190, 89, 12);
+		panel_2.add(lblYPre_1);
+		
+		JLabel lblVerificacin = new JLabel("Verificaci\u00F3n ");
+		lblVerificacin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVerificacin.setForeground(Color.BLACK);
+		lblVerificacin.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		lblVerificacin.setBounds(118, 175, 89, 16);
+		panel_2.add(lblVerificacin);
+		
+		JLabel lblDeMatrculaIdo = new JLabel("Matr\u00EDcula");
+		lblDeMatrculaIdo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDeMatrculaIdo.setForeground(Color.BLACK);
+		lblDeMatrculaIdo.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
+		lblDeMatrculaIdo.setBounds(118, 190, 89, 13);
+		panel_2.add(lblDeMatrculaIdo);
 
 		panel = new JPanel();
 		panel.setBounds(6, 11, 253, 419);

@@ -83,15 +83,23 @@ public class ventana_principal extends JFrame {
 	public JPanel contentPane;
 	public JPanel panel;
 	public JButton btnImprimir;
+	public JButton btnImprimir1;
 	public TableRowSorter<TableModel> trsfiltroCodigo;
 	String filtroCodigo;
 	public static DefaultComboBoxModel modelo;
 	public static String id_rol;
 	public static String identidadRepetida;
+
 	public static JTextField txtUsuario;
 	public static JTextField txtContraseña;
 	public static JTextField txtIdentidad;
+
+	public static JTextField txtUsuario1;
+	public static JTextField txtContraseña1;
+	public static JTextField txtIdentidad1;
+
 	public JComboBox cbxGrado;
+	public JComboBox cbxGrado1;
 	public static String cadena = null;
 	public static String contraseñaEncriptada = null;
 	public JButton btnUsuarios;
@@ -100,6 +108,7 @@ public class ventana_principal extends JFrame {
 	public JButton btn8_9_11_12;
 	public JButton btn7_10;
 	public JButton btnCredenciales;
+	public JButton btnCredenciales1;
 
 	public static String id_grupo1;
 	public static String id_grupo2;
@@ -152,10 +161,10 @@ public class ventana_principal extends JFrame {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 503, 506);
+		setBounds(100, 100, 770, 511);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.setBackground(new Color(70, 130, 180));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		setContentPane(contentPane);
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -201,7 +210,7 @@ public class ventana_principal extends JFrame {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(269, 11, 217, 453);
+		panel_2.setBounds(532, 11, 217, 453);
 		contentPane.add(panel_2);
 		panel_2.setBackground(new Color(255, 255, 255));
 		panel_2.setLayout(null);
@@ -246,7 +255,6 @@ public class ventana_principal extends JFrame {
 						principal.btnComprobarMatricula.setEnabled(true);
 						principal.btnCredencialesRegistradas.setEnabled(true);
 
-
 					} else {
 						if (Rol.equals("3")) {
 							principal.btnUsuarios.setEnabled(false);
@@ -265,7 +273,6 @@ public class ventana_principal extends JFrame {
 							principal.btnComprobarMatricula.setEnabled(true);
 							principal.btnCredencialesRegistradas.setEnabled(true);
 
-
 						}
 
 					}
@@ -280,6 +287,7 @@ public class ventana_principal extends JFrame {
 		btn7_10.setIcon(icono11);
 
 		btn8_9_11_12 = new JButton();
+		btn8_9_11_12.setEnabled(false);
 		btn8_9_11_12.setToolTipText("Generador de credenciales para 8\u00B0,9\u00B0,11\u00B0 y 12\u00B0");
 		btn8_9_11_12.setBounds(118, 76, 89, 85);
 		panel_2.add(btn8_9_11_12);
@@ -312,7 +320,6 @@ public class ventana_principal extends JFrame {
 						principal.btnComprobarMatricula.setEnabled(true);
 						principal.btnCredencialesRegistradas.setEnabled(true);
 
-
 					} else {
 						if (Rol.equals("3")) {
 							principal.btnUsuarios.setEnabled(false);
@@ -331,7 +338,6 @@ public class ventana_principal extends JFrame {
 							principal.btnComprobarMatricula.setEnabled(true);
 							principal.btnCredencialesRegistradas.setEnabled(true);
 
-
 						}
 
 					}
@@ -347,6 +353,7 @@ public class ventana_principal extends JFrame {
 		btn8_9_11_12.setIcon(icono111);
 
 		btnComprobarMatricula = new JButton();
+		btnComprobarMatricula.setEnabled(false);
 		btnComprobarMatricula.setToolTipText("Verificaci\u00F3n de matricula");
 		btnComprobarMatricula.setBounds(118, 206, 89, 85);
 		panel_2.add(btnComprobarMatricula);
@@ -423,63 +430,50 @@ public class ventana_principal extends JFrame {
 		lblCredencialesPara.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCredencialesPara.setForeground(Color.BLACK);
 		lblCredencialesPara.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblCredencialesPara.setBounds(10, 42, 89, 13);
+		lblCredencialesPara.setBounds(10, 52, 89, 13);
 		panel_2.add(lblCredencialesPara);
 
 		JLabel lblParaY = new JLabel("Para 7\u00B0 y 10\u00B0");
 		lblParaY.setHorizontalAlignment(SwingConstants.CENTER);
 		lblParaY.setForeground(Color.BLACK);
 		lblParaY.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblParaY.setBounds(10, 52, 89, 13);
+		lblParaY.setBounds(10, 62, 89, 13);
 		panel_2.add(lblParaY);
 
 		JLabel lblPines = new JLabel("Pines");
 		lblPines.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPines.setForeground(Color.BLACK);
 		lblPines.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblPines.setBounds(118, 42, 89, 13);
+		lblPines.setBounds(118, 52, 89, 13);
 		panel_2.add(lblPines);
 
 		JLabel lblParaY_1 = new JLabel("Para 8\u00B0,9\u00B0,11\u00B0 y 12\u00B0");
 		lblParaY_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblParaY_1.setForeground(Color.BLACK);
 		lblParaY_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblParaY_1.setBounds(109, 52, 108, 13);
+		lblParaY_1.setBounds(109, 62, 108, 13);
 		panel_2.add(lblParaY_1);
 
 		JLabel lblVerificacin = new JLabel("Verificaci\u00F3n ");
 		lblVerificacin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVerificacin.setForeground(Color.BLACK);
 		lblVerificacin.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblVerificacin.setBounds(118, 172, 89, 13);
+		lblVerificacin.setBounds(118, 179, 89, 16);
 		panel_2.add(lblVerificacin);
 
-		JLabel lblDeMatrculaIdo = new JLabel("de matr\u00EDcula IDO");
+		JLabel lblDeMatrculaIdo = new JLabel("Matr\u00EDcula");
 		lblDeMatrculaIdo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDeMatrculaIdo.setForeground(Color.BLACK);
 		lblDeMatrculaIdo.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblDeMatrculaIdo.setBounds(109, 182, 108, 13);
+		lblDeMatrculaIdo.setBounds(118, 194, 89, 13);
 		panel_2.add(lblDeMatrculaIdo);
 
-		JLabel lblListado = new JLabel("Listado de ");
-		lblListado.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListado.setForeground(Color.BLACK);
-		lblListado.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblListado.setBounds(9, 172, 89, 13);
-		panel_2.add(lblListado);
-
-		JLabel lblDeCredencialesRegistradas = new JLabel("Pines generados");
-		lblDeCredencialesRegistradas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDeCredencialesRegistradas.setForeground(Color.BLACK);
-		lblDeCredencialesRegistradas.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
-		lblDeCredencialesRegistradas.setBounds(0, 182, 108, 13);
-		panel_2.add(lblDeCredencialesRegistradas);
-
 		btnCredencialesRegistradas = new JButton();
+		btnCredencialesRegistradas.setEnabled(false);
 		btnCredencialesRegistradas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pines clase = new pines();
-				ventana_pines formulario = new ventana_pines();
+				ventana_verif_prematricula formulario = new ventana_verif_prematricula();
 				control_pines control = new control_pines(clase);
 				formulario.setVisible(true);
 				formulario.setLocationRelativeTo(null);
@@ -495,20 +489,34 @@ public class ventana_principal extends JFrame {
 		final ImageIcon iconoxx = new ImageIcon(estudiante.getImage().getScaledInstance(
 				btnCredencialesRegistradas.getWidth(), btnCredencialesRegistradas.getHeight(), Image.SCALE_DEFAULT));
 		btnCredencialesRegistradas.setIcon(iconoxx);
-		
+
 		JLabel lblUsuarios = new JLabel("Usuarios");
 		lblUsuarios.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuarios.setForeground(Color.BLACK);
 		lblUsuarios.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblUsuarios.setBounds(10, 302, 89, 13);
+		lblUsuarios.setBounds(10, 310, 89, 13);
 		panel_2.add(lblUsuarios);
-		
+
 		JLabel lblUsuarios_1 = new JLabel("Cerrar sesi\u00F3n");
 		lblUsuarios_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuarios_1.setForeground(Color.BLACK);
 		lblUsuarios_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		lblUsuarios_1.setBounds(118, 302, 89, 13);
+		lblUsuarios_1.setBounds(118, 310, 89, 13);
 		panel_2.add(lblUsuarios_1);
+
+		JLabel lblVerificacin_1 = new JLabel("Verificaci\u00F3n ");
+		lblVerificacin_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVerificacin_1.setForeground(Color.BLACK);
+		lblVerificacin_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		lblVerificacin_1.setBounds(10, 179, 89, 16);
+		panel_2.add(lblVerificacin_1);
+
+		JLabel lblYPre_1 = new JLabel("Prematr\u00EDcula");
+		lblYPre_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYPre_1.setForeground(Color.BLACK);
+		lblYPre_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
+		lblYPre_1.setBounds(10, 194, 89, 12);
+		panel_2.add(lblYPre_1);
 
 		panel = new JPanel();
 		panel.setBounds(6, 11, 253, 419);
@@ -588,6 +596,10 @@ public class ventana_principal extends JFrame {
 		panel.add(txtContraseña);
 
 		btnCredenciales = new JButton("GENERAR PIN");
+		btnCredenciales.setBackground(new Color(255, 215, 0));
+		btnCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnCredenciales.setBounds(37, 254, 185, 23);
+		panel.add(btnCredenciales);
 		btnCredenciales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtIdentidad.getText().toString().equals("             ")) {
@@ -599,18 +611,14 @@ public class ventana_principal extends JFrame {
 					if (USUARIO_users == null && USUARIO_Prematriculas == null) {
 						Registrar_Usuario_Contraseña_Identidad_Grupo();
 					} else {
-						Actualizar_Usuario_Contraseña_Identidad_Grupo();
+						JOptionPane.showMessageDialog(null,
+								"El alumno ya cuenta con un PIN de prematricula registrado, si desea recuperalo, debe actualizarlo.");
 					}
 
 				}
-				btnImprimir.setVisible(true);
 			}
 
 		});
-		btnCredenciales.setBackground(new Color(255, 215, 0));
-		btnCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
-		btnCredenciales.setBounds(37, 254, 185, 23);
-		panel.add(btnCredenciales);
 
 		JLabel lblIdentidad = new JLabel("Identidad:");
 		lblIdentidad.setHorizontalAlignment(SwingConstants.CENTER);
@@ -668,13 +676,13 @@ public class ventana_principal extends JFrame {
 
 		JLabel lblGeneradorDeCredenciales = new JLabel("GENERADOR DE PINES");
 		lblGeneradorDeCredenciales.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGeneradorDeCredenciales.setForeground(Color.BLACK);
+		lblGeneradorDeCredenciales.setForeground(new Color(50, 205, 50));
 		lblGeneradorDeCredenciales.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblGeneradorDeCredenciales.setBounds(16, 11, 222, 20);
 		panel.add(lblGeneradorDeCredenciales);
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(6, 432, 253, 32);
+		panel_3.setBounds(6, 432, 516, 32);
 		contentPane.add(panel_3);
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_3.setBackground(new Color(255, 255, 255));
@@ -684,29 +692,194 @@ public class ventana_principal extends JFrame {
 		lblFecha.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFecha.setForeground(new Color(0, 100, 0));
 		lblFecha.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblFecha.setBounds(0, 0, 54, 30);
+		lblFecha.setBounds(92, 0, 56, 30);
 		panel_3.add(lblFecha);
 
 		JLabel lblHora = new JLabel("Hora:");
 		lblHora.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHora.setForeground(new Color(0, 100, 0));
 		lblHora.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblHora.setBounds(116, 0, 62, 30);
+		lblHora.setBounds(263, 0, 62, 30);
 		panel_3.add(lblHora);
 
 		lblFechaActual = new JLabel();
+		lblFechaActual.setBackground(new Color(0, 0, 205));
 		lblFechaActual.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFechaActual.setForeground(Color.BLACK);
-		lblFechaActual.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblFechaActual.setBounds(42, 0, 83, 30);
+		lblFechaActual.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
+		lblFechaActual.setBounds(142, 0, 112, 30);
 		panel_3.add(lblFechaActual);
 
 		lblHoraActual = new JLabel();
+		lblHoraActual.setBackground(new Color(0, 0, 205));
 		lblHoraActual.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHoraActual.setForeground(Color.BLACK);
-		lblHoraActual.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblHoraActual.setBounds(161, 0, 92, 30);
+		lblHoraActual.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
+		lblHoraActual.setBounds(318, 0, 112, 30);
 		panel_3.add(lblHoraActual);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(269, 11, 253, 419);
+		contentPane.add(panel_1);
+
+		JLabel lblUsuario_2 = new JLabel("Grado:");
+		lblUsuario_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario_2.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblUsuario_2.setBounds(79, 202, 112, 20);
+		panel_1.add(lblUsuario_2);
+
+		btnImprimir1 = new JButton("IMPRIMIR");
+		btnImprimir1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnImprimir1.setBackground(new Color(46, 139, 87));
+		btnImprimir1.setBounds(37, 373, 185, 23);
+		panel_1.add(btnImprimir1);
+		btnImprimir1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (txtIdentidad1.getText().toString().equals("") || txtContraseña1.getText().toString().equals("")
+						|| txtUsuario1.getText().toString().equals("")) {
+					JOptionPane.showMessageDialog(null, "Por verifique que los datos completos, antes de imprimir.");
+				} else {
+					ventana_comprobante comprobante = new ventana_comprobante();
+					ventana_comprobante.lblIdentidad.setText(txtUsuario1.getText().toString());
+					;
+					ventana_comprobante.lblCodigo.setText(cadena);
+					ventana_comprobante.getHora();
+					ventana_comprobante.lblFecha.setText(ventana_comprobante.getFecha());
+					comprobante.setVisible(true);
+					comprobante.setLocationRelativeTo(null);
+					txtIdentidad1.setText("");
+					txtContraseña1.setText("");
+					txtUsuario1.setText("");
+				}
+
+			}
+		});
+
+		JLabel USUARIOS_1 = new JLabel("7\u00B0 y 10\u00B0");
+		USUARIOS_1.setHorizontalAlignment(SwingConstants.CENTER);
+		USUARIOS_1.setForeground(new Color(46, 139, 87));
+		USUARIOS_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		USUARIOS_1.setBounds(16, 49, 222, 20);
+		panel_1.add(USUARIOS_1);
+
+		JLabel lblUsuario_1_1 = new JLabel("Usuario:");
+		lblUsuario_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario_1_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblUsuario_1_1.setBounds(4, 277, 258, 20);
+		panel_1.add(lblUsuario_1_1);
+
+		txtUsuario1 = new JTextField();
+		txtUsuario1.setHorizontalAlignment(SwingConstants.CENTER);
+		txtUsuario1.setForeground(new Color(0, 0, 128));
+		txtUsuario1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		txtUsuario1.setEditable(false);
+		txtUsuario1.setColumns(10);
+		txtUsuario1.setBounds(37, 299, 185, 20);
+		panel_1.add(txtUsuario1);
+
+		JLabel lblContrasea_1 = new JLabel("Contrase\u00F1a:");
+		lblContrasea_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContrasea_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblContrasea_1.setBounds(6, 320, 258, 20);
+		panel_1.add(lblContrasea_1);
+
+		txtContraseña1 = new JTextField();
+		txtContraseña1.setHorizontalAlignment(SwingConstants.CENTER);
+		txtContraseña1.setForeground(new Color(0, 0, 128));
+		txtContraseña1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		txtContraseña1.setEditable(false);
+		txtContraseña1.setColumns(10);
+		txtContraseña1.setBounds(37, 342, 185, 20);
+		panel_1.add(txtContraseña1);
+
+		btnCredenciales1 = new JButton("ACTUALIZAR PIN");
+		btnCredenciales1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		btnCredenciales1.setBackground(new Color(255, 215, 0));
+		btnCredenciales1.setBounds(37, 254, 185, 23);
+		panel_1.add(btnCredenciales1);
+		btnCredenciales1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (txtIdentidad1.getText().toString().equals("             ")) {
+					JOptionPane.showMessageDialog(null, "Por favor escriba correctamente la identidad del alumno.");
+				} else {
+					preguntarPorCredenciales();
+					preguntarPorGrupo();
+					preguntarPorRol();
+					if (USUARIO_users == null && USUARIO_Prematriculas == null) {
+						JOptionPane.showMessageDialog(null,
+								"El alumno no cuenta con un PIN de prematricula registrado, debe generarlo antes, para poder actualizarlo.");
+					} else {
+						Actualizar_Usuario_Contraseña_Identidad_Grupo();
+					}
+
+				}
+			}
+
+		});
+
+		JLabel lblIdentidad_1 = new JLabel("Identidad:");
+		lblIdentidad_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIdentidad_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblIdentidad_1.setBounds(6, 162, 256, 20);
+		panel_1.add(lblIdentidad_1);
+
+		txtIdentidad1 = new JFormattedTextField(identidad);
+		txtIdentidad1.setHorizontalAlignment(SwingConstants.CENTER);
+		txtIdentidad1.setForeground(new Color(0, 0, 128));
+		txtIdentidad1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		txtIdentidad1.setColumns(10);
+		txtIdentidad1.setBounds(37, 183, 185, 20);
+		panel_1.add(txtIdentidad1);
+		InputMap map3 = txtIdentidad1.getInputMap(JComponent.WHEN_FOCUSED);
+		map3.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+		txtIdentidad1.addKeyListener(new KeyListener() {
+			@Override
+			// Metodo que valida el ingreso de solo numeros
+			public void keyTyped(KeyEvent ke) {
+				if (txtIdentidad1.getText().toString().equals(" ")) {
+					JOptionPane.showMessageDialog(null, "No esta permitido escribir espacios vacios!");
+					txtIdentidad1.setText("");
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent ke) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent ke) {
+			}
+		});
+
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(61, 49, 139, 135);
+		panel_1.add(lblNewLabel_1);
+		final ImageIcon icono2 = new ImageIcon(logo.getImage().getScaledInstance(lblNewLabel_1.getWidth(),
+				lblNewLabel_1.getHeight(), Image.SCALE_DEFAULT));
+		lblNewLabel_1.setIcon(icono2);
+
+		cbxGrado1 = new JComboBox();
+		cbxGrado1.setModel(new DefaultComboBoxModel(new String[] { "S\u00E9ptimo", "D\u00E9cimo" }));
+		cbxGrado1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		cbxGrado1.setBounds(37, 223, 185, 20);
+		panel_1.add(cbxGrado1);
+
+		JLabel label_6_1 = new JLabel("DATOS DEL COMPROBANTE");
+		label_6_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_6_1.setForeground(Color.BLACK);
+		label_6_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		label_6_1.setBounds(16, 31, 222, 20);
+		panel_1.add(label_6_1);
+
+		JLabel lblGeneradorDeCredenciales_1 = new JLabel("ACTUALIZACION DE PINES");
+		lblGeneradorDeCredenciales_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGeneradorDeCredenciales_1.setForeground(new Color(30, 144, 255));
+		lblGeneradorDeCredenciales_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblGeneradorDeCredenciales_1.setBounds(16, 11, 222, 20);
+		panel_1.add(lblGeneradorDeCredenciales_1);
 
 	}
 
@@ -824,24 +997,24 @@ public class ventana_principal extends JFrame {
 
 	// ACTUALIZACION DE DATOS
 	public void Actualizar_Usuario_Contraseña_Identidad_Grupo() {
-		txtUsuario.setText(txtIdentidad.getText().toString());
+		txtUsuario1.setText(txtIdentidad1.getText().toString());
 		generarCodigo();
-		txtContraseña.setText(cadena);
+		txtContraseña1.setText(cadena);
 		alumnos clase = new alumnos();
 		alumnos clase2 = new alumnos();
 		consultas_alumnos consulta = new consultas_alumnos();
 
-		clase.setRNE_Alumno(txtIdentidad.getText().toString());
+		clase.setRNE_Alumno(txtIdentidad1.getText().toString());
 		contraseñaEncriptada = recursos.BCrypt.hashpw(cadena, recursos.BCrypt.gensalt());
 		clase.setPassword(contraseñaEncriptada);
 		clase.setId_Rol(ROL);
 		clase.setId(Integer.parseInt(USUARIO_id));
 
-		clase2.setRNE_Alumno(txtIdentidad.getText().toString());
+		clase2.setRNE_Alumno(txtIdentidad1.getText().toString());
 		buscarIdGrupoSeptimo();
 		buscarIdGrupoDecimo();
 
-		if (cbxGrado.getSelectedItem().equals("Séptimo")) {
+		if (cbxGrado1.getSelectedItem().equals("Séptimo")) {
 			clase2.setId_Grupo(IDGRUPOSep);
 		} else {
 			clase2.setId_Grupo(IDGRUPODec);

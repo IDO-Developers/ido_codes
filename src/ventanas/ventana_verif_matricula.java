@@ -53,7 +53,7 @@ import java.awt.Component;
 import javax.swing.JTextPane;
 import java.awt.Window.Type;
 
-public class ventana_pines extends JFrame {
+public class ventana_verif_matricula extends JFrame {
 	public JScrollPane scrollFunciones;
 	public JButton btnAtras;
 	public static String nombreEmpresa = null;
@@ -79,7 +79,7 @@ public class ventana_pines extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 
-	public ventana_pines() {
+	public ventana_verif_matricula() {
 		setType(Type.UTILITY);
 		setResizable(false);
 		setDefaultCloseOperation(0);
