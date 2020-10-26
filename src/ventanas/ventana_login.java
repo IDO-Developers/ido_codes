@@ -111,14 +111,8 @@ public class ventana_login extends JFrame {
 		lblUsuario.setBounds(91, 149, 150, 14);
 		panel.add(lblUsuario);
 
-		MaskFormatter identidadF = null;
-		try {
-			identidadF = new MaskFormatter("#############");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		
-		txtUsuario = new JFormattedTextField(identidadF);
+	
+		txtUsuario = new JFormattedTextField();
 		txtUsuario.setForeground(new Color(0, 0, 0));
 		txtUsuario.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
@@ -127,6 +121,30 @@ public class ventana_login extends JFrame {
 		txtUsuario.setColumns(10);
 		InputMap map1 = txtUsuario.getInputMap(JComponent.WHEN_FOCUSED);
 		map1.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+		txtUsuario.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent ke) {
+				if (txtUsuario.getText().toString().equals(" ")) {
+					JOptionPane.showMessageDialog(null, "No esta permitido escribir espacios vacios!");
+					txtUsuario.setText("");
+				}
+
+				char c = ke.getKeyChar();
+				if ((c < '0' || c > '9'))
+					ke.consume();
+
+				if (txtUsuario.getText().length() == 13)
+					ke.consume();
+			}
+
+			@Override
+			public void keyPressed(KeyEvent ke) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent ke) {
+			}
+		});
 
 		JLabel lblContrasea = new JLabel("CONTRASE\u00D1A");
 		lblContrasea.setForeground(Color.WHITE);
@@ -262,8 +280,6 @@ public class ventana_login extends JFrame {
 										principal.btnUsuarios.setEnabled(true);
 										principal.btn7_10.setEnabled(true);
 										principal.btn8_9_11_12.setEnabled(true);
-										principal.btnComprobarMatricula.setEnabled(true);
-										principal.btnCredencialesRegistradas.setEnabled(true);
 
 									} else {
 										if (rol.equals("2")) {
@@ -271,8 +287,6 @@ public class ventana_login extends JFrame {
 											principal.btnUsuarios.setEnabled(true);
 											principal.btn7_10.setEnabled(true);
 											principal.btn8_9_11_12.setEnabled(true);
-											principal.btnComprobarMatricula.setEnabled(true);
-											principal.btnCredencialesRegistradas.setEnabled(true);
 
 										} else {
 											if (rol.equals("3")) {
@@ -280,19 +294,13 @@ public class ventana_login extends JFrame {
 												principal.btnUsuarios.setEnabled(false);
 												principal.btn7_10.setEnabled(false);
 												principal.btn8_9_11_12.setEnabled(false);
-												principal.btnComprobarMatricula.setEnabled(false);
-												principal.btnCredencialesRegistradas.setEnabled(false);
 												principal.btnCredenciales.setEnabled(false);
-
-												principal.btnComprobarMatricula.setEnabled(false);
 												principal.btnImprimir.setEnabled(false);
 
 											} else {
 												principal.btnUsuarios.setEnabled(false);
 												principal.btn7_10.setEnabled(true);
 												principal.btn8_9_11_12.setEnabled(true);
-												principal.btnComprobarMatricula.setEnabled(true);
-												principal.btnCredencialesRegistradas.setEnabled(true);
 
 											}
 
@@ -364,11 +372,11 @@ public class ventana_login extends JFrame {
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
 			ResultSet rs = estatuto
-					.executeQuery("SELECT * FROM users WHERE RNE_Empleado='" + txtUsuario.getText().toString() + "'");
+					.executeQuery("SELECT * FROM users WHERE RNE_Alumno='" + txtUsuario.getText().toString() + "'");
 			while (rs.next()) {
 				rol = rs.getString("Id_Rol");
 				nombre = rs.getString("name");
-				identidad = rs.getString("RNE_Empleado");
+				identidad = rs.getString("RNE_Alumno");
 				contraseña = rs.getString("password");
 			}
 		} catch (SQLException ex) {

@@ -16,6 +16,7 @@ import ventanas.ventana_usuarios;
 
 public class consultas_alumnos extends conexion {
 
+	//INSERTAR USUARIO, CONTRASEÑA, rol y un nombre temporal del alumno EN LA TABLA users
 	public boolean insertarUserYpass(alumnos usuario) {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
@@ -26,6 +27,29 @@ public class consultas_alumnos extends conexion {
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getId_Rol());
 			ps.setString(4, "Alumno");
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			System.err.println(e);
+			return false;
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println(e);
+			}
+		}
+	}
+
+	//INSERTAR IDENTIDAD Y GRUPO EN LA TABLA Prematriculas
+	public boolean insertarRNEyGrupo(alumnos usuario) {
+		PreparedStatement ps = null;
+		Connection con = getConexion();
+		String sql = "INSERT INTO Prematriculas (RNE_Alumno, Id_Grupo) VALUES(?,?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, usuario.getRNE_Alumno());
+			ps.setString(2, usuario.getId_Grupo());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -65,29 +89,6 @@ public class consultas_alumnos extends conexion {
 				System.err.println(e);
 			}
 		}
-
-	}
-	
-	public boolean insertarRNEyGrupo(alumnos usuario) {
-		PreparedStatement ps = null;
-		Connection con = getConexion();
-		String sql = "INSERT INTO Prematriculas (RNE_Alumno, Id_Grupo) VALUES(?,?)";
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, usuario.getRNE_Alumno());
-			ps.setString(2, usuario.getId_Grupo());
-			ps.execute();
-			return true;
-		} catch (SQLException e) {
-			System.err.println(e);
-			return false;
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				System.err.println(e);
-			}
-		}
 	}
 
 	public boolean actualizarRNEyGrupo(alumnos usuario) {
@@ -101,6 +102,33 @@ public class consultas_alumnos extends conexion {
 			ps.setString(1, usuario.getRNE_Alumno());
 			ps.setString(2, usuario.getId_Grupo());
 			ps.setInt(3, usuario.getId_Prematricula());
+			ps.execute();
+
+			return true;
+		} catch (SQLException e) {
+			System.err.println(e);
+			return false;
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println(e);
+			}
+		}
+
+	}
+
+	public boolean actualizarPIN(alumnos usuario) {
+		PreparedStatement ps = null;
+		Connection con = getConexion();
+
+		String sql = "UPDATE users SET password=? WHERE RNE_Alumno=? ";
+
+		try {
+			ps = con.prepareStatement(sql);
+
+			ps.setString(1, usuario.getPassword());
+			ps.setString(2, usuario.getRNE_Alumno());
 			ps.execute();
 
 			return true;

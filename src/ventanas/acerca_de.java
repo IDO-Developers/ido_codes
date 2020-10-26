@@ -66,7 +66,7 @@ public class acerca_de extends JFrame {
 		JTextArea txtrTodosLosDerechos = new JTextArea();
 		txtrTodosLosDerechos.setEditable(false);
 		txtrTodosLosDerechos.setText(
-				"          Todos los derechos reservados a.\r\n            Programadores y Dise\u00F1adores:\r\n   Licenciados en Inform\u00E1tica Administrativa.\r\n        Abd\u00EDas Ismael Vel\u00E1squez Gonzalez\r\n        Justin Mois\u00E9s Chac\u00F3n Ferrari\r\n        Cristian Emmanuel D\u00EDaz Rodr\u00EDguez\r\n      Contacto: krizemandiaz11@gmail.com\r\n UNAH-Tec Danl\u00ED, El Para\u00EDso Honduras 2020\r\n");
+				"          Todos los derechos reservados a.\r\n            Programadores y Dise\u00F1adores:\r\n        Pasantes de la carrera Universitaria\r\n        Lic. en Inform\u00E1tica Administrativa.\r\n        Abd\u00EDas Ismael Vel\u00E1squez Gonzalez\r\n        Justin Mois\u00E9s Chac\u00F3n Ferrari\r\n        Cristian Emmanuel D\u00EDaz Rodr\u00EDguez\r\n      Contacto: krizemandiaz11@gmail.com\r\n UNAH-Tec Danl\u00ED, El Para\u00EDso Honduras 2020\r\n");
 		txtrTodosLosDerechos.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		txtrTodosLosDerechos.setBounds(50, 329, 291, 129);
 		contentPane.add(txtrTodosLosDerechos);
@@ -88,7 +88,7 @@ public class acerca_de extends JFrame {
 		label_1.setIcon(icono3);
 		final ImageIcon logo0 = new ImageIcon(getClass().getResource("/recursos/abdias.jpeg"));
 		final ImageIcon logo00 = new ImageIcon(getClass().getResource("/recursos/justin.jpeg"));
-		final ImageIcon logo000 = new ImageIcon(getClass().getResource("/recursos/cris.jpg"));
+		final ImageIcon logo000 = new ImageIcon(getClass().getResource("/recursos/emman.jpeg"));
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -108,7 +108,7 @@ public class acerca_de extends JFrame {
 
 		JLabel label_3 = new JLabel("");
 		label_3.setToolTipText("Lic. Justin Mois\u00E9s Chac\u00F3n Ferrari");
-		label_3.setBounds(113, 33, 101, 101);
+		label_3.setBounds(120, 33, 101, 101);
 		panel.add(label_3);
 		final ImageIcon icono00 = new ImageIcon(
 				logo00.getImage().getScaledInstance(label_3.getWidth(), label_3.getHeight(), Image.SCALE_DEFAULT));
@@ -116,7 +116,7 @@ public class acerca_de extends JFrame {
 
 		JLabel label_4 = new JLabel("");
 		label_4.setToolTipText("Lic.  Cristian Emmanuel D\u00EDaz Rodr\u00EDguez");
-		label_4.setBounds(230, 33, 111, 101);
+		label_4.setBounds(246, 33, 92, 111);
 		panel.add(label_4);
 		final ImageIcon icono000 = new ImageIcon(
 				logo000.getImage().getScaledInstance(label_4.getWidth(), label_4.getHeight(), Image.SCALE_DEFAULT));

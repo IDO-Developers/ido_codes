@@ -64,7 +64,7 @@ public class control_usuario implements ActionListener {
 							"Alerta!\n" + " Nota: Solo debe de haber 1 usuario por identidad",
 							JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
+					clase.setRNE_Alumno(ventana.txtIdentidad.getText().toString());
 					contraseña = ventana.txtContraseña.getText().toString();
 					
 					contraseñaEncriptada = recursos.BCrypt.hashpw(contraseña, recursos.BCrypt.gensalt());
@@ -75,13 +75,13 @@ public class control_usuario implements ActionListener {
 					if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
 						clase.setId_Rol("1");
 					} else {
-						if (ventana.cbxRol.getSelectedItem().toString().equals("Docente")) {
+						if (ventana.cbxRol.getSelectedItem().toString().equals("Secretario")) {
 							clase.setId_Rol("2");
 						} else {
 							if (ventana.cbxRol.getSelectedItem().toString().equals("Alumno")) {
 								clase.setId_Rol("3");
 							} else {
-								if (ventana.cbxRol.getSelectedItem().toString().equals("Secretaria")) {
+								if (ventana.cbxRol.getSelectedItem().toString().equals("Docente")) {
 									clase.setId_Rol("4");
 								} else {
 
@@ -113,7 +113,7 @@ public class control_usuario implements ActionListener {
 
 			} else {
 
-				clase.setRNE_Empleado(ventana.txtIdentidad.getText().toString());
+				clase.setRNE_Alumno(ventana.txtIdentidad.getText().toString());
 				contraseña = ventana.txtContraseña.getText().toString();
 
 				contraseñaEncriptada = recursos.BCrypt.hashpw(contraseña, recursos.BCrypt.gensalt());
@@ -124,13 +124,13 @@ public class control_usuario implements ActionListener {
 				if (ventana.cbxRol.getSelectedItem().toString().equals("Administrador")) {
 					clase.setId_Rol("1");
 				} else {
-					if (ventana.cbxRol.getSelectedItem().toString().equals("Docente")) {
+					if (ventana.cbxRol.getSelectedItem().toString().equals("Secretario")) {
 						clase.setId_Rol("2");
 					} else {
 						if (ventana.cbxRol.getSelectedItem().toString().equals("Alumno")) {
 							clase.setId_Rol("3");
 						} else {
-							if (ventana.cbxRol.getSelectedItem().toString().equals("Secretaria")) {
+							if (ventana.cbxRol.getSelectedItem().toString().equals("Docente")) {
 								clase.setId_Rol("4");
 							} else {
 

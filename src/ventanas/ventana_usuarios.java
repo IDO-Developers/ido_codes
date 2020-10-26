@@ -58,10 +58,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JToggleButton;
 import javax.swing.JFormattedTextField.AbstractFormatter;
+import javax.swing.border.BevelBorder;
 
 public class ventana_usuarios extends JFrame {
 
@@ -86,6 +88,8 @@ public class ventana_usuarios extends JFrame {
 	public static String identidadRepetida;
 	public JToggleButton btnMostrar_Ocultar_Pass;
 	public JTextField txtNombre;
+
+	public static String Rol;
 
 	/**
 	 * Launch the application.
@@ -127,6 +131,7 @@ public class ventana_usuarios extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 400);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(25, 25, 112));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -135,7 +140,7 @@ public class ventana_usuarios extends JFrame {
 		final ImageIcon ocultar = new ImageIcon(getClass().getResource("/recursos/ocultar.png"));
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel.setBounds(10, 11, 252, 339);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -284,26 +289,65 @@ public class ventana_usuarios extends JFrame {
 		txtNombre.setColumns(10);
 		txtNombre.setBounds(29, 98, 192, 20);
 		panel.add(txtNombre);
-		
+		txtNombre.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent ke) {
+				if (txtNombre.getText().length() == 15)
+					ke.consume();
+
+				if (txtNombre.getText().toString().equals(" ")) {
+					JOptionPane.showMessageDialog(null, "No esta permitido escribir espacios vacios!");
+					txtNombre.setText("");
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent ke) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent ke) {
+			}
+		});
+
 		JButton btnEstudiante = new JButton("");
 		btnEstudiante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ventana_principal alumnos = new ventana_principal();
-				alumnos.setLocationRelativeTo(null);
-				alumnos.setVisible(true);
-				alumnos.lblFechaActual.setText(ventana_principal.getFecha());
-				if (ventana_login.rol.equals("1")) {
-					alumnos.btnUsuarios.setEnabled(true);
+				String Rol = ventana_login.rol.toString();
+				String Nombre = ventana_login.nombre.toString();
+				String NombreRol = ventana_login.NombreRol.toString();
+				ventana_principal principal = new ventana_principal();
+				Timer time = new Timer();
+				time.schedule(principal.tarea, 0, 1000);
+				principal.setLocationRelativeTo(null);
+				principal.setVisible(true);
+				principal.buscarRol();
+				principal.lblFechaActual.setText(ventana_principal.getFecha());
+				principal.setTitle("Usuario: " + Nombre + "    Permisos: " + NombreRol);
+				if (Rol.equals("1")) {
+					principal.btnUsuarios.setEnabled(true);
+					principal.btn7_10.setEnabled(true);
+					principal.btn8_9_11_12.setEnabled(true);
+
 				} else {
-					if (ventana_login.rol.equals("2")) {
-						alumnos.btnUsuarios.setEnabled(false);
+					if (Rol.equals("2")) {
+						principal.btnUsuarios.setEnabled(false);
+						principal.btnUsuarios.setEnabled(true);
+						principal.btn7_10.setEnabled(true);
+						principal.btn8_9_11_12.setEnabled(true);
 
 					} else {
-						if (ventana_login.rol.equals("3")) {
-							alumnos.btnUsuarios.setEnabled(false);
+						if (Rol.equals("3")) {
+							principal.btnUsuarios.setEnabled(false);
+							principal.btnUsuarios.setEnabled(false);
+							principal.btn7_10.setEnabled(false);
+							principal.btn8_9_11_12.setEnabled(false);
+							principal.btnImprimir.setEnabled(false);
 
 						} else {
-							alumnos.btnUsuarios.setEnabled(false);
+							principal.btnUsuarios.setEnabled(false);
+							principal.btn7_10.setEnabled(true);
+							principal.btn8_9_11_12.setEnabled(true);
 
 						}
 
@@ -311,19 +355,20 @@ public class ventana_usuarios extends JFrame {
 
 				}
 				dispose();
+
 			}
 		});
 		btnEstudiante.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		btnEstudiante.setBounds(0, 0, 43, 43);
 		panel.add(btnEstudiante);
 		final ImageIcon logomq = new ImageIcon(getClass().getResource("/recursos/profile.png"));
-		final ImageIcon iconomq = new ImageIcon(
-				logomq.getImage().getScaledInstance(btnEstudiante.getWidth(), btnEstudiante.getHeight(), Image.SCALE_DEFAULT));
+		final ImageIcon iconomq = new ImageIcon(logomq.getImage().getScaledInstance(btnEstudiante.getWidth(),
+				btnEstudiante.getHeight(), Image.SCALE_DEFAULT));
 		btnEstudiante.setIcon(iconomq);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_1.setBounds(272, 11, 410, 339);
 		contentPane.add(panel_1);
 
@@ -406,11 +451,11 @@ public class ventana_usuarios extends JFrame {
 		conexion conex = new conexion();
 		try {
 			Statement estatuto = conex.getConexion().createStatement();
-			ResultSet rs = estatuto.executeQuery("SELECT RNE_Empleado FROM users where RNE_Empleado = '"
-					+ txtIdentidad.getText().toString() + "'");
+			ResultSet rs = estatuto.executeQuery(
+					"SELECT RNE_Alumno FROM users where RNE_Alumno = '" + txtIdentidad.getText().toString() + "'");
 
 			if (rs.next()) {
-				identidadRepetida = (rs.getString("RNE_Empleado"));
+				identidadRepetida = (rs.getString("RNE_Alumno"));
 			}
 
 			rs.close();
@@ -510,10 +555,10 @@ public class ventana_usuarios extends JFrame {
 				usuarios = new usuarios();
 				usuarios.setId(Integer.parseInt(rs.getString("id")));
 				usuarios.setName(rs.getString("name"));
-				usuarios.setRNE_Empleado(rs.getString("RNE_Empleado"));
+				usuarios.setRNE_Alumno(rs.getString("RNE_Alumno"));
 				usuarios.setPassword(rs.getString("password"));
 				usuarios.setId_Rol(rs.getString("Id_Rol"));
-				
+
 				miLista.add(usuarios);
 			}
 			rs.close();
@@ -534,12 +579,13 @@ public class ventana_usuarios extends JFrame {
 		for (int i = 0; i < miLista.size(); i++) {
 			matrizInfo[i][0] = miLista.get(i).getId() + "";
 			matrizInfo[i][1] = miLista.get(i).getName() + "";
-			matrizInfo[i][2] = miLista.get(i).getRNE_Empleado() + "";
+			matrizInfo[i][2] = miLista.get(i).getRNE_Alumno() + "";
 			matrizInfo[i][3] = miLista.get(i).getPassword() + "";
 			matrizInfo[i][4] = miLista.get(i).getId_Rol() + "";
-		
+
 		}
 
 		return matrizInfo;
 	}
+
 }

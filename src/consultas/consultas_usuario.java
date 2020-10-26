@@ -22,10 +22,10 @@ public class consultas_usuario extends conexion {
 	public boolean insertar(usuarios usuario) {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
-		String sql = "INSERT INTO users (RNE_Empleado, password, Id_Rol, name) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO users (RNE_Alumno, password, Id_Rol, name) VALUES(?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, usuario.getRNE_Empleado());
+			ps.setString(1, usuario.getRNE_Alumno());
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getId_Rol());
 			ps.setString(4, usuario.getName());
@@ -48,11 +48,11 @@ public class consultas_usuario extends conexion {
 		PreparedStatement ps = null;
 		Connection con = getConexion();
 
-		String sql = "UPDATE users SET RNE_Empleado=?, password=?, Id_Rol=?, name=? WHERE id=? ";
+		String sql = "UPDATE users SET RNE_Alumno=?, password=?, Id_Rol=?, name=? WHERE id=? ";
 
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, usuario.getRNE_Empleado());
+			ps.setString(1, usuario.getRNE_Alumno());
 			ps.setString(2, usuario.getPassword());
 			ps.setString(3, usuario.getId_Rol());
 			ps.setString(4, usuario.getName());
