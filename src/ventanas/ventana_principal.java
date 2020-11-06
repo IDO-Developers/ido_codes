@@ -500,9 +500,6 @@ public class ventana_principal extends JFrame {
 					ventana_comprobante.lblFecha.setText(ventana_comprobante.getFecha());
 					comprobante.setVisible(true);
 					comprobante.setLocationRelativeTo(null);
-					txtIdentidad.setText("");
-					txtContraseña.setText("");
-					txtUsuario.setText("");
 				}
 
 			}
@@ -684,14 +681,11 @@ public class ventana_principal extends JFrame {
 				} else {
 					ventana_comprobante comprobante = new ventana_comprobante();
 					ventana_comprobante.lblIdentidad.setText(txtUsuario1.getText().toString());
-					ventana_comprobante.lblCodigo.setText(cadena);
+					ventana_comprobante.lblCodigo.setText(cadena1);
 					ventana_comprobante.getHora();
 					ventana_comprobante.lblFecha.setText(ventana_comprobante.getFecha());
 					comprobante.setVisible(true);
 					comprobante.setLocationRelativeTo(null);
-					txtIdentidad1.setText("");
-					txtContraseña1.setText("");
-					txtUsuario1.setText("");
 				}
 
 			}
